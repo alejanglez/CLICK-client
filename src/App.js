@@ -6,6 +6,7 @@ import PrivateRoute from "./components/auth/PrivateRoute";
 import { validateSession } from "./services/userService";
 import Home from "./views/Home";
 import Login from "./views/Login";
+import ProfileUser from "./views/ProfileUser";
 import Signup from "./views/Signup";
 
 class App extends React.Component {
@@ -45,9 +46,10 @@ class App extends React.Component {
       <div className="App">
         <BrowserRouter>
           <nav>
-            {authenticated && <Link to="/"> Home </Link>}
+            {authenticated && <Link to="/user/profile"> Home </Link>}
             {!authenticated && <Link to="/login"> Login </Link>}
-            {!authenticated && <Link to="/signup"> Signup </Link>}
+            {!authenticated && <Link to="/signup/user"> Signup </Link>}
+            {!authenticated && <Link to="/"> homeee ⭐️ </Link>}
             {authenticated && (
               <Link to={"/"} onClick={this.handleLogout}>
                 Logout
@@ -57,10 +59,10 @@ class App extends React.Component {
           <Switch>
             <PrivateRoute
               exact
-              path="/"
+              path="/user/profile"
               user={this.state.user}
               authenticated={authenticated}
-              component={Home}
+              component={ProfileUser}
             />
             <AnonRoute
               exact
@@ -71,10 +73,17 @@ class App extends React.Component {
             />
             <AnonRoute
               exact
-              path="/signup"
+              path="/signup/user"
               authenticated={authenticated}
               authenticate={this.authenticate}
               component={Signup}
+            />
+            <AnonRoute
+              exact
+              path="/"
+              authenticated={authenticated}
+              authenticate={this.authenticate}
+              component={Home}
             />
           </Switch>
         </BrowserRouter>

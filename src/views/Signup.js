@@ -3,9 +3,12 @@ import { signup } from "../services/userService";
 
 class Signup extends React.Component {
   state = {
-    username: "",
+    firstName: "",
     email: "",
     password: "",
+    lastName:"",
+    address:"", 
+    about:"",
     errorMessage: "",
   };
   handleChange = (event) => {
@@ -18,9 +21,13 @@ class Signup extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     signup({
-      username: this.state.username,
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      address: this.state.address,
+      about: this.state.about,
       email: this.state.email,
       password: this.state.password,
+      imageUrl: this.state.imageUrl
     })
       .then((response) =>
         response.accessToken
@@ -35,15 +42,47 @@ class Signup extends React.Component {
   };
 
   render() {
-    const { username, email, password, errorMessage } = this.state;
+    const { firstName, lastName, email, password, address, about, imageUrl, errorMessage } = this.state;
     return (
       <div>
         {errorMessage !== "" && errorMessage}
         <form onSubmit={this.handleSubmit}>
-          <label>username: </label>
+          <label>first name: </label>
           <input
-            name="username"
-            value={username}
+            name="firstName"
+            value={firstName}
+            onChange={this.handleChange}
+            required={true}
+            type="text"
+          />
+          <label>last name: </label>
+          <input
+            name="lastName"
+            value={lastName}
+            onChange={this.handleChange}
+            required={true}
+            type="text"
+          />
+          <label>address: </label>
+          <input
+            name="address"
+            value={address}
+            onChange={this.handleChange}
+            required={true}
+            type="text"
+          />
+          <label>about: </label>
+          <input
+            name="about"
+            value={about}
+            onChange={this.handleChange}
+            required={true}
+            type="text"
+          />
+          <label>image: </label>
+          <input
+            name="about"
+            value={imageUrl}
             onChange={this.handleChange}
             required={true}
             type="text"

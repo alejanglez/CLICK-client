@@ -1,10 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Home = (props) => {
-  const { username } = props.user;
+const Home = () => {
   return (
     <div>
-      <h1>welcome {username && props.user.username}</h1>
+      <h1>welcome</h1>
+      <p>How do you want to use Click?</p>
+      <br/>
+      <Link to={"/signup/user"}><button>User</button></Link>
+      <Link to={"/signup/user"}><button>Provider</button></Link>
     </div>
   );
 };

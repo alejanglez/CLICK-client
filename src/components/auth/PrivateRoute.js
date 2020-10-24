@@ -4,14 +4,15 @@ import { Route, Redirect } from "react-router-dom";
 const PrivateRoute = ({
   component: Component,
   authenticated,
-  user,
+  userInformation,
+  role,
   ...rest
 }) => {
   return (
     <Route
       render={(props) =>
         authenticated ? (
-          <Component {...props} user={user} />
+          <Component {...props} userInformation={userInformation} role={role} />
         ) : (
           <Redirect to="/" />
         )

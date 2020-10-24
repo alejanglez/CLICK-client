@@ -1,5 +1,5 @@
 import React from "react";
-import { signup } from "../services/userService";
+import {signup} from '../../services/profileInformationService'
 
 class Signup extends React.Component {
   state = {
@@ -9,6 +9,12 @@ class Signup extends React.Component {
     lastName:"",
     address:"", 
     about:"",
+    lessonType:"Online",
+    serviceCat:"Informatics",
+    aptitudes:[],
+    rate:0,
+    facebookUrl:"",
+    // imageUrl:"",
     errorMessage: "",
   };
   handleChange = (event) => {
@@ -27,12 +33,18 @@ class Signup extends React.Component {
       about: this.state.about,
       email: this.state.email,
       password: this.state.password,
-      imageUrl: this.state.imageUrl
-    })
+      // imageUrl: this.state.imageUrl,
+      lessonType:"Online",
+      serviceCat:"Informatics",
+      aptitudes:[],
+      rate:0,
+      facebookUrl:"",
+
+    }, this.props.role)
       .then((response) =>
         response.accessToken
           ? (localStorage.setItem("accessToken", response.accessToken),
-            this.props.authenticate(response.user),
+            this.props.authenticate(response.profileInformation),
             this.props.history.push("/"))
           : this.setState({
               errorMessage: response.errorMessage,
@@ -42,7 +54,7 @@ class Signup extends React.Component {
   };
 
   render() {
-    const { firstName, lastName, email, password, address, about, imageUrl, errorMessage } = this.state;
+    const { firstName, lastName, email, password, address, about, imageUrl, lessonType, serviceCat, rate, facebookUrl, errorMessage } = this.state;
     return (
       <div>
         {errorMessage !== "" && errorMessage}

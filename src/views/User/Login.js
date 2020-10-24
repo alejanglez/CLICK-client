@@ -1,5 +1,5 @@
 import React from "react";
-import { login } from "../services/userService";
+import {login} from "../../services/profileInformationService";
 
 class Login extends React.Component {
   state = {
@@ -15,16 +15,16 @@ class Login extends React.Component {
   };
 
   handleSubmit = (event) => {
+    const {role} = this.props
     event.preventDefault();
     login({
-      username: this.state.username,
       email: this.state.email,
       password: this.state.password,
     })
       .then((response) =>
         response.accessToken
           ? (localStorage.setItem("accessToken", response.accessToken),
-            this.props.authenticate(response.user),
+            this.props.authenticate(response.role, null , true),
             this.props.history.push("/user/profile"))
           : this.setState({
               errorMessage: response.errorMessage,

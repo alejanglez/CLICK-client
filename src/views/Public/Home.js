@@ -8,7 +8,7 @@ const Home = () => {
       <p>How do you want to use Click?</p>
       <br/>
       <Link to={"/signup/user"}><button>User</button></Link>
-      <Link to={"/signup/user"}><button>Provider</button></Link>
+      <Link to={"/signup/provider"}><button>Provider</button></Link>
     </div>
   );
 };

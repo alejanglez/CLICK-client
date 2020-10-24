@@ -15,7 +15,7 @@ class Login extends React.Component {
   };
 
   handleSubmit = (event) => {
-    const {role} = this.props
+    const {role, profileInformation} = this.props
     event.preventDefault();
     login({
       email: this.state.email,
@@ -24,8 +24,8 @@ class Login extends React.Component {
       .then((response) =>
         response.accessToken
           ? (localStorage.setItem("accessToken", response.accessToken),
-            this.props.authenticate(response.role, null , true),
-            this.props.history.push("/user/profile"))
+            this.props.authenticate(response.profileInformation),
+            this.props.history.push(`/${role}/profile`))
           : this.setState({
               errorMessage: response.errorMessage,
             })

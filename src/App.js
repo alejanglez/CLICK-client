@@ -29,7 +29,7 @@ class App extends React.Component {
     }
   };
 
-  authenticate = (profileInformation, id, role) => {
+  authenticate = (profileInformation,id, role) => {
     this.setState({
       authenticated: true,
       profileInformation,
@@ -56,8 +56,8 @@ console.log('role ', this.state.role)
         <div>
           <p>How do you want to use Click stranger?</p>
           <br/>
-          <Link to={"/signup/user"}><button onClick={this.setState({role:"user"})}>User</button></Link>
-          <Link to={"/signup/provider"}><button onClick={this.setState({role:"provider"})}>Provider</button></Link>
+          {!authenticated && <Link to={"/signup/user"}><button onClick={()=>this.setState({role:"user"})}>User</button></Link>}
+          {!authenticated && <Link to={"/signup/provider"}><button onClick={()=>this.setState({role:"provider"})}>Provider</button></Link>}
         </div>
           <nav>
             {authenticated && <Link to={`/${role}/profile`}> Profile </Link>}
@@ -93,13 +93,6 @@ console.log('role ', this.state.role)
               authenticated={authenticated}
               authenticate={this.authenticate}
               component={Signup}
-            />
-            <AnonRoute
-              exact
-              path="/"
-              authenticated={authenticated}
-              authenticate={this.authenticate}
-              component={Home}
             />
           </Switch>
         </BrowserRouter>

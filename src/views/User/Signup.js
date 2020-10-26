@@ -17,8 +17,14 @@ class Signup extends React.Component {
     // imageUrl:"",
     errorMessage: "",
   };
+
+  componentDidMount = (props) => {
+console.log('props mount signuo ', this.props.role)
+  }
+
   handleChange = (event) => {
     const { name, value } = event.target;
+    console.log('role props signup ',this.props.role)
     this.setState({
       [name]: value,
     });

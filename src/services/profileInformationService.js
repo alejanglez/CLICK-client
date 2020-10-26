@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios"
 
 const service = axios.create({
   baseURL: process.env.REACT_APP_API_BASE_URL,
@@ -10,6 +10,7 @@ export const validateSession = (accessToken, role) => {
     .then((response) => response.data)
     .catch((err) => err);
 };
+
 
 export const signup = ( profileInformation, role) => {
   return service

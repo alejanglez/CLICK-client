@@ -4,13 +4,14 @@ const AnonRoute = ({
   component: Component,
   authenticated,
   authenticate,
+  role,
   ...rest
 }) => {
   return (
     <Route
       render={(props) =>
         authenticated === false ? (
-          <Component {...props} authenticate={authenticate} />
+          <Component {...props} authenticate={authenticate} role={role}/>
         ) : (
           <Redirect to="/" />
         )

@@ -5,7 +5,6 @@ import AnonRoute from "./components/auth/AnonRoute";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import { validateSession } from "./services/profileInformationService";
 import Login from "./views/User/Login";
-import Home from "./views/Public/Home";
 import Profile from "./views/User/Profile";
 import Signup from "./views/User/Signup";
 
@@ -15,6 +14,7 @@ class App extends React.Component {
     profileInformation: {},
     role: ""
   };
+  
 
   componentDidMount = () => {
     console.log('component mounted')
@@ -36,7 +36,7 @@ class App extends React.Component {
       id,
       role
     });
-console.log('role ', this.state.role)
+console.log('role: ', this.state.role)
   };
 
   handleLogout = (profileInformation) => {
@@ -53,19 +53,14 @@ console.log('role ', this.state.role)
     return (
       <div className="App">
         <BrowserRouter>
-        <div>
+       {!authenticated && <div>
           <p>How do you want to use Click stranger?</p>
           <br/>
           {!authenticated && <Link to={"/signup/user"}><button onClick={()=>this.setState({role:"user"})}>User</button></Link>}
           {!authenticated && <Link to={"/signup/provider"}><button onClick={()=>this.setState({role:"provider"})}>Provider</button></Link>}
-        </div>
+        </div>}
           <nav>
             {authenticated && <Link to={`/${role}/profile`}> Profile </Link>}
-            {/* {!authenticated && <Link to={`/login/${role}`}> Login </Link>}
-            {!authenticated && <Link to={`/signup/${role}`}> Signup User </Link>} */}
-            {/* {!authenticated && <Link to="/login/provider"> Login provider </Link>}
-            {!authenticated && <Link to="/signup/provider"> Signup provider </Link>} */}
-            {/* {!authenticated && <Link to="/"> homeee ⭐️ </Link>} */}
             {authenticated && (
               <Link to={"/"} onClick={this.handleLogout}>
                 Logout
@@ -78,6 +73,7 @@ console.log('role ', this.state.role)
               path={`/${role}/profile`}
               profileInformation={this.state.profileInformation}
               authenticated={authenticated}
+              role={role}
               component={Profile}
             />
             <AnonRoute
@@ -85,6 +81,7 @@ console.log('role ', this.state.role)
               path={`/login/${role}`}
               authenticated={authenticated}
               authenticate={this.authenticate}
+              role={role}
               component={Login}
             />
             <AnonRoute
@@ -92,6 +89,7 @@ console.log('role ', this.state.role)
               path={`/signup/${role}`}
               authenticated={authenticated}
               authenticate={this.authenticate}
+              role={role}
               component={Signup}
             />
           </Switch>

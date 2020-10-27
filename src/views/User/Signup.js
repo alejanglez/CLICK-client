@@ -1,31 +1,32 @@
 import React from "react";
-import {profile, signup} from '../../services/profileInformationService'
+import { Link } from "react-router-dom";
+import { profile, signup } from "../../services/profileInformationService";
 
 class Signup extends React.Component {
   state = {
     firstName: "",
     email: "",
     password: "",
-    lastName:"",
-    address:"", 
-    about:"",
-    lessonType:"Online",
-    serviceCat:"Informatics",
-    aptitudes:[],
-    rate:0,
-    facebookUrl:"",
+    lastName: "",
+    address: "",
+    about: "",
+    lessonType: "Online",
+    serviceCat: "Informatics",
+    aptitudes: [],
+    rate: 0,
+    facebookUrl: "",
     // imageUrl:"",
     errorMessage: "",
-    role: this.props.role
+    role: this.props.role,
   };
 
   componentDidMount = (props) => {
-console.log('props mount signuo ', this.props.role)
-  }
+    console.log("props mount signup ", this.props.role);
+  };
 
   handleChange = (event) => {
     const { name, value } = event.target;
-    console.log('role props signup ',this.props.role)
+    console.log("role props signup ", this.props.role);
     this.setState({
       [name]: value,
     });
@@ -33,45 +34,58 @@ console.log('props mount signuo ', this.props.role)
 
   handleSubmit = (event) => {
     event.preventDefault();
-    signup({
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      address: this.state.address,
-      about: this.state.about,
-      email: this.state.email,
-      password: this.state.password,
-      // imageUrl: this.state.imageUrl,
-      lessonType:"Online",
-      serviceCat:"Informatics",
-      aptitudes:[],
-      rate:0,
-      facebookUrl:"",
-      role: this.state.role
-
-    }, this.props.role)
-      .then((response) =>  
-  response.accessToken
-          ? (localStorage.setItem("accessToken", response.accessToken),localStorage.setItem( "role", this.props.role),
-            this.props.authenticate(response.profileInformation, this.props.role),
+    signup(
+      {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        address: this.state.address,
+        about: this.state.about,
+        email: this.state.email,
+        password: this.state.password,
+        // imageUrl: this.state.imageUrl,
+        lessonType: "Online",
+        serviceCat: "Informatics",
+        aptitudes: [],
+        rate: 0,
+        facebookUrl: "",
+        role: this.state.role,
+      },
+      this.props.role
+    )
+      .then((response) =>
+        response.accessToken
+          ? (localStorage.setItem("accessToken", response.accessToken),
+            localStorage.setItem("role", this.props.role),
+            this.props.authenticate(
+              response.profileInformation,
+              this.props.role
+            ),
             this.props.history.push(`/${this.props.role}/profile`))
           : this.setState({
               errorMessage: response.errorMessage,
             })
       )
       .catch((err) => console.log(err));
-      };
-
-  // componentWillUnmount = () => {
-  //   profile({
-  //     userId: this.state.profileInformation._id
-  //   }, this.state.role)
-  //   .then(response => console.log('profile response ', response.data))
-  // }
+  };
 
   render() {
-    const { firstName, lastName, email, password, address, about, imageUrl, lessonType, serviceCat, rate, facebookUrl, errorMessage } = this.state;
+    const {
+      firstName,
+      lastName,
+      email,
+      password,
+      address,
+      about,
+      imageUrl,
+      lessonType,
+      serviceCat,
+      rate,
+      facebookUrl,
+      errorMessage,
+    } = this.state;
     return (
       <div>
+        <Link to={`/login/${this.props.role}`}>Login instead</Link>
         {errorMessage !== "" && errorMessage}
         <form onSubmit={this.handleSubmit}>
           <label>first name: </label>

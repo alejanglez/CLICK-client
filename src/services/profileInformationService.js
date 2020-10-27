@@ -1,24 +1,37 @@
-import axios from "axios"
+import axios from "axios";
 
 const service = axios.create({
   baseURL: process.env.REACT_APP_API_BASE_URL,
 });
 
 export const validateSession = (accessToken, role) => {
-  console.log(accessToken, role)
+  console.log(accessToken, role);
   return service
     .get(`/${role}/session/${accessToken}`)
     .then((response) => response.data)
     .catch((err) => err);
 };
 
-export const signup = ( profileInformation, role) => {
+// export const listProviders = () => {
+//   return service
+//   .get('/providers/list')
+//   .then((response)=> response.data)
+//   .catch(err => err)
+// }
+
+// export const singleProvider = (providerId) => {
+//   return service
+//   .get(`/list/providers/${providerId}`)
+//   .then((response) => response.data)
+//   .catch(err => err)
+// }
+
+export const signup = (profileInformation, role) => {
   return service
-    .post(`/${role}/signup`, {...profileInformation})
+    .post(`/${role}/signup`, { ...profileInformation })
     .then((response) => response.data)
     .catch((err) => err);
 };
-
 
 export const login = ({ email, password }, role) => {
   return service

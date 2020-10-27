@@ -1,31 +1,37 @@
 import React from "react";
-import {login} from "../../services/profileInformationService";
+import { login } from "../../services/profileInformationService";
 
 class Login extends React.Component {
   state = {
     email: "",
     password: "",
     errorMessage: "",
+    role: this.props.role,
   };
   handleChange = (event) => {
     const { name, value } = event.target;
+    console.log("role props login ", this.props.role);
     this.setState({
       [name]: value,
     });
   };
 
   handleSubmit = (event) => {
-    const {role, profileInformation} = this.props
+    const { role, email, password } = this.props;
     event.preventDefault();
-    login({
-      email: this.state.email,
-      password: this.state.password,
-    })
+    login(
+      {
+        email: this.state.email,
+        password: this.state.password,
+      },
+      this.state.role
+    )
       .then((response) =>
         response.accessToken
           ? (localStorage.setItem("accessToken", response.accessToken),
+            localStorage.setItem("role", this.props.role),
             this.props.authenticate(response.profileInformation),
-            this.props.history.push(`/${role}/profile`))
+            this.props.history.push(`/${this.props.role}/profile`))
           : this.setState({
               errorMessage: response.errorMessage,
             })

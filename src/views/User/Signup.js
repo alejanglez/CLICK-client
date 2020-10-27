@@ -51,7 +51,7 @@ console.log('props mount signuo ', this.props.role)
     }, this.props.role)
       .then((response) =>  
   response.accessToken
-          ? (localStorage.setItem("accessToken", response.accessToken),
+          ? (localStorage.setItem("accessToken", response.accessToken),localStorage.setItem( "role", this.props.role),
             this.props.authenticate(response.profileInformation, this.props.role),
             this.props.history.push(`/${this.props.role}/profile`))
           : this.setState({

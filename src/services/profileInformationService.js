@@ -5,6 +5,7 @@ const service = axios.create({
 });
 
 export const validateSession = (accessToken, role) => {
+  console.log(accessToken, role)
   return service
     .get(`/${role}/session/${accessToken}`)
     .then((response) => response.data)
@@ -18,12 +19,6 @@ export const signup = ( profileInformation, role) => {
     .catch((err) => err);
 };
 
-// export const profile = ( userId, role) => {
-//   return service
-//     .get(`/${role}/profile/list/:userId`, {...userId})
-//     .then((response) => response.data)
-//     .catch((err) => err);
-// };
 
 export const login = ({ email, password }, role) => {
   return service

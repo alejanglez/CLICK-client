@@ -12,38 +12,51 @@ class App extends React.Component {
   state = {
     authenticated: false,
     profileInformation: {},
-    role: ""
+    role: "",
   };
-  
 
   componentDidMount = () => {
-    console.log('component mounted')
+    console.log("component mounted");
     const accessToken = localStorage.getItem("accessToken");
-    if (accessToken) {
-      validateSession(accessToken, this.state.role)
-        .then((response) => {
-          console.log(response, "RESPONSE");
-          response.session.userId ? this.authenticate(response.session.userId,this.state.role): this.authenticate(response.session.providerId,this.state.role)
-        })
-        .catch((err) => console.log(err));
-    }
+    const role = localStorage.getItem("role");
+
+    this.setState(
+      {
+        role,
+      },
+      () => {
+        if (accessToken) {
+          validateSession(accessToken, this.state.role)
+            .then((response) => {
+              console.log(response, "RESPONSE");
+              response.session.userId
+                ? this.authenticate(response.session.userId, this.state.role)
+                : this.authenticate(
+                    response.session.providerId,
+                    this.state.role
+                  );
+            })
+            .catch((err) => console.log(err));
+        }
+      }
+    );
   };
 
   authenticate = (profileInformation, role) => {
-    console.log('prof inf', profileInformation)
+    console.log("prof inf", profileInformation);
     this.setState({
       authenticated: true,
       profileInformation,
       role,
     });
-console.log('role: ', this.state.role)
+    console.log("role: ", this.state.role);
   };
 
   handleLogout = (profileInformation) => {
     localStorage.clear();
     this.setState({
       authenticated: false,
-      profileInformation
+      profileInformation,
     });
   };
 
@@ -53,14 +66,30 @@ console.log('role: ', this.state.role)
     return (
       <div className="App">
         <BrowserRouter>
-       {!authenticated && <div>
-          <p>How do you want to use Click stranger?</p>
-          <br/>
-          {!authenticated && <Link to={"/signup/user"}><button onClick={()=>this.setState({role:"user"})}>User</button></Link>}
-          {!authenticated && <Link to={"/signup/provider"}><button onClick={()=>this.setState({role:"provider"})}>Provider</button></Link>}
-        </div>}
+          {!authenticated && (
+            <div>
+              <p>How do you want to use Click stranger?</p>
+              <br />
+              {!authenticated && (
+                <Link to={"/signup/user"}>
+                  <button onClick={() => this.setState({ role: "user" })}>
+                    User
+                  </button>
+                </Link>
+              )}
+              {!authenticated && (
+                <Link to={"/signup/provider"}>
+                  <button onClick={() => this.setState({ role: "provider" })}>
+                    Provider
+                  </button>
+                </Link>
+              )}
+            </div>
+          )}
           <nav>
-            {authenticated && <Link to={`/${this.state.role}/profile`}> Profile </Link>}
+            {authenticated && (
+              <Link to={`/${this.state.role}/profile`}> Profile </Link>
+            )}
             {authenticated && (
               <Link to={"/"} onClick={this.handleLogout}>
                 Logout
@@ -86,7 +115,7 @@ console.log('role: ', this.state.role)
             />
             <AnonRoute
               exact
-              path={`/signup/${role}`}
+              path={`/signup/:${role}`}
               authenticated={authenticated}
               authenticate={this.authenticate}
               role={role}

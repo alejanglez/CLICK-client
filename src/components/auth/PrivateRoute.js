@@ -1,10 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import { Route, Redirect } from "react-router-dom";
 
 const PrivateRoute = ({
   component: Component,
   authenticated,
-  userInformation,
+  profileInformation,
   role,
   ...rest
 }) => {
@@ -12,7 +12,7 @@ const PrivateRoute = ({
     <Route
       render={(props) =>
         authenticated ? (
-          <Component {...props} userInformation={userInformation} role={role} />
+          <Component {...props} profileInformation={profileInformation} role={role} />
         ) : (
           <Redirect to="/" />
         )

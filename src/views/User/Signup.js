@@ -1,5 +1,5 @@
 import React from "react";
-import {signup} from '../../services/profileInformationService'
+import {profile, signup} from '../../services/profileInformationService'
 
 class Signup extends React.Component {
   state = {
@@ -16,6 +16,7 @@ class Signup extends React.Component {
     facebookUrl:"",
     // imageUrl:"",
     errorMessage: "",
+    role: this.props.role
   };
 
   componentDidMount = (props) => {
@@ -45,19 +46,27 @@ console.log('props mount signuo ', this.props.role)
       aptitudes:[],
       rate:0,
       facebookUrl:"",
+      role: this.state.role
 
     }, this.props.role)
-      .then((response) =>
-        response.accessToken
+      .then((response) =>  
+  response.accessToken
           ? (localStorage.setItem("accessToken", response.accessToken),
-            this.props.authenticate(response.profileInformation),
-            this.props.history.push("/"))
+            this.props.authenticate(response.profileInformation, this.props.role),
+            this.props.history.push(`/${this.props.role}/profile`))
           : this.setState({
               errorMessage: response.errorMessage,
             })
       )
       .catch((err) => console.log(err));
-  };
+      };
+
+  // componentWillUnmount = () => {
+  //   profile({
+  //     userId: this.state.profileInformation._id
+  //   }, this.state.role)
+  //   .then(response => console.log('profile response ', response.data))
+  // }
 
   render() {
     const { firstName, lastName, email, password, address, about, imageUrl, lessonType, serviceCat, rate, facebookUrl, errorMessage } = this.state;
@@ -93,14 +102,6 @@ console.log('props mount signuo ', this.props.role)
           <input
             name="about"
             value={about}
-            onChange={this.handleChange}
-            required={true}
-            type="text"
-          />
-          <label>image: </label>
-          <input
-            name="about"
-            value={imageUrl}
             onChange={this.handleChange}
             required={true}
             type="text"

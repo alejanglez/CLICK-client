@@ -1,17 +1,18 @@
 import React from "react";
 
-const Profile = (props) => {
-    const { firstName, lastName, address, about} = props.profileInformation
-    const {role} = props.role
-    console.log('role in profile ', role)
+const Profile = () => {
+    // const { firstName, lastName, address, about} = props.profileInformation
+    // const {role} = props.role
+    // console.log('this props', props)
 
   return (
     <div>
-    <h2>Profile user</h2>
-      <h1>welcome {firstName && firstName} {lastName && lastName}</h1>
-      <p>Your address: {address && address}</p>
+    {/* <h2>Profile user</h2>
+      <h1>welcome {firstName && this.props.firstName} {lastName && this.props.lastName}</h1>
+      <p>Your address: {address && this.props.address}</p>
       <h3>About</h3>
-      <p>{about && about}</p>
+      <p>{about && this.about}</p> */}
+      <h2>heloooooo</h2>
           </div>
   );
 };

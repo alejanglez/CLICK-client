@@ -11,13 +11,19 @@ export const validateSession = (accessToken, role) => {
     .catch((err) => err);
 };
 
-
 export const signup = ( profileInformation, role) => {
   return service
     .post(`/${role}/signup`, {...profileInformation})
     .then((response) => response.data)
     .catch((err) => err);
 };
+
+// export const profile = ( userId, role) => {
+//   return service
+//     .get(`/${role}/profile/list/:userId`, {...userId})
+//     .then((response) => response.data)
+//     .catch((err) => err);
+// };
 
 export const login = ({ email, password }, role) => {
   return service

@@ -23,18 +23,18 @@ class App extends React.Component {
       validateSession(accessToken, this.state.role)
         .then((response) => {
           console.log(response, "RESPONSE");
-          response.session.userId ? this.authenticate(this.state.profileInformation, response.session.userId,this.state.role): this.authenticate(this.state.profileInformation,response.session.providerId,this.state.role)
+          response.session.userId ? this.authenticate(response.session.userId,this.state.role): this.authenticate(response.session.providerId,this.state.role)
         })
         .catch((err) => console.log(err));
     }
   };
 
-  authenticate = (profileInformation,id, role) => {
+  authenticate = (profileInformation, role) => {
+    console.log('prof inf', profileInformation)
     this.setState({
       authenticated: true,
       profileInformation,
-      id,
-      role
+      role,
     });
 console.log('role: ', this.state.role)
   };
@@ -60,7 +60,7 @@ console.log('role: ', this.state.role)
           {!authenticated && <Link to={"/signup/provider"}><button onClick={()=>this.setState({role:"provider"})}>Provider</button></Link>}
         </div>}
           <nav>
-            {authenticated && <Link to={`/${role}/profile`}> Profile </Link>}
+            {authenticated && <Link to={`/${this.state.role}/profile`}> Profile </Link>}
             {authenticated && (
               <Link to={"/"} onClick={this.handleLogout}>
                 Logout

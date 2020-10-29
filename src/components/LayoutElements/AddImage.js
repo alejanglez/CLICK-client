@@ -10,8 +10,6 @@ const AddImage = ({ addImage, role }) => {
       .then((res) => addImage(res));
   };
 
-  //Problem - role is not passing trough, which means I can't access the function in services
-
   return (
     <>
       <form>

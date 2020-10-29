@@ -39,11 +39,11 @@ class Signup extends React.Component {
         email: this.state.email,
         password: this.state.password,
         imageUrl: this.state.imageUrl,
-        lessonType: "Online",
-        serviceCat: "Informatics",
+        lessonType: this.state.lessonType,
+        serviceCat: this.state.serviceCat,
         aptitudes: [],
-        rate: 0,
-        facebookUrl: "",
+        rate: this.state.rate,
+        facebookUrl: this.state.facebookUrl,
       },
       this.props.role
     )
@@ -120,14 +120,51 @@ class Signup extends React.Component {
             required={true}
             type="text"
           />
-          <label>about: </label>
-          <input
-            name="about"
-            value={about}
-            onChange={this.handleChange}
-            required={true}
-            type="text"
-          />
+          {this.props.role == "provider" && (
+            <>
+              <label>Facebook Url: </label>
+              <input
+                name="facebookUrl"
+                value={facebookUrl}
+                onChange={this.handleChange}
+                required={true}
+                type="text"
+              />
+              <label>Online or in-person? </label>
+              <select
+                value={lessonType}
+                onChange={this.handleChange}
+                required={true}
+                name="lessonType"
+              >
+                <option value="Online">Online</option>
+                <option value="In-person">In-Person</option>
+              </select>
+              <label>Choose one category </label>
+              <select
+                value={serviceCat}
+                onChange={this.handleChange}
+                required={true}
+                name="serviceCat"
+              >
+                <option value="Academic Support">Academic Support</option>
+                <option value="Informatics">Informatics</option>
+                <option value="Guitar Lessons">Guitar Lessons</option>
+                <option value="Piano Lessons">Piano Lessons</option>
+                <option value="English Lessonss">English Lessons</option>
+                <option value="Math Lessons">Math Lessons</option>
+                <option value="Baby Sitting">Baby Sitting</option>
+              </select>
+              <label>Rate </label>
+              <input
+                name="rate"
+                value={rate}
+                onChange={this.handleChange}
+                required={true}
+                type="number"
+              />
+            </>
+          )}
           <label>Email: </label>
           <input
             name="email"

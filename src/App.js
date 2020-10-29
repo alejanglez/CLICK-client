@@ -6,6 +6,8 @@ import PrivateRoute from "./components/auth/PrivateRoute";
 import { validateSession } from "./services/profileInformationService";
 import Login from "./views/User/Login";
 import Profile from "./views/User/Profile";
+import ProfilesList from "./views/User/ProfilesList";
+import ProfilesFeed from "./views/User/ProfilesList";
 import Signup from "./views/User/Signup";
 
 class App extends React.Component {
@@ -91,6 +93,10 @@ class App extends React.Component {
               <Link to={`/${this.state.role}/profile`}> Profile </Link>
             )}
             {authenticated && (
+              <Link to={`/${this.state.role}/profile/list`}>Profile list</Link>
+            )}
+
+            {authenticated && (
               <Link to={"/"} onClick={this.handleLogout}>
                 Logout
               </Link>
@@ -104,6 +110,14 @@ class App extends React.Component {
               authenticated={authenticated}
               role={role}
               component={Profile}
+            />
+            <PrivateRoute
+              exact
+              path={`/${role}/profile/list`}
+              profileInformation={this.state.profileInformation}
+              authenticated={authenticated}
+              role={role}
+              component={ProfilesList}
             />
             <AnonRoute
               exact

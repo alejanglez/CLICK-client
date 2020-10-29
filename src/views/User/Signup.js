@@ -82,7 +82,7 @@ class Signup extends React.Component {
       <div>
         <Link to={`/login/${this.props.role}`}>Login instead</Link>
         {errorMessage !== "" && errorMessage}
-        {imageUrl && <img src={imageUrl} />}
+
         <AddImage
           role={this.props.role}
           addImage={(imageUrl) => this.setState({ imageUrl })}

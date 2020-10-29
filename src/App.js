@@ -18,7 +18,7 @@ class App extends React.Component {
   componentDidMount = () => {
     console.log("component mounted");
     const accessToken = localStorage.getItem("accessToken");
-    const role = localStorage.getItem("role");
+    const role = localStorage.getItem("role") || "";
 
     this.setState(
       {

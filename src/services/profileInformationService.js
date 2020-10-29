@@ -41,3 +41,13 @@ export const login = ({ email, password }, role) => {
       console.log(err);
     });
 };
+
+export function uploadImage(image, role) {
+  const uploadData = new FormData();
+
+  uploadData.append("image", image);
+  return service
+    .post(`${role}/image`, uploadData)
+    .then(({ data }) => data)
+    .catch(console.error);
+}

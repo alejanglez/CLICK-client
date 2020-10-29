@@ -26,6 +26,7 @@ class App extends React.Component {
       },
       () => {
         if (accessToken) {
+          // console.log("role local storage ", role);
           validateSession(accessToken, this.state.role)
             .then((response) => {
               console.log(response, "RESPONSE");
@@ -43,13 +44,12 @@ class App extends React.Component {
   };
 
   authenticate = (profileInformation, role) => {
-    console.log("prof inf", profileInformation);
     this.setState({
       authenticated: true,
       profileInformation,
       role,
     });
-    console.log("role: ", this.state.role);
+    console.log("role authenticate: ", this.state.role);
   };
 
   handleLogout = (profileInformation) => {

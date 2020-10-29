@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import AddImage from "../../components/LayoutElements/AddImage";
 import { profile, signup } from "../../services/profileInformationService";
 
 class Signup extends React.Component {
@@ -15,13 +16,8 @@ class Signup extends React.Component {
     aptitudes: [],
     rate: 0,
     facebookUrl: "",
-    // imageUrl:"",
+    imageUrl: "",
     errorMessage: "",
-    role: this.props.role,
-  };
-
-  componentDidMount = (props) => {
-    console.log("props mount signup ", this.props.role);
   };
 
   handleChange = (event) => {
@@ -42,13 +38,12 @@ class Signup extends React.Component {
         about: this.state.about,
         email: this.state.email,
         password: this.state.password,
-        // imageUrl: this.state.imageUrl,
+        imageUrl: this.state.imageUrl,
         lessonType: "Online",
         serviceCat: "Informatics",
         aptitudes: [],
         rate: 0,
         facebookUrl: "",
-        role: this.state.role,
       },
       this.props.role
     )
@@ -58,7 +53,7 @@ class Signup extends React.Component {
             localStorage.setItem("role", this.props.role),
             this.props.authenticate(
               response.profileInformation,
-              this.props.role
+              localStorage.role
             ),
             this.props.history.push(`/${this.props.role}/profile`))
           : this.setState({
@@ -87,6 +82,11 @@ class Signup extends React.Component {
       <div>
         <Link to={`/login/${this.props.role}`}>Login instead</Link>
         {errorMessage !== "" && errorMessage}
+        {imageUrl && <img src={imageUrl} />}
+        <AddImage
+          role={this.props.role}
+          addImage={(imageUrl) => this.setState({ imageUrl })}
+        />
         <form onSubmit={this.handleSubmit}>
           <label>first name: </label>
           <input
@@ -108,6 +108,14 @@ class Signup extends React.Component {
           <input
             name="address"
             value={address}
+            onChange={this.handleChange}
+            required={true}
+            type="text"
+          />
+          <label>about: </label>
+          <input
+            name="about"
+            value={about}
             onChange={this.handleChange}
             required={true}
             type="text"

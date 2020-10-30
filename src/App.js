@@ -6,8 +6,8 @@ import PrivateRoute from "./components/auth/PrivateRoute";
 import { validateSession } from "./services/profileInformationService";
 import Login from "./views/User/Login";
 import Profile from "./views/User/Profile";
-import ProfilesList from "./views/User/ProfilesList";
-import ProfilesFeed from "./views/User/ProfilesList";
+import ProviderList from "./views/User/ProviderList";
+// import ProfilesFeed from "./views/User/ProfilesList";
 import Signup from "./views/User/Signup";
 
 class App extends React.Component {
@@ -117,7 +117,7 @@ class App extends React.Component {
               profileInformation={this.state.profileInformation}
               authenticated={authenticated}
               role={role}
-              component={ProfilesList}
+              component={ProviderList}
             />
             <AnonRoute
               exact

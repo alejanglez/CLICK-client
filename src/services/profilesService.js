@@ -4,10 +4,8 @@ const service = axios.create({
   baseURL: process.env.REACT_APP_API_BASE_URL,
 });
 
-export const getAllProviderprofile = async (providerProfiles) => {
-  const response = await service.get(`/provider/profile/list`, {
-    ...providerProfiles,
-  });
+export const getAllProviderprofile = async () => {
+  const response = await service.get(`/provider/profile/list`);
   return response.data;
 };
 

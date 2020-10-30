@@ -13,8 +13,8 @@ const Profile = (props) => {
     facebookUrl,
     rate,
   } = props.profileInformation;
-  const { role } = props.role;
-  console.log("this props", props);
+  const { role } = props;
+  console.log("this props role", role);
   console.log("img url?", imageUrl);
 
   return (
@@ -28,10 +28,15 @@ const Profile = (props) => {
       <p>{about && about}</p>
       <p>Image below</p>
       <img src={imageUrl && imageUrl} />
-      <a href={facebookUrl && facebookUrl}>Facebook</a>
-      <p>Lesson Type: {lessonType && lessonType}</p>
-      <p>Category: {serviceCat && serviceCat}</p>
-      <p>Rate: {rate && rate}</p>
+      {role == "provider" && (
+        <>
+          {" "}
+          <a href={facebookUrl && facebookUrl}>Facebook</a>
+          <p>Lesson Type: {lessonType && lessonType}</p>
+          <p>Category: {serviceCat && serviceCat}</p>
+          <p>Rate: {rate && rate}</p>{" "}
+        </>
+      )}
     </div>
   );
 };

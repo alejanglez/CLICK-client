@@ -5,6 +5,8 @@ import {
   filterProviderprofile,
 } from "../../services/profilesService";
 
+import "./ProviderList.css";
+
 class ProviderList extends Component {
   state = {
     providers: [],
@@ -14,14 +16,13 @@ class ProviderList extends Component {
 
   componentDidMount = () => {
     this.fetchData();
+    console.log("this state", this.state);
   };
 
   componentDidUpdate = () => {
     filterProviderprofile(this.state.query)
       .then((response) => {
-        this.setState({
-          providers: response,
-        });
+        console.log("response on update", response);
       })
       .catch((err) =>
         console.log("Error retrieving filtered providers: ", err)
@@ -31,9 +32,9 @@ class ProviderList extends Component {
   fetchData = () => {
     getAllProviderprofile()
       .then((response) => {
-        console.log(response);
+        console.log("response list", response.providerProfiles);
         this.setState({
-          providers: response,
+          providers: response.providerProfiles,
         });
       })
       .catch((err) => console.log("Error retrieving all providers: ", err));
@@ -47,32 +48,40 @@ class ProviderList extends Component {
 
   render() {
     return (
-      <div>
-        <div className="header">
-          <Link to={"/"}></Link>
-        </div>
-        <div>
-          <input
-            className="search-bar"
-            type="text"
-            name="query"
-            value={this.state.query}
-            onChange={this.handleInputChange}
-          />
-        </div>
+      <div className="container">
+        <h2>Provider's list 💙</h2>
+        {
+          <div className="header">
+            <Link to={"/"}></Link>
+          </div>
+        }
+        {
+          <div>
+            <input
+              className="search-bar"
+              type="text"
+              name="query"
+              value={this.state.query}
+              onChange={this.handleInputChange}
+            />
+          </div>
+        }
         {this.state.providers.map((provider) => {
           return (
-            <div key={provider._id}>
+            <div className="card" key={provider._id}>
               <Link
                 to={"/provider/profile/list/" + provider._id}
                 className="beer-card"
-              >
-                <img src={provider.image_url} alt={provider._id} />
-                <div className="beer-tag">
-                  <h2>{provider.firstName}</h2>
-                  <h3>{provider.lastName}</h3>
-                </div>
-              </Link>
+              ></Link>
+              <img
+                className="card-img-top cardPicture"
+                src={provider.imageUrl}
+                alt={provider._id}
+              />
+              <div className="card-body">
+                <h2>{provider.firstName}</h2>
+                <h3>{provider.lastName}</h3>
+              </div>
             </div>
           );
         })}

@@ -34,7 +34,7 @@ class Login extends React.Component {
               response.profileInformation,
               localStorage.role
             ),
-            this.props.history.push(`/${this.props.role}/profile`))
+            this.props.history.push(`/profile`))
           : this.setState({
               errorMessage: response.errorMessage,
             })

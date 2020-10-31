@@ -4,7 +4,6 @@ import {
   getAllProviderprofile,
   filterProviderprofile,
 } from "../../services/profilesService";
-
 import "./ProviderList.css";
 
 class ProviderList extends Component {
@@ -12,6 +11,7 @@ class ProviderList extends Component {
     providers: [],
     query: "",
     role: this.props.role,
+    profileInformation: [],
   };
 
   componentDidMount = () => {
@@ -69,12 +69,7 @@ class ProviderList extends Component {
         {this.state.providers.map((provider) => {
           return (
             <div className="card" key={provider._id}>
-              <Link
-                to={"/provider/profile/list/" + provider._id}
-                className="beer-card"
-              >
-                Povider details
-              </Link>
+              {<Link to={`/profile/list/` + provider._id}>Details</Link>}
               <img
                 className="card-img-top cardPicture"
                 src={provider.imageUrl}

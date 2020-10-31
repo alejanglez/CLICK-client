@@ -90,11 +90,9 @@ class App extends React.Component {
             </div>
           )}
           <nav>
-            {authenticated && (
-              <Link to={`/${this.state.role}/profile`}> Profile </Link>
-            )}
-            {authenticated && (
-              <Link to={`/${this.state.role}/profile/list`}>Profile list</Link>
+            {authenticated && <Link to={`/profile`}> Profile </Link>}
+            {authenticated && this.state.role === "user" && (
+              <Link to={`/profile/list/`}>Profile list</Link>
             )}
 
             {authenticated && (
@@ -104,17 +102,19 @@ class App extends React.Component {
             )}
           </nav>
           <Switch>
+            {/* shows my profile as I sign up/log in */}
             <PrivateRoute
               exact
-              path={`/${role}/profile`}
+              path={`/profile/`}
               profileInformation={this.state.profileInformation}
               authenticated={authenticated}
               role={role}
               component={Profile}
             />
+            {/* shows the provider list/feed */}
             <PrivateRoute
               exact
-              path={`/${role}/profile/list`}
+              path={`/profile/list`}
               profileInformation={this.state.profileInformation}
               authenticated={authenticated}
               role={role}
@@ -122,7 +122,7 @@ class App extends React.Component {
             />
             <PrivateRoute
               exact
-              path={`/${role}/profile/list/:id`}
+              path={`/profile/list/:providerId`}
               profileInformation={this.state.profileInformation}
               authenticated={authenticated}
               role={role}

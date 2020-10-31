@@ -55,7 +55,7 @@ class Signup extends React.Component {
               response.profileInformation,
               localStorage.role
             ),
-            this.props.history.push(`/${this.props.role}/profile`))
+            this.props.history.push(`/profile`))
           : this.setState({
               errorMessage: response.errorMessage,
             })
@@ -82,7 +82,6 @@ class Signup extends React.Component {
       <div>
         <Link to={`/login/${this.props.role}`}>Login instead</Link>
         {errorMessage !== "" && errorMessage}
-
         <AddImage
           role={this.props.role}
           addImage={(imageUrl) => this.setState({ imageUrl })}

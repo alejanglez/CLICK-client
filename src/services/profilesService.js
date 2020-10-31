@@ -9,8 +9,8 @@ export const getAllProviderprofile = async () => {
   return response.data;
 };
 
-export const getSingleProviderprofile = async (id) => {
-  const response = await service.get("/provider/profile/list" + id);
+export const getSingleProviderprofile = async (providerId) => {
+  const response = await service.get("/provider/profile/list/" + providerId);
   return response;
 };
 

@@ -13,7 +13,7 @@ class SingleProvider extends Component {
 
     getSingleProviderprofile(id).then((response) => {
       this.setState({
-        provider: response.data,
+        provider: response.profileInformation,
       });
     });
   };

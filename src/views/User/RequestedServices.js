@@ -21,13 +21,13 @@ class RequestedServices extends Component {
   };
 
   fetchDataUser = () => {
-    const { id } = this.state.id;
+    const { id } = this.state;
     getAllUserRequests(id)
       .then((response) => {
         console.log("response list", response);
-        // this.setState({
-        //   providers: response.providerProfiles,
-        // });
+        this.setState({
+          requestedServices: response.data.requestedServiceList,
+        });
       })
       .catch((err) => console.log("Error retrieving all providers: ", err));
   };
@@ -37,9 +37,9 @@ class RequestedServices extends Component {
     getAllProviderRequests(id)
       .then((response) => {
         console.log("response list", response);
-        // this.setState({
-        //   providers: response.providerProfiles,
-        // });
+        this.setState({
+          requestedServices: response.data.requestedServiceList,
+        });
       })
       .catch((err) => console.log("Error retrieving all providers: ", err));
   };

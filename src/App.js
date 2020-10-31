@@ -7,6 +7,7 @@ import { validateSession } from "./services/profileInformationService";
 import Login from "./views/User/Login";
 import Profile from "./views/User/Profile";
 import ProviderList from "./views/User/ProviderList";
+import SingleProvider from "./views/User/SingleProvider";
 // import ProfilesFeed from "./views/User/ProfilesList";
 import Signup from "./views/User/Signup";
 
@@ -118,6 +119,14 @@ class App extends React.Component {
               authenticated={authenticated}
               role={role}
               component={ProviderList}
+            />
+            <PrivateRoute
+              exact
+              path={`/${role}/profile/list/:id`}
+              profileInformation={this.state.profileInformation}
+              authenticated={authenticated}
+              role={role}
+              component={SingleProvider}
             />
             <AnonRoute
               exact

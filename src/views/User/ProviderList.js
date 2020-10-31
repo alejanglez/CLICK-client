@@ -72,7 +72,9 @@ class ProviderList extends Component {
               <Link
                 to={"/provider/profile/list/" + provider._id}
                 className="beer-card"
-              ></Link>
+              >
+                Povider details
+              </Link>
               <img
                 className="card-img-top cardPicture"
                 src={provider.imageUrl}

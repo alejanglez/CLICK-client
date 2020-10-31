@@ -10,6 +10,8 @@ import ProviderList from "./views/User/ProviderList";
 import SingleProvider from "./views/User/SingleProvider";
 // import ProfilesFeed from "./views/User/ProfilesList";
 import Signup from "./views/User/Signup";
+import MakeRequest from "./components/LayoutElements/MakeRequest";
+import RequestedServices from "./views/User/RequestedServices";
 
 class App extends React.Component {
   state = {
@@ -94,7 +96,9 @@ class App extends React.Component {
             {authenticated && this.state.role === "user" && (
               <Link to={`/profile/list/`}>Profile list</Link>
             )}
-
+            {authenticated && (
+              <Link to={`/requested-services`}>requested services 🎄</Link>
+            )}
             {authenticated && (
               <Link to={"/"} onClick={this.handleLogout}>
                 Logout
@@ -127,6 +131,14 @@ class App extends React.Component {
               authenticated={authenticated}
               role={role}
               component={SingleProvider}
+            />
+            <PrivateRoute
+              exact
+              path={`/requested-services`}
+              profileInformation={this.state.profileInformation}
+              authenticated={authenticated}
+              role={role}
+              component={RequestedServices}
             />
             <AnonRoute
               exact

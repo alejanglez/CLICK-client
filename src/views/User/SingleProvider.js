@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
+import MakeRequest from "../../components/LayoutElements/MakeRequest";
 
 import { getSingleProviderprofile } from "../../services/profilesService";
 import Profile from "./Profile";
@@ -7,12 +8,15 @@ import Profile from "./Profile";
 class SingleProvider extends Component {
   state = {
     provider: {},
+    userId: "",
   };
 
   componentDidMount = () => {
     const id = this.props.match.params.providerId;
     console.log("provider id", this.props);
+    console.log("user id?? ", this.props.profileInformation._id);
 
+    this.setState({ userId: this.props.profileInformation._id });
     getSingleProviderprofile(id).then((response) => {
       this.setState({
         provider: response.data,
@@ -21,7 +25,7 @@ class SingleProvider extends Component {
   };
 
   render() {
-    const { provider } = this.state;
+    const { provider, userId } = this.state;
     return (
       <div>
         <Profile
@@ -30,6 +34,7 @@ class SingleProvider extends Component {
           component={Profile}
           profileInformation={provider}
         />
+        <MakeRequest userId={userId} profileInformation={provider} />
       </div>
     );
   }

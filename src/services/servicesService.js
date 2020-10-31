@@ -29,6 +29,26 @@ export const getSingleRequest = async (requestedServiceId) => {
   return response;
 };
 
+export const createNewRequestAcceptedService = async (
+  requestedserviceId,
+  serviceCat,
+  lessonType,
+  rate,
+  quantity,
+  totalPrice
+) => {
+  const newRequest = {
+    requestedserviceId,
+    serviceCat,
+    lessonType,
+    rate,
+    quantity,
+    totalPrice,
+  };
+  const response = await service.post("/requested/", newRequest);
+  return response;
+};
+
 export const getAllProviderAcceptedService = async (providerId) => {
   const response = await service.get("/accepted/list/" + providerId);
   return response;

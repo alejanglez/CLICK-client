@@ -12,7 +12,7 @@ export const validateSession = (accessToken, role) => {
     .catch((err) => err);
 };
 
-// export const listProviders = () => {
+// export const listProviders = (accessToken, role) => {
 //   return service
 //   .get('/providers/list')
 //   .then((response)=> response.data)

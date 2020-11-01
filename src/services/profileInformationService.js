@@ -33,6 +33,13 @@ export const signup = (profileInformation, role) => {
     .catch((err) => err);
 };
 
+export const editProfile = (profileInformation, role) => {
+  return service
+    .put(`/${role}/signup`, { ...profileInformation })
+    .then((response) => response.data)
+    .catch((err) => err);
+};
+
 export const login = ({ email, password }, role) => {
   return service
     .post(`/${role}/login`, { email, password })

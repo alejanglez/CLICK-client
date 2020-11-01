@@ -15,12 +15,12 @@ export const createNewRequest = async (quantity, userId, providerId) => {
 };
 
 export const getAllProviderRequests = async (providerId) => {
-  const response = await service.get("/requested/list/" + providerId);
+  const response = await service.get("/requested/provider/list/" + providerId);
   return response;
 };
 
 export const getAllUserRequests = async (userId) => {
-  const response = await service.get("/requested/list/" + userId);
+  const response = await service.get("/requested/user/list/" + userId);
   return response;
 };
 
@@ -50,12 +50,12 @@ export const createNewRequestAcceptedService = async (
 };
 
 export const getAllProviderAcceptedService = async (providerId) => {
-  const response = await service.get("/accepted/list/" + providerId);
+  const response = await service.get("/accepted/user/list/" + providerId);
   return response;
 };
 
 export const getAllUserAcceptedService = async (userId) => {
-  const response = await service.get("/accepted/list" + userId);
+  const response = await service.get("/accepted/user/list" + userId);
   return response;
 };
 

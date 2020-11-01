@@ -56,10 +56,10 @@ class ProviderList extends Component {
 
   // handleSubmit = (event) => {
   //   event.preventDefault();
-  //   this.fetchProviderShearch();
+  //   this.fetchProviderSearch();
   // };
 
-  // fetchProviderShearch = async () => {
+  // fetchProviderSearch = async () => {
   //   const response = await searchProviderprofile(this.state.searchParams);
   //   this.setState({
   //     searchResults: response,

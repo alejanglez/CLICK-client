@@ -73,7 +73,7 @@ class ProviderList extends Component {
         <div>
           <p>Filter by category 🔥</p>
           <select
-            lassName="input is-primary"
+            className="input is-primary"
             name="searchParams"
             placeholder="Informatics"
             onChange={this.handleChange}

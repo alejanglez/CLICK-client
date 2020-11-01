@@ -14,7 +14,14 @@ export const getSingleProviderprofile = async (providerId) => {
   return response;
 };
 
-export const filterProviderprofile = async (query) => {
-  const response = await service.get("/provider/profile/list" + query);
-  return response.data;
+// export const filterProviderprofile = async (query) => {
+//   const response = await service.get("/provider/profile/list/" + query);
+//   return response.data;
+// };
+
+export const searchProviderprofile = (searchParams) => {
+  return service
+    .get(`/provider/profile/list/${searchParams}`)
+    .then((response) => response.data)
+    .catch((err) => err);
 };

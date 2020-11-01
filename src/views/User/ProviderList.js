@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import {
   getAllProviderprofile,
-  filterProviderprofile,
+  searchProviderprofile,
 } from "../../services/profilesService";
 import "./ProviderList.css";
 
@@ -20,7 +20,7 @@ class ProviderList extends Component {
   };
 
   componentDidUpdate = () => {
-    filterProviderprofile(this.state.query)
+    searchProviderprofile(this.state.query)
       .then((response) => {
         console.log("response on update", response);
       })
@@ -40,9 +40,28 @@ class ProviderList extends Component {
       .catch((err) => console.log("Error retrieving all providers: ", err));
   };
 
-  handleInputChange = (e) => {
+  // handleInputChange = (e) => {
+  //   this.setState({
+  //     [e.target.name]: e.target.value,
+  //   });
+  // };
+
+  handleChange = (event) => {
+    const { name, value } = event.target;
     this.setState({
-      [e.target.name]: e.target.value,
+      [name]: value,
+    });
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.fetchProviderShearch();
+  };
+
+  fetchProviderShearch = async () => {
+    const response = await searchProviderprofile(this.state.searchParams);
+    this.setState({
+      searchResults: response,
     });
   };
 
@@ -57,13 +76,22 @@ class ProviderList extends Component {
         }
         {
           <div>
-            <input
+            {/* <input
               className="search-bar"
               type="text"
               name="query"
               value={this.state.query}
               onChange={this.handleInputChange}
-            />
+            /> */}
+            <form onSubmit={this.handleSubmit}>
+              <input
+                name="searchParams"
+                placeholder="Search by serviceCat"
+                onChange={this.handleChange}
+                type="text"
+              />
+              <button type="submit"> Search </button>
+            </form>
           </div>
         }
         {this.state.providers.map((provider) => {
@@ -78,6 +106,7 @@ class ProviderList extends Component {
               <div className="card-body">
                 <h2>{provider.firstName}</h2>
                 <h3>{provider.lastName}</h3>
+                <h3>{provider.serviceCat}</h3>
               </div>
             </div>
           );

@@ -12,6 +12,7 @@ class ProviderList extends Component {
     query: "",
     role: this.props.role,
     profileInformation: [],
+    searchParams: "",
   };
 
   componentDidMount = () => {
@@ -19,15 +20,15 @@ class ProviderList extends Component {
     console.log("this state", this.state);
   };
 
-  componentDidUpdate = () => {
-    searchProviderprofile(this.state.query)
-      .then((response) => {
-        console.log("response on update", response);
-      })
-      .catch((err) =>
-        console.log("Error retrieving filtered providers: ", err)
-      );
-  };
+  // componentDidUpdate = () => {
+  //   searchProviderprofile(this.state.query)
+  //     .then((response) => {
+  //       console.log("response on update", response);
+  //     })
+  //     .catch((err) =>
+  //       console.log("Error retrieving filtered providers: ", err)
+  //     );
+  // };
 
   fetchData = () => {
     getAllProviderprofile()
@@ -53,64 +54,66 @@ class ProviderList extends Component {
     });
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    this.fetchProviderShearch();
-  };
+  // handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   this.fetchProviderShearch();
+  // };
 
-  fetchProviderShearch = async () => {
-    const response = await searchProviderprofile(this.state.searchParams);
-    this.setState({
-      searchResults: response,
-    });
-  };
+  // fetchProviderShearch = async () => {
+  //   const response = await searchProviderprofile(this.state.searchParams);
+  //   this.setState({
+  //     searchResults: response,
+  //   });
+  // };
 
   render() {
     return (
       <div className="container">
         <h2>Provider's list 💙</h2>
-        {
-          <div className="header">
-            <Link to={"/"}></Link>
-          </div>
-        }
-        {
-          <div>
-            {/* <input
-              className="search-bar"
-              type="text"
-              name="query"
-              value={this.state.query}
-              onChange={this.handleInputChange}
-            /> */}
-            <form onSubmit={this.handleSubmit}>
-              <input
-                name="searchParams"
-                placeholder="Search by serviceCat"
-                onChange={this.handleChange}
-                type="text"
-              />
-              <button type="submit"> Search </button>
-            </form>
-          </div>
-        }
-        {this.state.providers.map((provider) => {
-          return (
-            <div className="card" key={provider._id}>
-              {<Link to={`/profile/list/` + provider._id}>Details</Link>}
-              <img
-                className="card-img-top cardPicture"
-                src={provider.imageUrl}
-                alt={provider._id}
-              />
-              <div className="card-body">
-                <h2>{provider.firstName}</h2>
-                <h3>{provider.lastName}</h3>
-                <h3>{provider.serviceCat}</h3>
+        <div>
+          <p>Filter by category 🔥</p>
+          <select
+            lassName="input is-primary"
+            name="searchParams"
+            placeholder="Informatics"
+            onChange={this.handleChange}
+            type="text"
+            value={this.state.searchParams}
+          >
+            <option value="Academic Support">Academic Support</option>
+            <option value="Informatics">Informatics</option>
+            <option value="Guitar Lessons">Guitar Lessons</option>
+            <option value="Piano Lessons">Piano Lessons</option>
+            <option value="English Lessonss">English Lessons</option>
+            <option value="Math Lessons">Math Lessons</option>
+            <option value="Baby Sitting">Baby Sitting</option>
+            <option value="">All</option>
+          </select>
+        </div>
+
+        {this.state.providers
+          .filter((provider) =>
+            provider.serviceCat
+              .toLocaleLowerCase()
+              .includes(this.state.searchParams.toLocaleLowerCase())
+          )
+          .map((provider) => {
+            return (
+              <div className="card" key={provider._id}>
+                {<Link to={`/profile/list/` + provider._id}>Details</Link>}
+                <img
+                  className="card-img-top cardPicture"
+                  src={provider.imageUrl}
+                  alt={provider._id}
+                />
+                <div className="card-body">
+                  <h2>{provider.firstName}</h2>
+                  <h3>{provider.lastName}</h3>
+                  <h3>category 🗣: {provider.serviceCat}</h3>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
       </div>
     );
   }

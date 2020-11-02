@@ -33,9 +33,16 @@ export const signup = (profileInformation, role) => {
     .catch((err) => err);
 };
 
-export const editProfile = (profileInformation, role) => {
+export const editProviderProfile = (profileInformation, providerId) => {
   return service
-    .put(`/${role}/signup`, { ...profileInformation })
+    .put("/editProfile", { ...profileInformation })
+    .then((response) => response.data)
+    .catch((err) => err);
+};
+
+export const editUserProfile = (profileInformation, userId) => {
+  return service
+    .put(userId + "/editProfile", { ...profileInformation })
     .then((response) => response.data)
     .catch((err) => err);
 };

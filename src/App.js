@@ -12,6 +12,7 @@ import SingleProvider from "./views/User/SingleProvider";
 import Signup from "./views/User/Signup";
 import MakeRequest from "./components/LayoutElements/MakeRequest";
 import RequestedServices from "./views/User/RequestedServices";
+import EditProfile from "./views/User/EditProfile";
 
 class App extends React.Component {
   state = {
@@ -155,6 +156,22 @@ class App extends React.Component {
               authenticate={this.authenticate}
               role={role}
               component={Signup}
+            />
+            <AnonRoute
+              exact
+              path={`/:providerId/editProfile`}
+              authenticated={authenticated}
+              authenticate={this.authenticate}
+              role={role}
+              component={EditProfile}
+            />
+            <AnonRoute
+              exact
+              path={`/:userId/editProfile`}
+              authenticated={authenticated}
+              authenticate={this.authenticate}
+              role={role}
+              component={EditProfile}
             />
           </Switch>
         </BrowserRouter>

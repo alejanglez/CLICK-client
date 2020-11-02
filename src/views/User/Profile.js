@@ -37,6 +37,10 @@ const Profile = (props) => {
           <p>Rate: {rate && rate}</p>{" "}
         </>
       )}
+      {role === "user" && <Link to={`/:userId/Editprofile`}>Edit profile</Link>}
+      {role === "provider" && (
+        <Link to={`/:providerId/Editprofile`}>Edit profile</Link>
+      )}
     </div>
   );
 };

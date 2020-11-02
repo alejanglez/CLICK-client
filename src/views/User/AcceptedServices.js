@@ -28,7 +28,9 @@ class AcceptedServices extends Component {
           acceptedServices: response.data.acceptedServiceList,
         });
       })
-      .catch((err) => console.log("Error retrieving all providers: ", err));
+      .catch((err) =>
+        console.log("Error retrieving all accepted services: ", err)
+      );
   };
 
   fetchDataProvider = () => {
@@ -43,14 +45,8 @@ class AcceptedServices extends Component {
       .catch((err) => console.log("Error retrieving all providers: ", err));
   };
 
-  // handleInputChange = (e) => {
-  //   this.setState({
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
-
   render() {
-    console.log("stateeee ", this.state);
+    console.log("stateeee on accepted ", this.state);
     return (
       <div className="container">
         <h2>Accepted Services list 📣</h2>

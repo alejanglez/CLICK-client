@@ -16,7 +16,7 @@ const Profile = (props) => {
   const { role } = props;
   console.log("this props role", role);
   console.log("img url?", imageUrl);
-
+  console.log("IDDDDDDD", props);
   return (
     <div>
       <h2>Profile 🐲</h2>
@@ -37,10 +37,7 @@ const Profile = (props) => {
           <p>Rate: {rate && rate}</p>{" "}
         </>
       )}
-      {role === "user" && <Link to={`/:userId/Editprofile`}>Edit profile</Link>}
-      {role === "provider" && (
-        <Link to={`/:providerId/Editprofile`}>Edit profile</Link>
-      )}
+      <Link to={`/profile/editProfile`}>Edit Profile</Link>
     </div>
   );
 };

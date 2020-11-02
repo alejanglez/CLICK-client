@@ -19,9 +19,9 @@ export const getSingleProviderprofile = async (providerId) => {
 //   return response.data;
 // };
 
-export const searchProviderprofile = (searchParams) => {
-  return service
-    .get(`/provider/profile/list/${searchParams}`)
-    .then((response) => response.data)
-    .catch((err) => err);
-};
+// export const searchProviderprofile = (searchParams) => {
+//   return service
+//     .get(`/provider/profile/list/${searchParams}`)
+//     .then((response) => response.data)
+//     .catch((err) => err);
+// };

@@ -1,23 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import AddImage from "../../components/LayoutElements/AddImage";
-import { profile, signup } from "../../services/profileInformationService";
+import {
+  editProfile,
+  uploadImage,
+  profile,
+  signup,
+} from "../../services/profileInformationService";
 
-class Signup extends React.Component {
+class EditProfile extends React.Component {
   state = {
-    firstName: "",
-    email: "",
-    password: "",
-    lastName: "",
-    address: "",
-    about: "",
-    lessonType: "Online",
-    serviceCat: "Informatics",
-    aptitudes: [],
-    rate: 0,
-    facebookUrl: "",
-    imageUrl: "",
+    firstName: this.props.profileInformation.firstName,
+    email: this.props.profileInformation.email,
+    password: this.props.profileInformation.password,
+    lastName: this.props.profileInformation.lastName,
+    address: this.props.profileInformation.address,
+    about: this.props.profileInformation.about,
+    lessonType: this.props.profileInformation.lessonType,
+    serviceCat: this.props.profileInformation.serviceCat,
+    aptitudes: this.props.profileInformation.aptitudes,
+    rate: this.props.profileInformation.rate,
+    facebookUrl: this.props.profileInformation.facebookUrl,
+    imageUrl: this.props.profileInformation.imageUrl,
     errorMessage: "",
+    role: this.props.role,
+    id: this.props.profileInformation._id,
   };
 
   handleChange = (event) => {
@@ -30,7 +37,7 @@ class Signup extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    signup(
+    editProfile(
       {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
@@ -41,11 +48,12 @@ class Signup extends React.Component {
         imageUrl: this.state.imageUrl,
         lessonType: this.state.lessonType,
         serviceCat: this.state.serviceCat,
-        aptitudes: [],
+        aptitudes: this.state.aptitudes,
         rate: this.state.rate,
         facebookUrl: this.state.facebookUrl,
       },
-      this.props.role
+      this.props.role,
+      this.props.profileInformation._id
     )
       .then((response) =>
         response.accessToken
@@ -78,10 +86,12 @@ class Signup extends React.Component {
       facebookUrl,
       errorMessage,
     } = this.state;
+    console.log("props edit", this.props);
+    console.log("props edit", this.props);
     return (
       <div>
-        <Link to={`/login/${this.props.role}`}>Login instead</Link>
-        {errorMessage !== "" && errorMessage}
+        {/* <Link to={`/login/${this.props.role}`}>Login instead</Link> */}
+        {/* {errorMessage !== "" && errorMessage} */}
         <AddImage
           role={this.props.role}
           addImage={(imageUrl) => this.setState({ imageUrl })}
@@ -180,11 +190,11 @@ class Signup extends React.Component {
             onChange={this.handleChange}
             required={true}
           />
-          <button type="submit"> Sign up </button>
+          <button type="submit"> Confirm </button>
         </form>
       </div>
     );
   }
 }
 
-export default Signup;
+export default EditProfile;

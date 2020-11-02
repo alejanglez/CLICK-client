@@ -33,19 +33,19 @@ export const signup = (profileInformation, role) => {
     .catch((err) => err);
 };
 
-export const editProviderProfile = (profileInformation, providerId) => {
+export const editProfile = (profileInformation, role, id) => {
   return service
-    .put(providerId + "/editProfile", { ...profileInformation })
+    .put(`/${role}/profile/${id}/edit`, { ...profileInformation })
     .then((response) => response.data)
     .catch((err) => err);
 };
 
-export const editUserProfile = (profileInformation, userId) => {
-  return service
-    .put(userId + "/editProfile", { ...profileInformation })
-    .then((response) => response.data)
-    .catch((err) => err);
-};
+// export const editUserProfile = (profileInformation, userId) => {
+//   return service
+//     .put(userId + "/editProfile", { ...profileInformation })
+//     .then((response) => response.data)
+//     .catch((err) => err);
+// };
 
 export const login = ({ email, password }, role) => {
   return service

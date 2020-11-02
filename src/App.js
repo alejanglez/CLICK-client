@@ -157,19 +157,12 @@ class App extends React.Component {
               role={role}
               component={Signup}
             />
-            <AnonRoute
+            <PrivateRoute
               exact
-              path={`/:providerId/editProfile`}
+              path={`/profile/editProfile`}
               authenticated={authenticated}
               authenticate={this.authenticate}
-              role={role}
-              component={EditProfile}
-            />
-            <AnonRoute
-              exact
-              path={`/:userId/editProfile`}
-              authenticated={authenticated}
-              authenticate={this.authenticate}
+              profileInformation={this.state.profileInformation}
               role={role}
               component={EditProfile}
             />

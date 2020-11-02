@@ -35,7 +35,7 @@ export const signup = (profileInformation, role) => {
 
 export const editProviderProfile = (profileInformation, providerId) => {
   return service
-    .put("/editProfile", { ...profileInformation })
+    .put(providerId + "/editProfile", { ...profileInformation })
     .then((response) => response.data)
     .catch((err) => err);
 };

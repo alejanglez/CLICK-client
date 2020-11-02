@@ -68,6 +68,7 @@ class EditProfile extends React.Component {
               errorMessage: response.errorMessage,
             })
       )
+
       .catch((err) => console.log(err));
   };
 

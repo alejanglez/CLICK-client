@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import {
-  getAllProviderRequests,
-  getAllUserRequests,
+  getAllProviderAcceptedService,
+  getAllUserAcceptedService,
 } from "../../services/servicesService";
-import MakeAcceptedRequest from "../../components/LayoutElements/MakeAcceptedRequest";
 
-class RequestedServices extends Component {
+class AcceptedServices extends Component {
   state = {
-    requestedServices: [],
+    acceptedServices: [],
     role: this.props.role,
     id: this.props.profileInformation._id,
   };
@@ -22,11 +21,11 @@ class RequestedServices extends Component {
 
   fetchDataUser = () => {
     const { id } = this.state;
-    getAllUserRequests(id)
+    getAllUserAcceptedService(id)
       .then((response) => {
-        console.log("response list", response);
+        console.log("response accepted list", response);
         this.setState({
-          requestedServices: response.data.requestedServiceList,
+          acceptedServices: response.data.acceptedServiceList,
         });
       })
       .catch((err) => console.log("Error retrieving all providers: ", err));
@@ -34,28 +33,28 @@ class RequestedServices extends Component {
 
   fetchDataProvider = () => {
     const { id } = this.state;
-    getAllProviderRequests(id)
+    getAllProviderAcceptedService(id)
       .then((response) => {
         console.log("response list", response);
         this.setState({
-          requestedServices: response.data.requestedServiceList2,
+          acceptedServices: response.data.acceptedServiceList2,
         });
       })
       .catch((err) => console.log("Error retrieving all providers: ", err));
   };
 
-  handleInputChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-  };
+  // handleInputChange = (e) => {
+  //   this.setState({
+  //     [e.target.name]: e.target.value,
+  //   });
+  // };
 
   render() {
     console.log("stateeee ", this.state);
     return (
       <div className="container">
-        <h2>Requested Services list 📣</h2>
-        {this.state.requestedServices.map((service) => {
+        <h2>Accepted Services list 📣</h2>
+        {this.state.acceptedServices.map((service) => {
           return (
             <div className="card" key={service._id}>
               <input type="hidden" name="userId" value={service.userId._id} />
@@ -88,7 +87,6 @@ class RequestedServices extends Component {
               )}
               <p>Quantity: {service.quantity}</p>
               <p>Total price: ?</p>
-              <MakeAcceptedRequest requestedService={service} />
             </div>
           );
         })}
@@ -97,4 +95,4 @@ class RequestedServices extends Component {
   }
 }
 
-export default RequestedServices;
+export default AcceptedServices;

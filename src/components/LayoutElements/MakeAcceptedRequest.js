@@ -19,7 +19,7 @@ class MakeAcceptedRequest extends Component {
     totalPrice: 0,
   };
   componentDidMount = () => {
-    console.log("proooooops ", this.props);
+    console.log("proooooops ace ", this.props);
   };
 
   handleAcceptedRequest = (event) => {
@@ -89,11 +89,10 @@ class MakeAcceptedRequest extends Component {
   };
 
   render() {
-    const { quantity } = this.state;
     return (
       <>
         <div>
-          <form onSubmit={this.handleMakeRequest}>
+          <form onSubmit={this.handleAcceptedRequest}>
             <button type="submit">Submit</button>
           </form>
         </div>

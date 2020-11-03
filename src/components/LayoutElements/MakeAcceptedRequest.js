@@ -7,12 +7,12 @@ class MakeAcceptedRequest extends Component {
     serviceCat: this.props.requestedService.providerId.serviceCat,
     lessonType: this.props.requestedService.providerId.lessonType,
     rate: this.props.requestedService.providerId.rate,
-    firstNameProvider: this.props.requestedService.providerId.firstName,
-    lastNameProvider: this.props.requestedService.providerId.lastName,
-    imageUrlProvider: this.props.requestedService.providerId.imageUrl,
-    firstNameUser: this.props.requestedService.userId.firstName,
-    lastNameUser: this.props.requestedService.userId.lastName,
-    imageUrlUser: this.props.requestedService.userId.imageUrl,
+    providerFirstName: this.props.requestedService.providerId.firstName,
+    providerLastName: this.props.requestedService.providerId.lastName,
+    providerImageUrl: this.props.requestedService.providerId.imageUrl,
+    userFirstName: this.props.requestedService.userId.firstName,
+    userLastName: this.props.requestedService.userId.lastName,
+    userImageUrl: this.props.requestedService.userId.imageUrl,
     quantity: this.props.requestedService.quantity,
     totalPrice: 0,
   };
@@ -28,17 +28,17 @@ class MakeAcceptedRequest extends Component {
       serviceCat,
       lessonType,
       rate,
-      firstNameProvider,
-      lastNameProvider,
-      imageUrlProvider,
-      firstNameUser,
-      lastNameUser,
-      imageUrlUser,
+      providerFirstName,
+      providerLastName,
+      providerImageUrl,
+      userFirstName,
+      userLastName,
+      userImageUrl,
       totalPrice,
     } = this.state;
     const userId = this.props.userId;
     const providerId = this.props.profileInformation._id;
-    createNewRequest(quantity, userId, providerId)
+    createNewRequest(quantity, requestedServiceId)
       .then((response) => {
         console.log(response);
         this.setState({
@@ -47,13 +47,15 @@ class MakeAcceptedRequest extends Component {
           serviceCat: serviceCat,
           lessonType: lessonType,
           rate: rate,
-          firstNameProvider: firstNameProvider,
-          lastNameProvider: lastNameProvider,
-          imageUrlProvider: imageUrlProvider,
-          firstNameUser: firstNameUser,
-          lastNameUser: lastNameUser,
-          imageUrlUser: imageUrlUser,
+          providerFirstName: providerFirstName,
+          providerLastName: providerLastName,
+          providerImageUrl: providerImageUrl,
+          userFirstName: userFirstName,
+          userLastName: userLastName,
+          userImageUrl: userImageUrl,
           totalPrice: totalPrice,
+          userId: userId,
+          providerId: providerId,
         });
       })
       .catch((err) => console.log("error on handle make request", err));

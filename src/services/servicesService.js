@@ -30,34 +30,38 @@ export const getSingleRequest = async (requestedServiceId) => {
 };
 
 export const createNewRequestAcceptedService = async (
-  quantity,
+  userId,
+  providerId,
   requestedServiceId,
+  quantity,
   serviceCat,
   lessonType,
   rate,
-  firstNameProvider,
-  lastNameProvider,
-  imageUrlProvider,
-  firstNameUser,
-  lastNameUser,
-  imageUrlUser,
-  totalPrice
+  totalPrice,
+  userFirstName,
+  userLastName,
+  providerFirstName,
+  providerLastName,
+  userImageUrl,
+  providerImageUrl
 ) => {
-  const newRequest = {
-    quantity,
+  const newAcceptedRequest = {
+    userId,
+    providerId,
     requestedServiceId,
+    quantity,
     serviceCat,
     lessonType,
     rate,
-    firstNameProvider,
-    lastNameProvider,
-    imageUrlProvider,
-    firstNameUser,
-    lastNameUser,
-    imageUrlUser,
     totalPrice,
+    userFirstName,
+    userLastName,
+    providerFirstName,
+    providerLastName,
+    userImageUrl,
+    providerImageUrl,
   };
-  const response = await service.post("/accepted/", newRequest);
+  const response = await service.post("/accepted/", newAcceptedRequest);
   return response;
 };
 

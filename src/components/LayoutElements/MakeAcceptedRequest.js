@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { createNewRequest } from "../../services/servicesService";
+import { createNewRequestAcceptedService } from "../../services/servicesService";
 
 class MakeAcceptedRequest extends Component {
   state = {
@@ -14,6 +14,8 @@ class MakeAcceptedRequest extends Component {
     userLastName: this.props.requestedService.userId.lastName,
     userImageUrl: this.props.requestedService.userId.imageUrl,
     quantity: this.props.requestedService.quantity,
+    userId: this.props.requestedService.userId._id,
+    providerId: this.props.requestedService.providerId._id,
     totalPrice: 0,
   };
   componentDidMount = () => {
@@ -23,24 +25,41 @@ class MakeAcceptedRequest extends Component {
   handleAcceptedRequest = (event) => {
     event.preventDefault();
     const {
-      quantity,
+      userId,
+      providerId,
       requestedServiceId,
+      quantity,
       serviceCat,
       lessonType,
       rate,
-      providerFirstName,
-      providerLastName,
-      providerImageUrl,
+      totalPrice,
       userFirstName,
       userLastName,
+      providerFirstName,
+      providerLastName,
       userImageUrl,
-      totalPrice,
+      providerImageUrl,
     } = this.state;
-    const userId = this.props.userId;
-    const providerId = this.props.profileInformation._id;
-    createNewRequest(quantity, requestedServiceId)
+    // const userId = this.props.userId;
+    // const providerId = this.props.profileInformation._id;
+    createNewRequestAcceptedService(
+      userId,
+      providerId,
+      requestedServiceId,
+      quantity,
+      serviceCat,
+      lessonType,
+      rate,
+      totalPrice,
+      userFirstName,
+      userLastName,
+      providerFirstName,
+      providerLastName,
+      userImageUrl,
+      providerImageUrl
+    )
       .then((response) => {
-        console.log(response);
+        console.log("awwwwwwwaaaa", response);
         this.setState({
           quantity: quantity,
           requestedServiceId: requestedServiceId,

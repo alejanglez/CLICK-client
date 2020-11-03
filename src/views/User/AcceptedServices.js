@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import {
   getAllProviderAcceptedService,
   getAllUserAcceptedService,
@@ -53,36 +54,45 @@ class AcceptedServices extends Component {
         {this.state.acceptedServices.map((service) => {
           return (
             <div className="card" key={service._id}>
-              <input type="hidden" name="userId" value={service.userId._id} />
+              <input type="hidden" name="userId" value={service.userId} />
               <input
                 type="hidden"
                 name="providerId"
-                value={service.providerId._id}
+                value={service.providerId}
               />
               {this.state.role == "user" ? (
                 <>
-                  <p>
-                    Name: {service.providerId.firstName}{" "}
-                    {service.providerId.lastName}
-                  </p>
-                  <img src={service.providerId.imageUrl} />
-                  <p>Category: {service.providerId.serviceCat}</p>
-                  <p>Lesson Type: {service.providerId.lessonType}</p>
-                  <p>Rate: {service.providerId.rate}</p>
+                  {
+                    <Link to={`/profile/list/` + service.providerId}>
+                      <p>
+                        Name: {service.providerFirstName}{" "}
+                        {service.providerLastName}
+                      </p>
+                    </Link>
+                  }
+
+                  <img src={service.providerImageUrl} />
+                  <p>Category: {service.serviceCat}</p>
+                  <p>Lesson Type: {service.lessonType}</p>
+                  <p>Rate: {service.rate}</p>
                 </>
               ) : (
                 <>
-                  <p>
-                    Name: {service.userId.firstName} {service.userId.lastName}
-                  </p>
-                  <img src={service.userId.imageUrl} />
-                  <p>Category: {service.providerId.serviceCat}</p>
-                  <p>Lesson Type: {service.providerId.lessonType}</p>
-                  <p>Rate: {service.providerId.rate}</p>
+                  <Link to={`/profile/list/` + service.userId}>
+                    {" "}
+                    <p>
+                      Name: {service.userFirstName} {service.userLastName}
+                    </p>
+                  </Link>
+
+                  <img src={service.userImageUrl} />
+                  <p>Category: {service.serviceCat}</p>
+                  <p>Lesson Type: {service.lessonType}</p>
+                  <p>Rate: {service.rate}</p>
                 </>
               )}
               <p>Quantity: {service.quantity}</p>
-              <p>Total price: ?</p>
+              <p>Total price:{service.totalPrice}</p>
             </div>
           );
         })}

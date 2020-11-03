@@ -12,14 +12,15 @@ const Profile = (props) => {
     serviceCat,
     facebookUrl,
     rate,
+    _id,
   } = props.profileInformation;
-  const { role } = props;
-  console.log("this props role", role);
-  console.log("img url?", imageUrl);
-  console.log("IDDDDDDD", props);
+  const { role, sessionUserId, sessionProviderId } = props;
+  console.log("user id session", sessionUserId);
+  console.log("user id ", _id);
   return (
     <div>
       <h2>Profile 🐲</h2>
+      <p hidden>{_id && _id}</p>
       <h1>
         welcome {firstName && firstName} {lastName && lastName}
       </h1>
@@ -37,7 +38,16 @@ const Profile = (props) => {
           <p>Rate: {rate && rate}</p>{" "}
         </>
       )}
-      <Link to={`/profile/editProfile`}>Edit Profile</Link>
+      {sessionProviderId && _id == sessionProviderId._id && (
+        <>
+          <Link to={`/profile/editProfile`}>Edit Profile</Link>
+        </>
+      )}
+      {sessionUserId && _id == sessionUserId._id && (
+        <>
+          <Link to={`/profile/editProfile`}>Edit Profile</Link>
+        </>
+      )}
     </div>
   );
 };

@@ -8,6 +8,7 @@ import Login from "./views/User/Login";
 import Profile from "./views/User/Profile";
 import ProviderList from "./views/User/ProviderList";
 import SingleProvider from "./views/User/SingleProvider";
+import SingleUser from "./views/User/SingleUser";
 // import ProfilesFeed from "./views/User/ProfilesList";
 import Signup from "./views/User/Signup";
 import MakeRequest from "./components/LayoutElements/MakeRequest";
@@ -20,6 +21,8 @@ class App extends React.Component {
     authenticated: false,
     profileInformation: {},
     role: "",
+    sessionUserId: "",
+    sessionProviderId: "",
   };
 
   componentDidMount = () => {
@@ -36,6 +39,10 @@ class App extends React.Component {
           // console.log("role local storage ", role);
           validateSession(accessToken, this.state.role)
             .then((response) => {
+              this.setState({
+                sessionProviderId: response.session.providerId,
+                sessionUserId: response.session.userId,
+              });
               console.log(response, "RESPONSE");
               response.session.userId
                 ? this.authenticate(response.session.userId, this.state.role)
@@ -68,7 +75,12 @@ class App extends React.Component {
   };
 
   render() {
-    const { authenticated, role } = this.state;
+    const {
+      authenticated,
+      role,
+      sessionProviderId,
+      sessionUserId,
+    } = this.state;
 
     return (
       <div className="App">
@@ -118,6 +130,8 @@ class App extends React.Component {
               profileInformation={this.state.profileInformation}
               authenticated={authenticated}
               role={role}
+              sessionUserId={sessionUserId}
+              sessionProviderId={sessionProviderId}
               component={Profile}
             />
             {/* shows the provider list/feed */}
@@ -136,6 +150,14 @@ class App extends React.Component {
               authenticated={authenticated}
               role={role}
               component={SingleProvider}
+            />
+            <PrivateRoute
+              exact
+              path={`/profile/list/:userId`}
+              profileInformation={this.state.profileInformation}
+              authenticated={authenticated}
+              role={role}
+              component={SingleUser}
             />
             <PrivateRoute
               exact

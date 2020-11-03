@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
+import { getSingleUserprofile } from "../../services/profilesService";
 import Profile from "./Profile";
 
 class SingleUser extends Component {

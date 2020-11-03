@@ -16,7 +16,7 @@ class MakeAcceptedRequest extends Component {
     quantity: this.props.requestedService.quantity,
     userId: this.props.requestedService.userId._id,
     providerId: this.props.requestedService.providerId._id,
-    totalPrice: 0,
+    totalPrice: this.props.totalPrice,
   };
   componentDidMount = () => {
     console.log("proooooops ace ", this.props);
@@ -93,7 +93,7 @@ class MakeAcceptedRequest extends Component {
       <>
         <div>
           <form onSubmit={this.handleAcceptedRequest}>
-            <button type="submit">Submit</button>
+            <button type="submit">Accept</button>
           </form>
         </div>
       </>

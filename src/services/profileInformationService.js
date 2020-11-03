@@ -12,20 +12,6 @@ export const validateSession = (accessToken, role) => {
     .catch((err) => err);
 };
 
-// export const listProviders = (accessToken, role) => {
-//   return service
-//   .get('/providers/list')
-//   .then((response)=> response.data)
-//   .catch(err => err)
-// }
-
-// export const singleProvider = (providerId) => {
-//   return service
-//   .get(`/list/providers/${providerId}`)
-//   .then((response) => response.data)
-//   .catch(err => err)
-// }
-
 export const signup = (profileInformation, role) => {
   return service
     .post(`/${role}/signup`, { ...profileInformation })

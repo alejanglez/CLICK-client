@@ -50,14 +50,21 @@ class RequestedServices extends Component {
     });
   };
 
+  handleTotalPrice = (rate, quantity) => {
+    const total = Number(rate) * Number(quantity);
+    return total;
+  };
+
   render() {
     console.log("stateeee ", this.state);
     return (
       <div className="container">
         <h2>Requested Services list 📣</h2>
         {this.state.requestedServices.map((service) => {
+          let rate = Number(service.providerId.rate);
+          let quant = Number(service.quantity);
           return (
-            <div className="card" key={service._id}>
+            <div className="card requestedCard" key={service._id}>
               <input type="hidden" name="userId" value={service.userId._id} />
               <input
                 type="hidden"
@@ -73,7 +80,7 @@ class RequestedServices extends Component {
                   <img src={service.providerId.imageUrl} />
                   <p>Category: {service.providerId.serviceCat}</p>
                   <p>Lesson Type: {service.providerId.lessonType}</p>
-                  <p>Rate: {service.providerId.rate}</p>
+                  <p className="rate">Rate: {service.providerId.rate}</p>
                 </>
               ) : (
                 <>
@@ -86,9 +93,12 @@ class RequestedServices extends Component {
                   <p>Rate: {service.providerId.rate}</p>
                 </>
               )}
-              <p>Quantity: {service.quantity}</p>
-              <p>Total price: ?</p>
-              <MakeAcceptedRequest requestedService={service} />
+              <p className="quantity">Quantity: {service.quantity}</p>
+              <p>Total price: {this.handleTotalPrice(rate, quant)}</p>
+              <MakeAcceptedRequest
+                requestedService={service}
+                totalPrice={this.handleTotalPrice(rate, quant)}
+              />
             </div>
           );
         })}

@@ -6,13 +6,21 @@ const PrivateRoute = ({
   authenticated,
   profileInformation,
   role,
+  sessionUserId,
+  sessionProviderId,
   ...rest
 }) => {
   return (
     <Route
       render={(props) =>
         authenticated ? (
-          <Component {...props} profileInformation={profileInformation} role={role} />
+          <Component
+            {...props}
+            profileInformation={profileInformation}
+            role={role}
+            sessionUserId={sessionUserId}
+            sessionProviderId={sessionProviderId}
+          />
         ) : (
           <Redirect to="/" />
         )

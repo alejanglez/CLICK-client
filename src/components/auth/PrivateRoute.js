@@ -8,6 +8,7 @@ const PrivateRoute = ({
   role,
   sessionUserId,
   sessionProviderId,
+  authenticate,
   ...rest
 }) => {
   return (
@@ -20,6 +21,8 @@ const PrivateRoute = ({
             role={role}
             sessionUserId={sessionUserId}
             sessionProviderId={sessionProviderId}
+            authenticate={authenticate}
+            authenticated={authenticated}
           />
         ) : (
           <Redirect to="/" />

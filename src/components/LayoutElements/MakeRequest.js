@@ -40,7 +40,7 @@ class MakeRequest extends Component {
     const { quantity } = this.state;
     return (
       <>
-        <div>
+        <div className="card">
           <form onSubmit={this.handleMakeRequest}>
             <label>How many hours?</label>
             <input

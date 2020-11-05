@@ -91,7 +91,7 @@ class MakeAcceptedRequest extends Component {
   render() {
     return (
       <>
-        <div>
+        <div className="card">
           <form onSubmit={this.handleAcceptedRequest}>
             <button type="submit">Accept</button>
           </form>

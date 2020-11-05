@@ -59,6 +59,7 @@ class App extends React.Component {
   };
 
   authenticate = (profileInformation, role) => {
+    console.log("ROLE", role);
     this.setState({
       authenticated: true,
       profileInformation,

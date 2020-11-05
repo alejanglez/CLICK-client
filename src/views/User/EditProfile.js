@@ -56,13 +56,8 @@ class EditProfile extends React.Component {
       this.props.profileInformation._id
     )
       .then((response) =>
-        response.accessToken
-          ? (localStorage.setItem("accessToken", response.accessToken),
-            localStorage.setItem("role", this.props.role),
-            this.props.authenticate(
-              response.profileInformation,
-              localStorage.role
-            ),
+        response
+          ? (this.props.authenticate(response.user, localStorage.role),
             this.props.history.push(`/profile`))
           : this.setState({
               errorMessage: response.errorMessage,

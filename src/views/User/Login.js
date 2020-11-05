@@ -11,6 +11,8 @@ class Login extends React.Component {
   handleChange = (event) => {
     const { name, value } = event.target;
     console.log("role props login ", this.props.role);
+    console.log("authenticated props login ", this.props.authenticated);
+
     this.setState({
       [name]: value,
     });
@@ -30,6 +32,7 @@ class Login extends React.Component {
         response.accessToken
           ? (localStorage.setItem("accessToken", response.accessToken),
             localStorage.setItem("role", this.props.role),
+            localStorage.setItem("authenticated", this.props.authenticated),
             this.props.authenticate(
               response.profileInformation,
               localStorage.role

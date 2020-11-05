@@ -15,6 +15,7 @@ import MakeRequest from "./components/LayoutElements/MakeRequest";
 import RequestedServices from "./views/User/RequestedServices";
 import EditProfile from "./views/User/EditProfile";
 import AcceptedServices from "./views/User/AcceptedServices";
+import NavBar from "./components/LayoutElements/NavBar";
 
 class App extends React.Component {
   state = {
@@ -63,7 +64,6 @@ class App extends React.Component {
       profileInformation,
       role,
     });
-    console.log("role authenticate: ", this.state.role);
   };
 
   handleLogout = (profileInformation) => {
@@ -85,6 +85,11 @@ class App extends React.Component {
     return (
       <div className="App">
         <BrowserRouter>
+          <NavBar
+            authenticated={authenticated}
+            role={role}
+            profileInformation={this.state.profileInformation}
+          />
           {!authenticated && (
             <div>
               <p>How do you want to use Click stranger?</p>

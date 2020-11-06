@@ -40,11 +40,12 @@ class App extends React.Component {
           // console.log("role local storage ", role);
           validateSession(accessToken, this.state.role)
             .then((response) => {
+              console.log(response, "RESPONSE");
+              console.log(response.session.userId._id, "RESPONSE USER ID");
               this.setState({
                 sessionProviderId: response.session.providerId,
                 sessionUserId: response.session.userId,
               });
-              console.log(response, "RESPONSE");
               response.session.userId
                 ? this.authenticate(response.session.userId, this.state.role)
                 : this.authenticate(

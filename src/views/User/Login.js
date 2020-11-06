@@ -8,10 +8,15 @@ class Login extends React.Component {
     errorMessage: "",
     role: this.props.role,
   };
+
+  componentDidMount = () => {
+    console.log("lassssst state", this.state);
+  };
+
   handleChange = (event) => {
     const { name, value } = event.target;
     console.log("role props login ", this.props.role);
-    console.log("authenticated props login ", this.props.authenticated);
+    console.log("authenticated props login ", this.props.sessionUserId);
 
     this.setState({
       [name]: value,
@@ -36,7 +41,15 @@ class Login extends React.Component {
               response.profileInformation,
               localStorage.role
             ),
-            this.props.history.push(`/profile`))
+            this.props.history.push(
+              `/profile`
+              // {
+              //   pathname: "/profile",
+              //   state: {
+              //     test: response.accessToken,
+              //   },
+              // }
+            ))
           : this.setState({
               errorMessage: response.errorMessage,
             })

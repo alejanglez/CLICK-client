@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Profile = (props) => {
+  // const { test } = props.location.state;
   const {
     firstName,
     lastName,
@@ -14,6 +15,8 @@ const Profile = (props) => {
     rate,
     _id,
   } = props.profileInformation;
+  console.log("login props", props);
+  // console.log("test", test);
   const { role, sessionUserId, sessionProviderId } = props;
   console.log("user id session", sessionUserId);
   console.log("user id ", _id);
@@ -48,8 +51,14 @@ const Profile = (props) => {
           <Link to={`/profile/editProfile`}>Edit Profile</Link>
         </>
       )}
+
+
+      
     </div>
   );
 };
+
+
+
 
 export default Profile;

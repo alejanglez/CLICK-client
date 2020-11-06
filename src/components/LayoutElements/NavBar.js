@@ -11,6 +11,11 @@ class NavBar extends React.Component {
 
   componentDidMount = () => {
     console.log("navbar mounted ", this.props);
+    this.setState({
+      role: this.props.role,
+      authenticated: this.props.authenticated,
+      profileInformation: this.props.profileInformation,
+    });
   };
 
   handleLogout = (profileInformation) => {
@@ -39,11 +44,11 @@ class NavBar extends React.Component {
           {authenticated && (
             <Link to={`/accepted-services`}>🎯accepted services 🎯</Link>
           )}
-          {/* {authenticated && (
+          {authenticated && (
             <Link to={"/"} onClick={this.handleLogout}>
               Logout
             </Link>
-          )} */}
+          )}
         </nav>
       </>
     );

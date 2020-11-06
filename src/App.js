@@ -16,6 +16,7 @@ import RequestedServices from "./views/User/RequestedServices";
 import EditProfile from "./views/User/EditProfile";
 import AcceptedServices from "./views/User/AcceptedServices";
 import NavBar from "./components/LayoutElements//NavBar";
+import Post from "./views/User/Post";
 
 class App extends React.Component {
   state = {
@@ -87,12 +88,14 @@ class App extends React.Component {
     return (
       <div className="App">
         <BrowserRouter>
-          <NavBar
-            authenticate={this.authenticate}
-            authenticated={this.state.authenticated}
-            role={this.state.role}
-            profileInformation={this.state.profileInformation}
-          />
+          {authenticated && (
+            <NavBar
+              authenticated={this.state.authenticated}
+              role={this.state.role}
+              profileInformation={this.state.profileInformation}
+            />
+          )}
+
           {!authenticated && (
             <div>
               <p>How do you want to use Click stranger?</p>
@@ -191,6 +194,8 @@ class App extends React.Component {
               authenticate={this.authenticate}
               role={role}
               component={Login}
+              sessionUserId={sessionUserId}
+              sessionProviderId={sessionProviderId}
             />
             <AnonRoute
               exact

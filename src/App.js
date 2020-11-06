@@ -15,7 +15,7 @@ import MakeRequest from "./components/LayoutElements/MakeRequest";
 import RequestedServices from "./views/User/RequestedServices";
 import EditProfile from "./views/User/EditProfile";
 import AcceptedServices from "./views/User/AcceptedServices";
-import NavBar from "./components/LayoutElements/NavBar";
+import NavBar from "./components/LayoutElements//NavBar";
 
 class App extends React.Component {
   state = {
@@ -59,7 +59,6 @@ class App extends React.Component {
   };
 
   authenticate = (profileInformation, role) => {
-    console.log("ROLE", role);
     this.setState({
       authenticated: true,
       profileInformation,
@@ -79,6 +78,7 @@ class App extends React.Component {
     const {
       authenticated,
       role,
+      profileInformation,
       sessionProviderId,
       sessionUserId,
     } = this.state;
@@ -87,8 +87,9 @@ class App extends React.Component {
       <div className="App">
         <BrowserRouter>
           <NavBar
-            authenticated={authenticated}
-            role={role}
+            authenticate={this.authenticate}
+            authenticated={this.state.authenticated}
+            role={this.state.role}
             profileInformation={this.state.profileInformation}
           />
           {!authenticated && (
@@ -130,6 +131,7 @@ class App extends React.Component {
           </nav>
           <Switch>
             {/* shows my profile as I sign up/log in */}
+
             <PrivateRoute
               exact
               path={`/profile/`}
@@ -197,6 +199,7 @@ class App extends React.Component {
               role={role}
               component={Signup}
             />
+
             <PrivateRoute
               exact
               path={`/profile/editProfile`}

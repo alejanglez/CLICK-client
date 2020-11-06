@@ -9,6 +9,10 @@ class NavBar extends React.Component {
     profileInformation: this.props.profileInformation,
   };
 
+  componentDidMount = () => {
+    console.log("navbar mounted ", this.props);
+  };
+
   handleLogout = (profileInformation) => {
     localStorage.clear();
     this.setState({

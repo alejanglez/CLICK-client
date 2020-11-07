@@ -40,7 +40,7 @@ class AcceptedServices extends Component {
       .then((response) => {
         console.log("response list prov", response);
         this.setState({
-          acceptedServices: response.data.acceptedServiceList,
+          acceptedServices: response.data.acceptedServiceList2,
         });
       })
       .catch((err) => console.log("Error retrieving all providers: ", err));

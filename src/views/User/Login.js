@@ -37,9 +37,11 @@ class Login extends React.Component {
         response.accessToken
           ? (localStorage.setItem("accessToken", response.accessToken),
             localStorage.setItem("role", this.props.role),
+            console.log("response login?", response),
             this.props.authenticate(
               response.profileInformation,
-              localStorage.role
+              localStorage.role,
+              true
             ),
             this.props.history.push(
               `/profile`

@@ -11,12 +11,12 @@ import SingleProvider from "./views/User/SingleProvider";
 import SingleUser from "./views/User/SingleUser";
 // import ProfilesFeed from "./views/User/ProfilesList";
 import Signup from "./views/User/Signup";
-import MakeRequest from "./components/LayoutElements/MakeRequest";
 import RequestedServices from "./views/User/RequestedServices";
 import EditProfile from "./views/User/EditProfile";
 import AcceptedServices from "./views/User/AcceptedServices";
 import NavBar from "./components/LayoutElements//NavBar";
-import Post from "./views/User/Post";
+import About from "./views/Public/About";
+import Home from "./views/Public/Home";
 
 class App extends React.Component {
   state = {
@@ -29,6 +29,10 @@ class App extends React.Component {
 
   componentDidMount = () => {
     console.log("component mounted");
+    this.handleSessionValidation();
+  };
+
+  handleSessionValidation = () => {
     const accessToken = localStorage.getItem("accessToken");
     const role = localStorage.getItem("role") || "";
 
@@ -42,7 +46,12 @@ class App extends React.Component {
           validateSession(accessToken, this.state.role)
             .then((response) => {
               console.log(response, "RESPONSE");
-              console.log(response.session.userId._id, "RESPONSE USER ID");
+              console.log(
+                "hellllllp",
+                response.session?.userId?._id,
+                response.session?.providerId?._id
+              );
+
               this.setState({
                 sessionProviderId: response.session.providerId,
                 sessionUserId: response.session.userId,
@@ -60,12 +69,24 @@ class App extends React.Component {
     );
   };
 
-  authenticate = (profileInformation, role) => {
+  changeRole = (role) => {
     this.setState({
-      authenticated: true,
-      profileInformation,
       role,
     });
+  };
+
+  authenticate = (profileInformation, role, isSessionNeeded = false) => {
+    console.log("TESTING", profileInformation, role, isSessionNeeded);
+    this.setState(
+      {
+        authenticated: true,
+        profileInformation,
+        role,
+      },
+      () => {
+        isSessionNeeded && this.handleSessionValidation();
+      }
+    );
   };
 
   handleLogout = (profileInformation) => {
@@ -90,43 +111,20 @@ class App extends React.Component {
         <BrowserRouter>
           {authenticated && (
             <NavBar
-              authenticated={this.state.authenticated}
-              role={this.state.role}
-              profileInformation={this.state.profileInformation}
+              authenticated={authenticated}
+              role={role}
+              profileInformation={profileInformation}
+              handleLogout={this.handleLogout}
             />
           )}
-
           {!authenticated && (
-            <div>
-              <p>How do you want to use Click stranger?</p>
-              <br />
-              {!authenticated && (
-                <Link to={"/signup/user"}>
-                  <button onClick={() => this.setState({ role: "user" })}>
-                    User
-                  </button>
-                </Link>
-              )}
-              {!authenticated && (
-                <Link to={"/signup/provider"}>
-                  <button onClick={() => this.setState({ role: "provider" })}>
-                    Provider
-                  </button>
-                </Link>
-              )}
-            </div>
+            <NavBar
+              authenticated={authenticated}
+              role={role}
+              profileInformation={profileInformation}
+            />
           )}
           <nav>
-            {authenticated && <Link to={`/profile`}> Profile </Link>}
-            {authenticated && this.state.role === "user" && (
-              <Link to={`/profile/list/`}>Profile list</Link>
-            )}
-            {authenticated && (
-              <Link to={`/requested-services`}>requested services 🎄</Link>
-            )}
-            {authenticated && (
-              <Link to={`/accepted-services`}>🎯accepted services 🎯</Link>
-            )}
             {authenticated && (
               <Link to={"/"} onClick={this.handleLogout}>
                 Logout
@@ -135,7 +133,14 @@ class App extends React.Component {
           </nav>
           <Switch>
             {/* shows my profile as I sign up/log in */}
-
+            <AnonRoute
+              exact
+              path={`/`}
+              authenticated={authenticated}
+              role={role}
+              changeRole={this.changeRole}
+              component={Home}
+            />
             <PrivateRoute
               exact
               path={`/profile/`}
@@ -204,6 +209,14 @@ class App extends React.Component {
               authenticate={this.authenticate}
               role={role}
               component={Signup}
+            />
+            <AnonRoute
+              exact
+              path={`/about`}
+              authenticated={authenticated}
+              authenticate={this.authenticate}
+              role={role}
+              component={About}
             />
 
             <PrivateRoute

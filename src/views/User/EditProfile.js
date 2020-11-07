@@ -178,14 +178,7 @@ class EditProfile extends React.Component {
             required={true}
             type="email"
           />
-          <label>Password: </label>
-          <input
-            name="password"
-            type="password"
-            value={password}
-            onChange={this.handleChange}
-            required={true}
-          />
+
           <button type="submit"> Confirm </button>
         </form>
       </div>

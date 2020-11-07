@@ -18,37 +18,36 @@ class NavBar extends React.Component {
     });
   };
 
-  handleLogout = (profileInformation) => {
-    localStorage.clear();
-    this.setState({
-      authenticated: false,
-      profileInformation,
-    });
-  };
-
   render() {
     const { role, authenticated } = this.state;
-
+    console.log("props nav", this.props);
     console.log("authenticaded? ", authenticated);
     return (
       <>
         <nav className="navbar fixed-bottom navbar-light bg-light">
-          <p>hi</p>
-          {authenticated && <Link to={`/profile`}> Profile </Link>}
-          {authenticated && role === "user" && (
-            <Link to={`/profile/list/`}>Profile list</Link>
-          )}
           {authenticated && (
-            <Link to={`/requested-services`}>requested services 🎄</Link>
+            <>
+              <Link to={`/profile`}> Profile 👩🏽‍💻 </Link>
+              <Link to={`/profile/list/`}> Profile list 📚</Link>
+              <Link to={`/requested-services`}> Requested services 🎄</Link>
+              <Link to={`/accepted-services`}> Accepted services 🎯</Link>
+              <Link
+                to={"/"}
+                onClick={() =>
+                  this.props.handleLogout(this.props.profileInformation)
+                }
+              >
+                Logout ⚡️
+              </Link>
+            </>
           )}
-          {authenticated && (
-            <Link to={`/accepted-services`}>🎯accepted services 🎯</Link>
-          )}
-          {authenticated && (
+          {/* {authenticated && (
             <Link to={"/"} onClick={this.handleLogout}>
               Logout
             </Link>
-          )}
+          )} */}
+          {!authenticated && <Link to={"/signup"}>Signup</Link>}
+          {!authenticated && <Link to={"/about"}>About</Link>}
         </nav>
       </>
     );

@@ -41,6 +41,7 @@ const Profile = (props) => {
           <p>Rate: {rate && rate}</p>{" "}
         </>
       )}
+
       {sessionProviderId && _id == sessionProviderId._id && (
         <>
           <Link to={`/profile/editProfile`}>Edit Profile</Link>
@@ -51,14 +52,8 @@ const Profile = (props) => {
           <Link to={`/profile/editProfile`}>Edit Profile</Link>
         </>
       )}
-
-
-      
     </div>
   );
 };
-
-
-
 
 export default Profile;

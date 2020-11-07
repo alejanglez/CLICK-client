@@ -4,6 +4,7 @@ import {
   getAllUserRequests,
 } from "../../services/servicesService";
 import MakeAcceptedRequest from "../../components/LayoutElements/MakeAcceptedRequest";
+import { Link } from "react-router-dom";
 
 class RequestedServices extends Component {
   state = {
@@ -57,8 +58,14 @@ class RequestedServices extends Component {
 
   render() {
     console.log("stateeee ", this.state);
+    const { role } = this.state;
     return (
       <div className="container">
+        <div>
+          <Link to={`/requested-services`}>Pending</Link>
+          <p>|</p>
+          <Link to={`/accepted-services`}>Accepted</Link>
+        </div>
         <h2>Requested Services list 📣</h2>
         {this.state.requestedServices.map((service) => {
           let rate = Number(service.providerId.rate);
@@ -95,10 +102,13 @@ class RequestedServices extends Component {
               )}
               <p className="quantity">Quantity: {service.quantity}</p>
               <p>Total price: {this.handleTotalPrice(rate, quant)}</p>
-              <MakeAcceptedRequest
-                requestedService={service}
-                totalPrice={this.handleTotalPrice(rate, quant)}
-              />
+              {role === "provider" && (
+                <MakeAcceptedRequest
+                  requestedService={service}
+                  totalPrice={this.handleTotalPrice(rate, quant)}
+                />
+              )}
+              {role === "user" && <p>Waiting...</p>}
             </div>
           );
         })}

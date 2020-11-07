@@ -50,6 +50,11 @@ class AcceptedServices extends Component {
     console.log("stateeee on accepted ", this.state);
     return (
       <div className="container">
+        <div>
+          <Link to={`/requested-services`}>Pending</Link>
+          <p>|</p>
+          <Link to={`/accepted-services`}>Accepted</Link>
+        </div>
         <h2>Accepted Services list 📣</h2>
         {this.state.acceptedServices.map((service) => {
           return (

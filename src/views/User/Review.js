@@ -1,25 +1,24 @@
 import React, { Component } from "react";
 import {
-  getAllProviderPost,
-  getSinglePost,
-  getAllUserAnswer,
-  getSingleAnswer,
-} from "../../services/PostAnswerService";
-import MakePost from "../../components/LayoutElements/MakePost";
+  getAllProviderReview,
+  getSingleReview,
+} from "../../services/ReviewService";
+import MakeReview from "../../components/LayoutElements/MakeReview";
 
-class Post extends Component {
+class Review extends Component {
   state = {
-    posts: [],
-    answers: [],
-    role: this.props.role,
+    reviews: [],
+    author: this.props.role,
     id: this.props.profileInformation._id,
   };
 
   componentDidMount = () => {
-    if (this.state.role == "user") {
+    if ((this.state.role == "user") != this.state.author) {
       this.fetchDataUser();
-    } else if (this.state.role == "provider") {
+      //here fech data when author is not user!!
+    } else if ((this.state.role == "provider") != this.state.author) {
       this.fetchDataProvider();
+      //here fech data when author is not provider!!
     }
   };
 
@@ -29,7 +28,7 @@ class Post extends Component {
       .then((response) => {
         console.log("response list", response);
         this.setState({
-          answers: response.data.dbAnswersList,
+          reviews: response.data.dbReviewList,
         });
       })
       .catch((err) => console.log("Error retrieving all providers: ", err));
@@ -41,7 +40,7 @@ class Post extends Component {
       .then((response) => {
         console.log("response list", response);
         this.setState({
-          posts: response.data.dbPostsList,
+          reviews: response.data.dbReviewList,
         });
       })
       .catch((err) => console.log("Error retrieving all providers: ", err));
@@ -112,4 +111,4 @@ class Post extends Component {
   }
 }
 
-export default Post;
+export default Review;

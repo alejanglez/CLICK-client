@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { createNewPost } from "../../services/PostAnswerService";
+import { createNewReview } from "../../services/ReviewService";
 
-class MakePost extends Component {
+class MakeReview extends Component {
   state = {
+    author: this.props.role,
     comment: "",
     rating: 0,
     userId: "",
@@ -15,12 +16,14 @@ class MakePost extends Component {
   handleMakePost = (event) => {
     event.preventDefault();
     const { comment, rating } = this.state;
+    const author = this.props.role;
     const userId = this.props.userId;
     const providerId = this.props.profileInformation._id;
-    createNewPost(comment, rating, userId, providerId)
+    createNewPost(author, comment, rating, userId, providerId)
       .then((response) => {
         console.log(response);
         this.setState({
+          author: author,
           comment: comment,
           rating: rating,
           userId: providerId,
@@ -67,4 +70,4 @@ class MakePost extends Component {
   }
 }
 
-export default MakePost;
+export default MakeReview;

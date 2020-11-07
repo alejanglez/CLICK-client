@@ -124,13 +124,6 @@ class App extends React.Component {
               profileInformation={profileInformation}
             />
           )}
-          <nav>
-            {authenticated && (
-              <Link to={"/"} onClick={this.handleLogout}>
-                Logout
-              </Link>
-            )}
-          </nav>
           <Switch>
             {/* shows my profile as I sign up/log in */}
             <AnonRoute
@@ -209,6 +202,8 @@ class App extends React.Component {
               authenticate={this.authenticate}
               role={role}
               component={Signup}
+              sessionUserId={sessionUserId}
+              sessionProviderId={sessionProviderId}
             />
             <AnonRoute
               exact

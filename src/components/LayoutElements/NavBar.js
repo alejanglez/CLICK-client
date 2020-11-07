@@ -24,14 +24,27 @@ class NavBar extends React.Component {
     console.log("authenticaded? ", authenticated);
     return (
       <>
-        <nav className="navbar fixed-bottom navbar-light bg-light">
+        <nav className="navbar fixed-bottom navbar-light bg-light align-middle">
           {authenticated && (
             <>
-              <Link to={`/profile`}> Profile 👩🏽‍💻 </Link>
-              <Link to={`/profile/list/`}> Profile list 📚</Link>
-              <Link to={`/requested-services`}> Requested services 🎄</Link>
-              <Link to={`/accepted-services`}> Accepted services 🎯</Link>
+              <Link className=" align-middle nav-item" to={`/profile`}>
+                {" "}
+                Profile 👩🏽‍💻{" "}
+              </Link>
+              <Link className="nav-item" to={`/profile/list/`}>
+                {" "}
+                Profile list 📚
+              </Link>
+              <Link className="nav-item" to={`/requested-services`}>
+                {" "}
+                Requested services 🎄
+              </Link>
+              <Link className="nav-item" to={`/accepted-services`}>
+                {" "}
+                Accepted services 🎯
+              </Link>
               <Link
+                className="nav-item"
                 to={"/"}
                 onClick={() =>
                   this.props.handleLogout(this.props.profileInformation)
@@ -41,13 +54,16 @@ class NavBar extends React.Component {
               </Link>
             </>
           )}
-          {/* {authenticated && (
-            <Link to={"/"} onClick={this.handleLogout}>
-              Logout
+          {!authenticated && (
+            <Link className="nav-item" to={"/signup"}>
+              Signup
             </Link>
-          )} */}
-          {!authenticated && <Link to={"/signup"}>Signup</Link>}
-          {!authenticated && <Link to={"/about"}>About</Link>}
+          )}
+          {!authenticated && (
+            <Link className=" align-middle nav-item" to={"/about"}>
+              About
+            </Link>
+          )}
         </nav>
       </>
     );

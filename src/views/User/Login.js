@@ -10,7 +10,7 @@ class Login extends React.Component {
   };
 
   componentDidMount = () => {
-    console.log("lassssst state", this.state);
+    console.log("state while login", this.state);
   };
 
   handleChange = (event) => {

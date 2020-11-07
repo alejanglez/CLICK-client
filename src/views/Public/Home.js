@@ -11,10 +11,9 @@ class Home extends React.Component {
     console.log("props home", this.props);
     const { authenticated, role } = this.state;
     return (
-      <div>
-        <h2>HOME</h2>
+      <div className="view text-center p-3 p-md-5 m-md-3">
         {!authenticated && (
-          <div className="view text-center p-3 p-md-5 m-md-3">
+          <div>
             <p>How do you want to use Click stranger?</p>
             <br />
 

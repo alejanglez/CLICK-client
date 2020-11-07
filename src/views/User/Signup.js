@@ -52,10 +52,10 @@ class Signup extends React.Component {
         response.accessToken
           ? (localStorage.setItem("accessToken", response.accessToken),
             localStorage.setItem("role", this.props.role),
-            localStorage.setItem("authenticated", this.props.authenticated),
             this.props.authenticate(
               response.profileInformation,
-              localStorage.role
+              localStorage.role,
+              true
             ),
             this.props.history.push(`/profile`))
           : this.setState({

@@ -13,9 +13,9 @@ class AcceptedServices extends Component {
   };
 
   componentDidMount = () => {
-    if (this.state.role == "user") {
+    if (this.state.role === "user") {
       this.fetchDataUser();
-    } else if (this.state.role == "provider") {
+    } else if (this.state.role === "provider") {
       this.fetchDataProvider();
     }
   };
@@ -38,9 +38,9 @@ class AcceptedServices extends Component {
     const { id } = this.state;
     getAllProviderAcceptedService(id)
       .then((response) => {
-        console.log("response list", response);
+        console.log("response list prov", response);
         this.setState({
-          acceptedServices: response.data.acceptedServiceList2,
+          acceptedServices: response.data.acceptedServiceList,
         });
       })
       .catch((err) => console.log("Error retrieving all providers: ", err));

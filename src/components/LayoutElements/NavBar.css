@@ -1,3 +1,22 @@
 .bg {
   background-color: #c4c4c4;
 }
+
+.navdrop {
+  color: white;
+  fill: white;
+}
+
+.dropdown-toggle {
+  display: none;
+  border-top: none;
+}
+
+.navAnon,
+.navAnon:hover,
+.navAnon:focus,
+.navAnon:active {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}

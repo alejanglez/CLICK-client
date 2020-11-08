@@ -24,4 +24,28 @@ form {
   padding-bottom: 20px;
 }
 
+p,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #727272;
+}
+
+.general-btn,
+.general-btn:hover,
+.general-btn:focus,
+.general-btn:active {
+  display: inline-block;
+  border: none;
+  padding: 10px 20px;
+  margin: 0;
+  text-decoration: none;
+  background-color: rgba(252, 3, 244, 0.3);
+  color: white;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
 /* test */

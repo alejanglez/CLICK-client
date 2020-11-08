@@ -1,0 +1,25 @@
+.pending-accepted {
+  display: flex;
+}
+
+.pending-accepted > p {
+  margin: 0 3%;
+}
+
+.link-requests,
+.link-requests:hover,
+.link-requests:focus,
+.link-requests:active {
+  text-decoration: none;
+  color: #727272;
+}
+
+.accepted {
+  color: rgba(252, 3, 244);
+  font-weight: bold;
+}
+
+.pending {
+  color: rgba(252, 3, 244);
+  font-weight: bold;
+}

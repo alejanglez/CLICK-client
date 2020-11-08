@@ -85,7 +85,7 @@ class EditProfile extends React.Component {
     console.log("props edit", this.props);
     console.log("props edit", this.props);
     return (
-      <div>
+      <div className="view text-center p-3 p-md-5 m-md-3">
         {/* <Link to={`/login/${this.props.role}`}>Login instead</Link> */}
         {/* {errorMessage !== "" && errorMessage} */}
         <AddImage

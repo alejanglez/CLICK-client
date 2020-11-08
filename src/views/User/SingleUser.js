@@ -22,7 +22,7 @@ class SingleUser extends Component {
   render() {
     const { user } = this.state;
     return (
-      <div>
+      <div className="view text-center p-3 p-md-5 m-md-3">
         <Profile
           path={`/profile/list/:userId`}
           exact

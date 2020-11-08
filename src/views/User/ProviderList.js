@@ -54,21 +54,9 @@ class ProviderList extends Component {
     });
   };
 
-  // handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   this.fetchProviderSearch();
-  // };
-
-  // fetchProviderSearch = async () => {
-  //   const response = await searchProviderprofile(this.state.searchParams);
-  //   this.setState({
-  //     searchResults: response,
-  //   });
-  // };
-
   render() {
     return (
-      <div className="container">
+      <div className="view text-center p-3 p-md-5 m-md-3">
         <h2>Provider's list 💙</h2>
         <div>
           <p>Filter by category 🔥</p>

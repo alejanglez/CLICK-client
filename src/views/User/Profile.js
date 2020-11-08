@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Profile.css";
 
 const Profile = (props) => {
   // const { test } = props.location.state;
@@ -21,17 +22,31 @@ const Profile = (props) => {
   console.log("user id session", sessionUserId);
   console.log("user id ", _id);
   return (
-    <div>
-      <h2>Profile 🐲</h2>
+    <div className="view text-center p-3 p-md-5 m-md-3">
       <p hidden>{_id && _id}</p>
-      <h1>
-        welcome {firstName && firstName} {lastName && lastName}
-      </h1>
-      <p>Your address: {address && address}</p>
+      <div className="profile-top" id="top-profile">
+        <div className="image-profile">
+          <img
+            className="rounded img-thumbnail img-fluid profile-image"
+            src={imageUrl && imageUrl}
+          />
+        </div>
+        <div>
+          <h2>
+            {firstName && firstName} {lastName && lastName}
+          </h2>
+          <p>Your address: {address && address}</p>
+          {role === "provider" && (
+            <>
+              {" "}
+              <p>Rate: {rate && rate}</p>{" "}
+            </>
+          )}
+        </div>
+      </div>
+      <hr />
       <h3>About</h3>
       <p>{about && about}</p>
-      <p>Image below</p>
-      <img src={imageUrl && imageUrl} />
       {role == "provider" && (
         <>
           {" "}

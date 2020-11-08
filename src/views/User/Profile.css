@@ -1,0 +1,13 @@
+.profile-image {
+  box-sizing: border-box;
+}
+.image-profile {
+  margin-right: 2%;
+  width: 50%;
+}
+
+.profile-top {
+  display: flex;
+  justify-content: space-between;
+  margin: 5% 0;
+}

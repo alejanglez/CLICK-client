@@ -5,6 +5,7 @@ import {
 } from "../../services/servicesService";
 import MakeAcceptedRequest from "../../components/LayoutElements/MakeAcceptedRequest";
 import { Link } from "react-router-dom";
+import "./RequestedServices.css";
 
 class RequestedServices extends Component {
   state = {
@@ -60,13 +61,16 @@ class RequestedServices extends Component {
     console.log("stateeee ", this.state);
     const { role } = this.state;
     return (
-      <div className="container">
-        <div>
-          <Link to={`/requested-services`}>Pending</Link>
+      <div className="view text-center p-3 p-md-5 m-md-3">
+        <div className="pending-accepted">
+          <Link className="link-requests pending" to={`/requested-services`}>
+            Pending
+          </Link>
           <p>|</p>
-          <Link to={`/accepted-services`}>Accepted</Link>
+          <Link className="link-requests" to={`/accepted-services`}>
+            Accepted
+          </Link>
         </div>
-        <h2>Requested Services list 📣</h2>
         {this.state.requestedServices.map((service) => {
           let rate = Number(service.providerId.rate);
           let quant = Number(service.quantity);
@@ -84,7 +88,10 @@ class RequestedServices extends Component {
                     Name: {service.providerId.firstName}{" "}
                     {service.providerId.lastName}
                   </p>
-                  <img src={service.providerId.imageUrl} />
+                  <img
+                    className="rounded img-thumbnail img-fluid"
+                    src={service.providerId.imageUrl}
+                  />
                   <p>Category: {service.providerId.serviceCat}</p>
                   <p>Lesson Type: {service.providerId.lessonType}</p>
                   <p className="rate">Rate: {service.providerId.rate}</p>
@@ -94,7 +101,10 @@ class RequestedServices extends Component {
                   <p>
                     Name: {service.userId.firstName} {service.userId.lastName}
                   </p>
-                  <img src={service.userId.imageUrl} />
+                  <img
+                    className="rounded img-thumbnail img-fluid"
+                    src={service.userId.imageUrl}
+                  />
                   <p>Category: {service.providerId.serviceCat}</p>
                   <p>Lesson Type: {service.providerId.lessonType}</p>
                   <p>Rate: {service.providerId.rate}</p>

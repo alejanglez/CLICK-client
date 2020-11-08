@@ -4,13 +4,13 @@ import "./App.css";
 import AnonRoute from "./components/auth/AnonRoute";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import { validateSession } from "./services/profileInformationService";
-import Login from "./views/User/Login";
+import Login from "./views/Public/Login";
 import Profile from "./views/User/Profile";
 import ProviderList from "./views/User/ProviderList";
 import SingleProvider from "./views/User/SingleProvider";
 import SingleUser from "./views/User/SingleUser";
 // import ProfilesFeed from "./views/User/ProfilesList";
-import Signup from "./views/User/Signup";
+import Signup from "./views/Public/Signup";
 import RequestedServices from "./views/User/RequestedServices";
 import EditProfile from "./views/User/EditProfile";
 import AcceptedServices from "./views/User/AcceptedServices";
@@ -213,7 +213,15 @@ class App extends React.Component {
               role={role}
               component={About}
             />
-
+            <PrivateRoute
+              exact
+              path={`/aboutClick`}
+              authenticated={authenticated}
+              authenticate={this.authenticate}
+              profileInformation={this.state.profileInformation}
+              role={role}
+              component={About}
+            />
             <PrivateRoute
               exact
               path={`/profile/editProfile`}

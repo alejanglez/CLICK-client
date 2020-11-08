@@ -28,7 +28,7 @@ class SingleProvider extends Component {
   render() {
     const { provider, userId } = this.state;
     return (
-      <div>
+      <div className="view text-center p-3 p-md-5 m-md-3">
         <Profile
           path={`/profile/list/:providerId`}
           exact

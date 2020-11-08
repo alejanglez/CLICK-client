@@ -59,7 +59,7 @@ class Review extends Component {
   render() {
     console.log("stateeee ", this.state);
     return (
-      <div className="container">
+      <div className="view text-center p-3 p-md-5 m-md-3">
         <h2>Requested Services list 📣</h2>
         {this.state.reviews.map((review) => {
           {

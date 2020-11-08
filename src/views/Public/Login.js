@@ -64,7 +64,7 @@ class Login extends React.Component {
   render() {
     const { email, password, errorMessage } = this.state;
     return (
-      <div>
+      <div className="view text-center p-3 p-md-5 m-md-3">
         {errorMessage !== "" && errorMessage}
         <form onSubmit={this.handleSubmit}>
           <label>Email: </label>
@@ -83,7 +83,10 @@ class Login extends React.Component {
             onChange={this.handleChange}
             required={true}
           />
-          <button type="submit"> Login </button>
+          <button className="general-btn" type="submit">
+            {" "}
+            Login{" "}
+          </button>
         </form>
       </div>
     );

@@ -4,6 +4,7 @@ import {
   getAllProviderAcceptedService,
   getAllUserAcceptedService,
 } from "../../services/servicesService";
+import "./RequestedServices.css";
 
 class AcceptedServices extends Component {
   state = {
@@ -49,13 +50,16 @@ class AcceptedServices extends Component {
   render() {
     console.log("stateeee on accepted ", this.state);
     return (
-      <div className="container">
-        <div>
-          <Link to={`/requested-services`}>Pending</Link>
+      <div className="view text-center p-3 p-md-5 m-md-3">
+        <div className="pending-accepted">
+          <Link className="link-requests" to={`/requested-services`}>
+            Pending
+          </Link>
           <p>|</p>
-          <Link to={`/accepted-services`}>Accepted</Link>
+          <Link className="link-requests accepted" to={`/accepted-services`}>
+            Accepted
+          </Link>
         </div>
-        <h2>Accepted Services list 📣</h2>
         {this.state.acceptedServices.map((service) => {
           return (
             <div className="card" key={service._id}>
@@ -76,7 +80,10 @@ class AcceptedServices extends Component {
                     </Link>
                   }
 
-                  <img src={service.providerImageUrl} />
+                  <img
+                    className="rounded img-thumbnail img-fluid profile-image"
+                    src={service.providerImageUrl}
+                  />
                   <p>Category: {service.serviceCat}</p>
                   <p>Lesson Type: {service.lessonType}</p>
                   <p>Rate: {service.rate}</p>
@@ -90,7 +97,10 @@ class AcceptedServices extends Component {
                     </p>
                   </Link>
 
-                  <img src={service.userImageUrl} />
+                  <img
+                    className="rounded img-thumbnail img-fluid"
+                    src={service.userImageUrl}
+                  />
                   <p>Category: {service.serviceCat}</p>
                   <p>Lesson Type: {service.lessonType}</p>
                   <p>Rate: {service.rate}</p>

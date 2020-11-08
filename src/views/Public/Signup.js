@@ -81,7 +81,7 @@ class Signup extends React.Component {
       errorMessage,
     } = this.state;
     return (
-      <div>
+      <div className="view text-center p-3 p-md-5 m-md-3">
         <Link to={`/login/${this.props.role}`}>Login instead</Link>
         {errorMessage !== "" && errorMessage}
         <AddImage
@@ -182,7 +182,10 @@ class Signup extends React.Component {
             onChange={this.handleChange}
             required={true}
           />
-          <button type="submit"> Sign up </button>
+          <button className="general-btn" type="submit">
+            {" "}
+            Sign up{" "}
+          </button>
         </form>
       </div>
     );

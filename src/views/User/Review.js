@@ -59,7 +59,7 @@ class Review extends Component {
   render() {
     console.log("stateeee ", this.state);
     return (
-      <div className="view text-center p-3 p-md-5 m-md-3">
+      <div className="container">
         <h2>Requested Services list 📣</h2>
         {this.state.reviews.map((review) => {
           {
@@ -67,7 +67,7 @@ class Review extends Component {
           let quant = Number(service.quantity); */
           }
           return (
-            console.log(review),
+            console.log("review", review),
             {
               /* <div className="card requestedCard" key={post._id}>
               <input type="hidden" name="userId" value={post.userId._id} />

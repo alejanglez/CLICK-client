@@ -17,6 +17,7 @@ import AcceptedServices from "./views/User/AcceptedServices";
 import NavBar from "./components/LayoutElements//NavBar";
 import About from "./views/Public/About";
 import Home from "./views/Public/Home";
+import MakeReview from "./views/User/MakeReview";
 
 class App extends React.Component {
   state = {
@@ -230,6 +231,15 @@ class App extends React.Component {
               profileInformation={this.state.profileInformation}
               role={role}
               component={EditProfile}
+            />
+            <PrivateRoute
+              exact
+              path={`/make-review`}
+              authenticated={authenticated}
+              authenticate={this.authenticate}
+              profileInformation={this.state.profileInformation}
+              role={role}
+              component={MakeReview}
             />
           </Switch>
         </BrowserRouter>

@@ -4,6 +4,7 @@ import {
   getAllProviderAcceptedService,
   getAllUserAcceptedService,
 } from "../../services/servicesService";
+import MakeReview from "./MakeReview";
 import "./RequestedServices.css";
 
 class AcceptedServices extends Component {
@@ -108,6 +109,7 @@ class AcceptedServices extends Component {
               )}
               <p>Quantity: {service.quantity}</p>
               <p>Total price:{service.totalPrice}</p>
+              <MakeReview role={this.state.role} service={service} />
             </div>
           );
         })}

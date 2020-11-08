@@ -5,20 +5,17 @@ class MakeReview extends Component {
   state = {
     author: this.props.role,
     comment: "",
-    rating: 0,
-    userId: "",
-    providerId: "",
+    rating: this.props.service.rate,
+    userId: this.props.service.userId,
+    providerId: this.props.service.providerId,
   };
   componentDidMount = () => {
-    console.log("proooooops req ", this.props);
+    console.log("proooooops make review ", this.props);
   };
 
-  handleMakePost = (event) => {
+  handleMakeReview = (event) => {
     event.preventDefault();
-    const { comment, rating } = this.state;
-    const author = this.props.role;
-    const userId = this.props.userId;
-    const providerId = this.props.profileInformation._id;
+    const { comment, rating, userId, providerId, author } = this.state;
     createNewReview(author, comment, rating, userId, providerId)
       .then((response) => {
         console.log(response);
@@ -43,10 +40,11 @@ class MakeReview extends Component {
 
   render() {
     const { comment, rating } = this.state;
+    console.log("state make review", this.state);
     return (
       <>
         <div className="card">
-          <form onSubmit={this.handleMakeRequest}>
+          <form onSubmit={this.handleMakeReview}>
             <label>What is your opinion sinner??</label>
             <input
               name="comment"

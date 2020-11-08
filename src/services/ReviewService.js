@@ -23,12 +23,12 @@ export const createNewReview = async (
 };
 
 export const getAllProviderReview = async (providerId) => {
-  const response = await service.get("/review/list/" + providerId);
+  const response = await service.get("/review/provider/list/" + providerId);
   return response;
 };
 
 export const getAllUserReview = async (userId) => {
-  const response = await service.get("/review/list/" + userId);
+  const response = await service.get("/review/user/list/" + userId);
   return response;
 };
 

@@ -4,7 +4,7 @@ import MakeRequest from "../../components/LayoutElements/MakeRequest";
 
 import { getSingleProviderprofile } from "../../services/profilesService";
 import Profile from "./Profile";
-import Review from "./Review";
+import Review from "../../components/LayoutElements/Review";
 
 class SingleProvider extends Component {
   state = {
@@ -35,12 +35,12 @@ class SingleProvider extends Component {
           component={Profile}
           profileInformation={provider}
         />
-        <Review
+        {/* <Review
           path={`/review/list/:providerId`}
           exact
           component={Review}
           profileInformation={provider}
-        />
+        /> */}
         <MakeRequest userId={userId} profileInformation={provider} />
       </div>
     );

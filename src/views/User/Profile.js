@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Review from "../../components/LayoutElements/Review";
 import "./Profile.css";
 
 const Profile = (props) => {
@@ -69,6 +70,13 @@ const Profile = (props) => {
           </>
         )}
       </div>
+      <Review
+        path={`/review/list/:providerId`}
+        exact
+        component={Review}
+        id={props.profileInformation._id}
+        role={role}
+      />
     </div>
   );
 };

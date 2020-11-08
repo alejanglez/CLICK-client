@@ -22,7 +22,7 @@ const Profile = (props) => {
   console.log("user id session", sessionUserId);
   console.log("user id ", _id);
   return (
-    <div className="view text-center p-3 p-md-5 m-md-3">
+    <div>
       <p hidden>{_id && _id}</p>
       <div className="profile-top" id="top-profile">
         <div className="image-profile">
@@ -45,28 +45,30 @@ const Profile = (props) => {
         </div>
       </div>
       <hr />
-      <h3>About</h3>
-      <p>{about && about}</p>
-      {role == "provider" && (
-        <>
-          {" "}
-          <a href={facebookUrl && facebookUrl}>Facebook</a>
-          <p>Lesson Type: {lessonType && lessonType}</p>
-          <p>Category: {serviceCat && serviceCat}</p>
-          <p>Rate: {rate && rate}</p>{" "}
-        </>
-      )}
+      <div className="profile-bottom  view text-center p-3 p-md-5 m-md-3">
+        <h3>About</h3>
+        <p>{about && about}</p>
+        {role == "provider" && (
+          <>
+            {" "}
+            <a href={facebookUrl && facebookUrl}>Facebook</a>
+            <p>Lesson Type: {lessonType && lessonType}</p>
+            <p>Category: {serviceCat && serviceCat}</p>
+            <p>Rate: {rate && rate}</p>{" "}
+          </>
+        )}
 
-      {sessionProviderId && _id == sessionProviderId._id && (
-        <>
-          <Link to={`/profile/editProfile`}>Edit Profile</Link>
-        </>
-      )}
-      {sessionUserId && _id == sessionUserId._id && (
-        <>
-          <Link to={`/profile/editProfile`}>Edit Profile</Link>
-        </>
-      )}
+        {sessionProviderId && _id == sessionProviderId._id && (
+          <>
+            <Link to={`/profile/editProfile`}>Edit Profile</Link>
+          </>
+        )}
+        {sessionUserId && _id == sessionUserId._id && (
+          <>
+            <Link to={`/profile/editProfile`}>Edit Profile</Link>
+          </>
+        )}
+      </div>
     </div>
   );
 };

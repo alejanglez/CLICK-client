@@ -9,5 +9,5 @@
 .profile-top {
   display: flex;
   justify-content: space-between;
-  margin: 5% 0;
+  background-color: aqua;
 }

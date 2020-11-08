@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {
   getAllProviderReview,
+  getAllUserReview,
   getSingleReview,
 } from "../../services/ReviewService";
 import MakeReview from "../../components/LayoutElements/MakeReview";
@@ -8,23 +9,21 @@ import MakeReview from "../../components/LayoutElements/MakeReview";
 class Review extends Component {
   state = {
     reviews: [],
-    author: this.props.role,
+    role: this.props.role,
     id: this.props.profileInformation._id,
   };
 
   componentDidMount = () => {
-    if ((this.state.role == "user") != this.state.author) {
+    if (this.state.role == "user") {
       this.fetchDataUser();
-      //here fech data when author is not user!!
-    } else if ((this.state.role == "provider") != this.state.author) {
+    } else if (this.state.role == "provider") {
       this.fetchDataProvider();
-      //here fech data when author is not provider!!
     }
   };
 
   fetchDataUser = () => {
     const { id } = this.state;
-    getAllUserAnswer(id)
+    getAllUserReview(id)
       .then((response) => {
         console.log("response list", response);
         this.setState({
@@ -36,7 +35,7 @@ class Review extends Component {
 
   fetchDataProvider = () => {
     const { id } = this.state;
-    getAllProviderPost(id)
+    getAllProviderReview(id)
       .then((response) => {
         console.log("response list", response);
         this.setState({
@@ -62,20 +61,22 @@ class Review extends Component {
     return (
       <div className="container">
         <h2>Requested Services list 📣</h2>
-        {this.state.requestedServices.map((post) => {
+        {this.state.reviews.map((review) => {
           {
             /* let rate = Number(service.providerId.rate);
           let quant = Number(service.quantity); */
           }
           return (
-            <div className="card requestedCard" key={post._id}>
+            console.log(review),
+            {
+              /* <div className="card requestedCard" key={post._id}>
               <input type="hidden" name="userId" value={post.userId._id} />
               <input
                 type="hidden"
                 name="providerId"
                 value={post.providerId._id}
               />
-              {/* {this.state.role == "user" ? (
+              {this.state.role == "user" ? (
                 <>
                   <p>
                     Name: {service.providerId.firstName}{" "}
@@ -96,14 +97,12 @@ class Review extends Component {
                   <p>Lesson Type: {service.providerId.lessonType}</p>
                   <p>Rate: {service.providerId.rate}</p>
                 </>
-              )} */}
-              {/* <p className="quantity">Quantity: {service.quantity}</p>
-              <p>Total price: {this.handleTotalPrice(rate, quant)}</p> */}
-              {/* <MakeAcceptedRequest
-                requestedService={service}
-                totalPrice={this.handleTotalPrice(rate, quant)}
-              /> */}
-            </div>
+              )}
+              <p className="quantity">Quantity: {service.quantity}</p>
+            
+              
+            </div>*/
+            }
           );
         })}
       </div>

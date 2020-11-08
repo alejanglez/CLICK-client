@@ -19,7 +19,7 @@ class MakeReview extends Component {
     const author = this.props.role;
     const userId = this.props.userId;
     const providerId = this.props.profileInformation._id;
-    createNewPost(author, comment, rating, userId, providerId)
+    createNewReview(author, comment, rating, userId, providerId)
       .then((response) => {
         console.log(response);
         this.setState({

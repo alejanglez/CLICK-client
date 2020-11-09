@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Link, Switch } from "react-router-dom";
+import "./fonts/Britanica_WOFF/WOFF/BritanicaVariable-Regular.woff";
 import "./App.css";
 import AnonRoute from "./components/auth/AnonRoute";
 import PrivateRoute from "./components/auth/PrivateRoute";

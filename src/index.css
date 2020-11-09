@@ -1,13 +1,28 @@
+@font-face {
+  /*  
+  font-family: "Britanica-Black";
+  src: url("/fonts/Britanica_WOFF/WOFF/BritanicaVariable-Black.woff");
+  font-family: "Britanica-Bold";
+  src: url("/fonts/Britanica_WOFF/WOFF/BritanicaVariable-Bold.woff");
+  font-family: "Britanica-ExtraBold";
+  src: url("/fonts/Britanica_WOFF/WOFF/BritanicaVariable-ExtraBold.woff");
+  font-family: "Britanica-Heavy";
+  src: url("/fonts/Britanica_WOFF/WOFF/BritanicaVariable-Heavy.woff");
+  font-family: "Britanica-Light";
+  src: url("/fonts/Britanica_WOFF/WOFF/BritanicaVariable-Light.woff");
+  font-family: "Britanica-Thin";
+  src: url("/fonts/Britanica_WOFF/WOFF/BritanicaVariable-Thin.woff"); */
+  font-family: "Britanica-Regular";
+  src: url("/src/fonts/Britanica_WOFF/WOFF/BritanicaVariable-Regular.woff");
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Britanica-Regular";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: "Britanica-Regular";
 }

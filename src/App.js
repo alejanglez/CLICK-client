@@ -18,6 +18,7 @@ import NavBar from "./components/LayoutElements//NavBar";
 import About from "./views/Public/About";
 import Home from "./views/Public/Home";
 import MakeReview from "./views/User/MakeReview";
+import SingleRequest from "./views/User/SingleRequest";
 
 class App extends React.Component {
   state = {
@@ -177,6 +178,14 @@ class App extends React.Component {
               authenticated={authenticated}
               role={role}
               component={RequestedServices}
+            />
+            <PrivateRoute
+              exact
+              path={`/requests/test`}
+              profileInformation={this.state.profileInformation}
+              authenticated={authenticated}
+              role={role}
+              component={SingleRequest}
             />
             <PrivateRoute
               exact

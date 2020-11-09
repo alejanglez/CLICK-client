@@ -79,3 +79,8 @@ export const getSingleAcceptedService = async (acceptedServiceId) => {
   const response = await service.get("/accepted" + acceptedServiceId);
   return response;
 };
+
+export const getSingleRequestedService = async (requestedServiceId) => {
+  const response = await service.get("/requested/" + requestedServiceId);
+  return response;
+};

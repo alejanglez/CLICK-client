@@ -25,7 +25,7 @@ const PrivateRoute = ({
             authenticated={authenticated}
           />
         ) : (
-          <Redirect to="/" />
+          <Redirect to="/profile" />
         )
       }
       {...rest}

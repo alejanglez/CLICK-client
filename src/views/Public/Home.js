@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
+import "./styles.css";
+import "./styles.scss";
 
 class Home extends React.Component {
   state = {
@@ -16,15 +18,24 @@ class Home extends React.Component {
         {!authenticated && (
           <div className="home">
             <div id="emojis">
-              <div id="heart">
-                <img
+              <div id="emojis">
+                <span id="heart">
+                  <img
+                    class="logo"
+                    src="./logohome.png"
+                    width="100"
+                    height="100"
+                    alt="Logo"
+                  />
+                </span>
+              </div>
+              {/* <img
                   class="logo"
                   src="./logohome.png"
                   width="100"
                   height="100"
                   alt="Logo"
-                />
-              </div>
+                /> */}
             </div>
             <h2>Welcome to Click App</h2>
             <p>

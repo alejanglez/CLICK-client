@@ -15,7 +15,7 @@ export const getSingleProviderprofile = async (providerId) => {
 };
 
 export const getSingleUserprofile = async (userId) => {
-  const response = await service.get("/provider/profile/list/" + userId);
+  const response = await service.get("/user/profile/list/" + userId);
   return response;
 };
 

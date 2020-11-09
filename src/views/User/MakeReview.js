@@ -3,11 +3,11 @@ import { createNewReview } from "../../services/ReviewService";
 
 class MakeReview extends Component {
   state = {
-    author: this.props.role,
+    author: this.props.location.state.role,
     comment: "",
-    rating: this.props.service.rate,
-    userId: this.props.service.userId,
-    providerId: this.props.service.providerId,
+    rating: this.props.location.state.service.rate,
+    userId: this.props.location.state.service.userId,
+    providerId: this.props.location.state.service.providerId,
   };
   componentDidMount = () => {
     console.log("proooooops make review ", this.props);
@@ -26,6 +26,7 @@ class MakeReview extends Component {
           userId: providerId,
           providerId: providerId,
         });
+        this.props.history.push(`/accepted-services`);
       })
       .catch((err) => console.log("error on handle make request", err));
   };

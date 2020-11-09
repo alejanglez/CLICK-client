@@ -6,8 +6,6 @@ import {
 import MakeAcceptedRequest from "../../components/LayoutElements/MakeAcceptedRequest";
 import { Link } from "react-router-dom";
 import "./RequestedServices.css";
-import PrivateRoute from "../../components/auth/PrivateRoute";
-import SingleRequest from "./SingleRequest";
 
 class RequestedServices extends Component {
   state = {
@@ -78,77 +76,94 @@ class RequestedServices extends Component {
           let quant = Number(service.quantity);
           return (
             <div className="card requestedCard" key={service._id}>
-              <input type="hidden" name="userId" value={service.userId._id} />
-              <input
-                type="hidden"
-                name="providerId"
-                value={service.providerId._id}
-              />
-              {this.state.role == "user" ? (
+              {service.decline && role === "user" && <p>service declined</p>}
+              {!service.decline && (
                 <>
-                  <p>
-                    Name: {service.providerId.firstName}{" "}
-                    {service.providerId.lastName}
-                  </p>
-                  {service.providerId.imageUrl ? (
-                    <img
-                      className="rounded img-thumbnail img-fluid"
-                      src={service.providerId.imageUrl}
-                    />
+                  {" "}
+                  <input
+                    type="hidden"
+                    name="userId"
+                    value={service.userId._id}
+                  />
+                  <input
+                    type="hidden"
+                    name="providerId"
+                    value={service.providerId._id}
+                  />
+                  {this.state.role == "user" ? (
+                    <>
+                      <p>
+                        Name: {service.providerId.firstName}{" "}
+                        {service.providerId.lastName}
+                      </p>
+                      {service.providerId.imageUrl ? (
+                        <img
+                          className="rounded img-thumbnail img-fluid"
+                          src={service.providerId.imageUrl}
+                        />
+                      ) : (
+                        <img
+                          className="rounded img-thumbnail img-fluid profile-image"
+                          src="./providerAvatar.png"
+                        />
+                      )}
+
+                      <p>Category: {service.providerId.serviceCat}</p>
+                      <p>Lesson Type: {service.providerId.lessonType}</p>
+                      <p className="rate">Rate: {service.providerId.rate}</p>
+                    </>
                   ) : (
-                    <img
-                      className="rounded img-thumbnail img-fluid profile-image"
-                      src="./providerAvatar.png"
+                    <>
+                      <p>
+                        Name: {service.userId.firstName}{" "}
+                        {service.userId.lastName}
+                      </p>
+
+                      {service.userId.imageUrl ? (
+                        <img
+                          className="rounded img-thumbnail img-fluid"
+                          src={service.userId.imageUrl}
+                        />
+                      ) : (
+                        <img
+                          className="rounded img-thumbnail img-fluid profile-image"
+                          src="./userAvatar.png"
+                        />
+                      )}
+                      <p>Category: {service.providerId.serviceCat}</p>
+                      <p>Lesson Type: {service.providerId.lessonType}</p>
+                      <p>Rate: {service.providerId.rate}</p>
+                    </>
+                  )}
+                  <p className="quantity">Quantity: {service.quantity}</p>
+                  <p>Total price: {this.handleTotalPrice(rate, quant)}</p>
+                  {role === "provider" && (
+                    <MakeAcceptedRequest
+                      requestedService={service}
+                      totalPrice={this.handleTotalPrice(rate, quant)}
                     />
                   )}
-
-                  <p>Category: {service.providerId.serviceCat}</p>
-                  <p>Lesson Type: {service.providerId.lessonType}</p>
-                  <p className="rate">Rate: {service.providerId.rate}</p>
-                </>
-              ) : (
-                <>
-                  <p>
-                    Name: {service.userId.firstName} {service.userId.lastName}
-                  </p>
-
-                  {service.userId.imageUrl ? (
-                    <img
-                      className="rounded img-thumbnail img-fluid"
-                      src={service.userId.imageUrl}
-                    />
-                  ) : (
-                    <img
-                      className="rounded img-thumbnail img-fluid profile-image"
-                      src="./userAvatar.png"
-                    />
-                  )}
-                  <p>Category: {service.providerId.serviceCat}</p>
-                  <p>Lesson Type: {service.providerId.lessonType}</p>
-                  <p>Rate: {service.providerId.rate}</p>
+                  {role === "user" && <p>Waiting...</p>}
+                  {role === "provider" && (
+                    <Link
+                      to={{
+                        pathname: `/requests/details`,
+                        state: {
+                          requestDetails: service,
+                          role: role,
+                        },
+                      }}
+                    >
+                      Decline
+                    </Link>
+                  )}{" "}
                 </>
               )}
-              <p className="quantity">Quantity: {service.quantity}</p>
-              <p>Total price: {this.handleTotalPrice(rate, quant)}</p>
-              {role === "provider" && (
-                <MakeAcceptedRequest
-                  requestedService={service}
-                  totalPrice={this.handleTotalPrice(rate, quant)}
-                />
-              )}
-              {role === "user" && <p>Waiting...</p>}
-              <Link
-                to={{
-                  pathname: `/requests/test`,
-                  state: {
-                    requestDetails: service,
-                  },
-                }}
-              >
-                Click here
-              </Link>
             </div>
           );
+          {
+            /* return ends here */
+          }
         })}
       </div>
     );

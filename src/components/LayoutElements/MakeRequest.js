@@ -9,6 +9,8 @@ class MakeRequest extends Component {
   };
   componentDidMount = () => {
     console.log("proooooops req ", this.props);
+
+    console.log("proooooops req state ", this.params);
   };
 
   handleMakeRequest = (event) => {

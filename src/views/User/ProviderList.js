@@ -89,6 +89,13 @@ class ProviderList extends Component {
             return (
               <div className="card" key={provider._id}>
                 {<Link to={`/profile/list/` + provider._id}>Details</Link>}
+
+                {!provider.imageUrl && (
+                  <img
+                    className="rounded img-thumbnail img-fluid profile-image"
+                    src="/public/providerAvatar.png"
+                  />
+                )}
                 <img
                   className="card-img-top cardPicture"
                   src={provider.imageUrl}

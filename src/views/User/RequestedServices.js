@@ -6,6 +6,8 @@ import {
 import MakeAcceptedRequest from "../../components/LayoutElements/MakeAcceptedRequest";
 import { Link } from "react-router-dom";
 import "./RequestedServices.css";
+import PrivateRoute from "../../components/auth/PrivateRoute";
+import SingleRequest from "./SingleRequest";
 
 class RequestedServices extends Component {
   state = {
@@ -88,10 +90,18 @@ class RequestedServices extends Component {
                     Name: {service.providerId.firstName}{" "}
                     {service.providerId.lastName}
                   </p>
-                  <img
-                    className="rounded img-thumbnail img-fluid"
-                    src={service.providerId.imageUrl}
-                  />
+                  {service.providerId.imageUrl ? (
+                    <img
+                      className="rounded img-thumbnail img-fluid"
+                      src={service.providerId.imageUrl}
+                    />
+                  ) : (
+                    <img
+                      className="rounded img-thumbnail img-fluid profile-image"
+                      src="./providerAvatar.png"
+                    />
+                  )}
+
                   <p>Category: {service.providerId.serviceCat}</p>
                   <p>Lesson Type: {service.providerId.lessonType}</p>
                   <p className="rate">Rate: {service.providerId.rate}</p>
@@ -101,10 +111,18 @@ class RequestedServices extends Component {
                   <p>
                     Name: {service.userId.firstName} {service.userId.lastName}
                   </p>
-                  <img
-                    className="rounded img-thumbnail img-fluid"
-                    src={service.userId.imageUrl}
-                  />
+
+                  {service.userId.imageUrl ? (
+                    <img
+                      className="rounded img-thumbnail img-fluid"
+                      src={service.userId.imageUrl}
+                    />
+                  ) : (
+                    <img
+                      className="rounded img-thumbnail img-fluid profile-image"
+                      src="./userAvatar.png"
+                    />
+                  )}
                   <p>Category: {service.providerId.serviceCat}</p>
                   <p>Lesson Type: {service.providerId.lessonType}</p>
                   <p>Rate: {service.providerId.rate}</p>
@@ -119,6 +137,16 @@ class RequestedServices extends Component {
                 />
               )}
               {role === "user" && <p>Waiting...</p>}
+              <Link
+                to={{
+                  pathname: `/requests/test`,
+                  state: {
+                    requestDetails: service,
+                  },
+                }}
+              >
+                Click here
+              </Link>
             </div>
           );
         })}

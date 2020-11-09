@@ -13,7 +13,7 @@
   font-family: "Britanica-Thin";
   src: url("/fonts/Britanica_WOFF/WOFF/BritanicaVariable-Thin.woff"); */
   font-family: "Britanica-Regular";
-  src: url("/src/fonts/Britanica_WOFF/WOFF/BritanicaVariable-Regular.woff");
+  src: url("./fonts/Britanica_WOFF/WOFF/BritanicaVariable-Regular.woff");
 }
 
 body {

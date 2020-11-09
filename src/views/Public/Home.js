@@ -15,6 +15,17 @@ class Home extends React.Component {
       <div className="view text-center p-3 p-md-5 m-md-3">
         {!authenticated && (
           <div className="home">
+            <div id="emojis">
+              <div id="heart">
+                <img
+                  class="logo"
+                  src="./logohome.png"
+                  width="100"
+                  height="100"
+                  alt="Logo"
+                />
+              </div>
+            </div>
             <h2>Welcome to Click App</h2>
             <p>
               To start using the app, choose if you are a familiy looking for a
@@ -26,7 +37,7 @@ class Home extends React.Component {
                   className="general-btn login"
                   onClick={() => this.props.changeRole("user")}
                 >
-                  I want to request services
+                  FAMILY
                 </button>
               </Link>
 
@@ -35,7 +46,7 @@ class Home extends React.Component {
                   className="general-btn login"
                   onClick={() => this.props.changeRole("provider")}
                 >
-                  I am a service provider
+                  PROFESSIONAL
                 </button>
               </Link>
             </div>

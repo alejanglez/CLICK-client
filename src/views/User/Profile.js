@@ -27,6 +27,18 @@ const Profile = (props) => {
       <p hidden>{_id && _id}</p>
       <div className="profile-top" id="top-profile">
         <div className="image-profile">
+          {!imageUrl && role === "user" && (
+            <img
+              className="rounded img-fluid profile-image"
+              src="../userAvatar.png"
+            />
+          )}
+          {!imageUrl && role === "provider" && (
+            <img
+              className="rounded img-fluid profile-image"
+              src="../providerAvatar.png"
+            />
+          )}
           <img
             className="rounded img-thumbnail img-fluid profile-image"
             src={imageUrl && imageUrl}

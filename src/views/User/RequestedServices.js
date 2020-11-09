@@ -88,6 +88,13 @@ class RequestedServices extends Component {
                     Name: {service.providerId.firstName}{" "}
                     {service.providerId.lastName}
                   </p>
+                  {!service.providerId.imageUrl && (
+                    <img
+                      className="rounded img-thumbnail img-fluid profile-image"
+                      src="./providerAvatar.png"
+                    />
+                  )}
+
                   <img
                     className="rounded img-thumbnail img-fluid"
                     src={service.providerId.imageUrl}
@@ -105,6 +112,12 @@ class RequestedServices extends Component {
                     className="rounded img-thumbnail img-fluid"
                     src={service.userId.imageUrl}
                   />
+                  {service.userId.imageUrl && (
+                    <img
+                      className="rounded img-thumbnail img-fluid profile-image"
+                      src="./userAvatar.png"
+                    />
+                  )}
                   <p>Category: {service.providerId.serviceCat}</p>
                   <p>Lesson Type: {service.providerId.lessonType}</p>
                   <p>Rate: {service.providerId.rate}</p>

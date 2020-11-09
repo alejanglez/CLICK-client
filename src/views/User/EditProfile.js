@@ -1,12 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import AddImage from "../../components/LayoutElements/AddImage";
-import {
-  editProfile,
-  uploadImage,
-  profile,
-  signup,
-} from "../../services/profileInformationService";
+import ChangePassword from "../../components/LayoutElements/ChangePassword";
+
+import { editProfile } from "../../services/profileInformationService";
 
 class EditProfile extends React.Component {
   state = {
@@ -24,6 +20,7 @@ class EditProfile extends React.Component {
     errorMessage: "",
     role: this.props.role,
     id: this.props.profileInformation._id,
+    showComponent: false,
   };
 
   handleChange = (event) => {
@@ -31,6 +28,12 @@ class EditProfile extends React.Component {
     console.log("role props edit ", this.props.role);
     this.setState({
       [name]: value,
+    });
+  };
+
+  handleChangePassword = () => {
+    this.setState({
+      showComponent: !this.state.showComponent,
     });
   };
 
@@ -86,12 +89,17 @@ class EditProfile extends React.Component {
       rate,
       facebookUrl,
       errorMessage,
+      id,
     } = this.state;
     console.log("props edit", this.props);
     return (
       <div className="view text-center p-3 p-md-5 m-md-3">
         {/* <Link to={`/login/${this.props.role}`}>Login instead</Link> */}
         {/* {errorMessage !== "" && errorMessage} */}
+        <button onClick={this.handleChangePassword}>hello</button>
+        {this.state.showComponent ? (
+          <ChangePassword role={this.props.role} id={id} />
+        ) : null}
         <AddImage
           role={this.props.role}
           addImage={(imageUrl) => this.setState({ imageUrl })}

@@ -10,6 +10,7 @@ class SingleProvider extends Component {
   state = {
     provider: {},
     userId: "",
+    showComponent: false,
   };
 
   componentDidMount = () => {
@@ -22,6 +23,12 @@ class SingleProvider extends Component {
       this.setState({
         provider: response.data,
       });
+    });
+  };
+
+  handleMakeRequestComponent = () => {
+    this.setState({
+      showComponent: !this.state.showComponent,
     });
   };
 
@@ -41,7 +48,12 @@ class SingleProvider extends Component {
           component={Review}
           profileInformation={provider}
         /> */}
-        <MakeRequest userId={userId} profileInformation={provider} />
+        <button onClick={this.handleMakeRequestComponent}>
+          Make a request
+        </button>
+        {this.state.showComponent ? (
+          <MakeRequest userId={userId} profileInformation={provider} />
+        ) : null}
       </div>
     );
   }

@@ -1,27 +1,37 @@
 import React, { Component } from "react";
-import { Link, Route, Router } from "react-router-dom";
-import PrivateRoute from "../../components/auth/PrivateRoute";
 
-import { getSingleProviderprofile } from "../../services/profilesService";
 import { getSingleRequestedService } from "../../services/servicesService";
-import Profile from "./Profile";
+import { declineSingleRequestedService } from "../../services/servicesService";
 
 class SingleRequest extends Component {
   state = {
     service: this.props.location.state.requestDetails,
     requestId: this.props.location.state.requestDetails._id,
+    role: this.props.role,
   };
 
   componentDidMount = () => {
     const { requestId } = this.state;
+    console.log("props single request", this.props);
+    console.log("state single request", this.state);
 
     this.setState({ userId: this.props.profileInformation._id });
     getSingleRequestedService(requestId).then((response) => {
       this.setState({
         service: response.data.foundRequestedService,
       });
-      console.log("response req ", response.data.foundRequestedService);
     });
+  };
+
+  handleDecline = (event) => {
+    event.preventDefault();
+    const { requestId } = this.state;
+    declineSingleRequestedService(requestId)
+      .then((response) => {
+        console.log("decline response", response);
+        this.props.history.push(`/requested-services`);
+      })
+      .catch((err) => console.log("error on handle make request", err));
   };
 
   handleTotalPrice = (rate, quantity) => {
@@ -44,6 +54,14 @@ class SingleRequest extends Component {
             name="providerId"
             value={service.providerId._id}
           />
+          {this.state.role === "provider" && (
+            <>
+              <p>Are you sure you want to decline?</p>
+              <button onClick={this.handleDecline}>
+                Yes, I want to decline
+              </button>
+            </>
+          )}
           {this.state.role == "user" ? (
             <>
               <p>

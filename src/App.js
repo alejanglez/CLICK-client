@@ -182,7 +182,7 @@ class App extends React.Component {
             />
             <PrivateRoute
               exact
-              path={`/requests/test`}
+              path={`/requests/details`}
               profileInformation={this.state.profileInformation}
               authenticated={authenticated}
               role={role}

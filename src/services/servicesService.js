@@ -75,12 +75,19 @@ export const getAllUserAcceptedService = async (userId) => {
   return response;
 };
 
-export const getSingleAcceptedService = async (acceptedServiceId) => {
-  const response = await service.get("/accepted" + acceptedServiceId);
-  return response;
-};
+// export const getSingleAcceptedService = async (acceptedServiceId) => {
+//   const response = await service.get("/accepted" + acceptedServiceId);
+//   return response;
+// };
 
 export const getSingleRequestedService = async (requestedServiceId) => {
   const response = await service.get("/requested/" + requestedServiceId);
+  return response;
+};
+
+export const declineSingleRequestedService = async (requestedServiceId) => {
+  const response = await service.put(
+    "/requested/" + requestedServiceId + "/edit"
+  );
   return response;
 };

@@ -109,7 +109,17 @@ class AcceptedServices extends Component {
               )}
               <p>Quantity: {service.quantity}</p>
               <p>Total price:{service.totalPrice}</p>
-              <MakeReview role={this.state.role} service={service} />
+              <Link
+                to={{
+                  pathname: `/make-review`,
+                  state: {
+                    role: this.state.role,
+                    service: service,
+                  },
+                }}
+              >
+                Make review
+              </Link>
             </div>
           );
         })}

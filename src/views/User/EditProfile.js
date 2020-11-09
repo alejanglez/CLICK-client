@@ -12,7 +12,6 @@ class EditProfile extends React.Component {
   state = {
     firstName: this.props.profileInformation.firstName,
     email: this.props.profileInformation.email,
-    password: this.props.profileInformation.password,
     lastName: this.props.profileInformation.lastName,
     address: this.props.profileInformation.address,
     about: this.props.profileInformation.about,
@@ -29,7 +28,7 @@ class EditProfile extends React.Component {
 
   handleChange = (event) => {
     const { name, value } = event.target;
-    console.log("role props signup ", this.props.role);
+    console.log("role props edit ", this.props.role);
     this.setState({
       [name]: value,
     });
@@ -37,6 +36,7 @@ class EditProfile extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    const { role } = this.state;
     editProfile(
       {
         firstName: this.state.firstName,
@@ -57,8 +57,14 @@ class EditProfile extends React.Component {
     )
       .then((response) =>
         response
-          ? (this.props.authenticate(response.user, localStorage.role),
-            this.props.history.push(`/profile`))
+          ? ((role === "user" &&
+              this.props.authenticate(response.user, localStorage.role),
+            console.log("response user", response),
+            this.props.history.push(`/profile`)),
+            (role === "provider" &&
+              this.props.authenticate(response.provider, localStorage.role),
+            console.log("response provider", response),
+            this.props.history.push(`/profile`)))
           : this.setState({
               errorMessage: response.errorMessage,
             })
@@ -72,7 +78,6 @@ class EditProfile extends React.Component {
       firstName,
       lastName,
       email,
-      password,
       address,
       about,
       imageUrl,
@@ -82,7 +87,6 @@ class EditProfile extends React.Component {
       facebookUrl,
       errorMessage,
     } = this.state;
-    console.log("props edit", this.props);
     console.log("props edit", this.props);
     return (
       <div className="view text-center p-3 p-md-5 m-md-3">

@@ -20,7 +20,7 @@ body,
 html {
   height: 100%;
   width: 100%;
-  margin: 0;
+  margin: 0 0 70% 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Britanica-Regular" !important;
@@ -29,10 +29,6 @@ html {
 form {
   display: flex;
   flex-direction: column;
-}
-
-.app {
-  padding-bottom: 20px;
 }
 
 p,
@@ -57,6 +53,24 @@ h5 {
   color: white;
   font-weight: bold;
   margin: 10px 0;
+}
+
+.changePw {
+  margin-bottom: 2%;
+  text-align: left;
+}
+
+.login-signup-p {
+  text-align: left;
+  margin-top: 5%;
+  line-height: 10px;
+}
+
+.link-react {
+  color: inherit;
+  text-decoration: inherit;
+  font-weight: bold;
+  color: rgba(252, 3, 244);
 }
 
 /* test */

@@ -61,7 +61,7 @@ class Review extends Component {
     console.log("props review ", this.props);
     return (
       <div className="container">
-        <h2>Requested Services list 📣</h2>
+        <h2>My reviews</h2>
         {this.state.reviews.map((review) => {
           return (
             <div key={review._id}>

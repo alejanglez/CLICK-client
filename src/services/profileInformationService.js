@@ -26,6 +26,18 @@ export const editProfile = (profileInformation, role, id) => {
     .catch((err) => err);
 };
 
+export const editPassword = async (oldPassword, password, role, id) => {
+  const updatedPassword = {
+    oldPassword,
+    password,
+  };
+  const response = await service.put(
+    `/${role}/profile/${id}/editPassword`,
+    updatedPassword
+  );
+  return response;
+};
+
 // export const editUserProfile = (profileInformation, userId) => {
 //   return service
 //     .put(userId + "/editProfile", { ...profileInformation })

@@ -39,10 +39,14 @@ const Profile = (props) => {
               src="../providerAvatar.png"
             />
           )}
-          <img
-            className="rounded img-thumbnail img-fluid profile-image"
-            src={imageUrl && imageUrl}
-          />
+          {imageUrl && (
+            <div
+              className="profilePic"
+              style={{
+                backgroundImage: `url(${imageUrl})`,
+              }}
+            ></div>
+          )}
         </div>
         <div>
           <h2>

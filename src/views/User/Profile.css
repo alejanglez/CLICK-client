@@ -8,4 +8,15 @@
 .profile-top {
   display: flex;
   justify-content: space-between;
+  padding: 10%;
+  background-color: wheat;
+}
+
+.profilePic {
+  height: 180px;
+  width: 140px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
 }

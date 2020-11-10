@@ -9,21 +9,30 @@ export const validateSession = (accessToken, role) => {
   return service
     .get(`/${role}/session/${accessToken}`)
     .then((response) => response.data)
-    .catch((err) => err);
+    .catch((err) => {
+      console.log(err);
+      return err;
+    });
 };
 
 export const signup = (profileInformation, role) => {
   return service
     .post(`/${role}/signup`, { ...profileInformation })
     .then((response) => response.data)
-    .catch((err) => err);
+    .catch((err) => {
+      console.log(err);
+      return err;
+    });
 };
 
 export const editProfile = (profileInformation, role, id) => {
   return service
     .put(`/${role}/profile/${id}/edit`, { ...profileInformation })
     .then((response) => response.data)
-    .catch((err) => err);
+    .catch((err) => {
+      console.log(err);
+      return err;
+    });
 };
 
 export const editPassword = async (oldPassword, password, role, id) => {

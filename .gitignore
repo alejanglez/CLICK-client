@@ -23,11 +23,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-<<<<<<< HEAD
-#fonts
 fonts
 src/fonts/
-=======
-fonts
-src/fonts/
->>>>>>> dcab868b27d2edb49755efaa45d729e4914ae31d

@@ -121,8 +121,8 @@ class NavBar extends React.Component {
                 to={`/requested-services`}
               >
                 <svg
-                  width="2em"
-                  height="2em"
+                  width="1em"
+                  height="1em"
                   viewBox="0 0 16 16"
                   className="bi bi-calendar-check-fill"
                   fill="white"

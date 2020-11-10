@@ -93,13 +93,24 @@ class EditProfile extends React.Component {
     } = this.state;
     console.log("props edit", this.props);
     return (
-      <div className="view text-center p-3 p-md-5 m-md-3">
+      <div className="view text-center p-3 p-md-5 m-md-3 paddingComp">
         {/* <Link to={`/login/${this.props.role}`}>Login instead</Link> */}
         {/* {errorMessage !== "" && errorMessage} */}
-        <button onClick={this.handleChangePassword}>hello</button>
+        <div className="align-left changePw">
+          <h6>
+            <strong>Do you want to change your password?</strong>
+          </h6>
+          <button className="btn btn-light" onClick={this.handleChangePassword}>
+            Changing password only
+          </button>
+        </div>
+        <hr />
         {this.state.showComponent ? (
           <ChangePassword role={this.props.role} id={id} />
         ) : null}
+        <h6 className="changePw">
+          <strong>Edit your profile details below</strong>
+        </h6>
         <AddImage
           role={this.props.role}
           addImage={(imageUrl) => this.setState({ imageUrl })}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import { editPassword } from "../../services/profileInformationService";
 
 class ChangePassword extends React.Component {
@@ -7,6 +8,7 @@ class ChangePassword extends React.Component {
     newPassword: "",
     id: this.props.id,
     role: this.props.role,
+    redirect: false,
   };
 
   handleChange = (event) => {
@@ -17,12 +19,24 @@ class ChangePassword extends React.Component {
     });
   };
 
+  setRedirect = () => {
+    this.setState({
+      redirect: true,
+    });
+  };
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to={`/profile`} />;
+    }
+  };
+
   handleChangePassword = (event) => {
     event.preventDefault();
     const { role, id, oldPassword, newPassword } = this.state;
     editPassword(oldPassword, newPassword, role, id)
       .then((response) => {
         console.log("change pw response ", response);
+        this.setRedirect();
       })
       .catch((err) => console.log("err changing pw", err));
   };
@@ -32,6 +46,8 @@ class ChangePassword extends React.Component {
     console.log("props password", this.props);
     return (
       <div className="view text-center p-3 p-md-5 m-md-3">
+        {this.renderRedirect()}
+
         <form onSubmit={this.handleChangePassword}>
           <label>confirm old password: </label>
           <input

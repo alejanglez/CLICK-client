@@ -4,7 +4,7 @@ import {
   getAllUserRequests,
 } from "../../services/servicesService";
 import MakeAcceptedRequest from "../../components/LayoutElements/MakeAcceptedRequest";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import "./RequestedServices.css";
 
 class RequestedServices extends Component {

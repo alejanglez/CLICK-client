@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import { createNewRequestAcceptedService } from "../../services/servicesService";
 
 class MakeAcceptedRequest extends Component {
@@ -17,6 +18,7 @@ class MakeAcceptedRequest extends Component {
     userId: this.props.requestedService.userId._id,
     providerId: this.props.requestedService.providerId._id,
     totalPrice: this.props.totalPrice,
+    redirect: false,
   };
   componentDidMount = () => {
     console.log("proooooops ace ", this.props);
@@ -76,6 +78,7 @@ class MakeAcceptedRequest extends Component {
           userId: userId,
           providerId: providerId,
         });
+        this.setRedirect();
       })
       .catch((err) => console.log("error on handle make request", err));
   };
@@ -88,10 +91,23 @@ class MakeAcceptedRequest extends Component {
     });
   };
 
+  setRedirect = () => {
+    this.setState({
+      redirect: true,
+    });
+  };
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to={`/accepted-services`} />;
+    }
+  };
+
   render() {
     return (
       <>
         <div className="card">
+          {this.renderRedirect()}
+
           <form onSubmit={this.handleAcceptedRequest}>
             <button type="submit">Accept</button>
           </form>

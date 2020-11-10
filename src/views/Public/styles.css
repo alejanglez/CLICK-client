@@ -1,25 +1,25 @@
 span {
-  font-size: 3.5em;
+  font-size: 2.5em;
   cursor: pointer;
   display: inline-block;
 }
 
 #heart {
   -webkit-animation: heart 1.3s infinite;
-          animation: heart 1.3s infinite;
+  animation: heart 1.3s infinite;
   -webkit-transform-origin: 50% 50% 0;
-          transform-origin: 50% 50% 0;
+  transform-origin: 50% 50% 0;
 }
 
 @-webkit-keyframes heart {
   0%,
   100% {
     -webkit-transform: scale(0.9);
-            transform: scale(0.9);
+    transform: scale(0.9);
   }
   50% {
     -webkit-transform: scale(1.1);
-            transform: scale(1.1);
+    transform: scale(1.1);
   }
 }
 
@@ -27,11 +27,11 @@ span {
   0%,
   100% {
     -webkit-transform: scale(0.9);
-            transform: scale(0.9);
+    transform: scale(0.9);
   }
   50% {
     -webkit-transform: scale(1.1);
-            transform: scale(1.1);
+    transform: scale(1.1);
   }
 }
 /*# sourceMappingURL=styles.css.map */

@@ -21,7 +21,16 @@
   font-weight: bold;
 }
 
-.gear {
-  color: white;
-  background-color: white;
+.navbar-toggler-collapsed {
+  width: 10px;
+  height: 10px;
 }
+
+.navbar-toggler-icon {
+  width: 0.6em !important;
+  height: 0.6em !important;
+}
+
+/* .paddingComp {
+  margin-bottom: 100px;
+} */

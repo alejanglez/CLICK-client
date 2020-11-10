@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import { createNewRequest } from "../../services/servicesService";
 
 class MakeRequest extends Component {
@@ -6,6 +7,7 @@ class MakeRequest extends Component {
     quantity: 0,
     userId: "",
     providerId: "",
+    redirect: false,
   };
   componentDidMount = () => {
     console.log("proooooops req ", this.props);
@@ -26,6 +28,7 @@ class MakeRequest extends Component {
           userId: userId,
           providerId: providerId,
         });
+        this.setRedirect();
       })
       .catch((err) => console.log("error on handle make request", err));
   };
@@ -38,11 +41,23 @@ class MakeRequest extends Component {
     });
   };
 
+  setRedirect = () => {
+    this.setState({
+      redirect: true,
+    });
+  };
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to={`/requested-services`} />;
+    }
+  };
+
   render() {
     const { quantity } = this.state;
     return (
       <>
         <div className="card">
+          {this.renderRedirect()}
           <form onSubmit={this.handleMakeRequest}>
             <label>How many hours?</label>
             <input

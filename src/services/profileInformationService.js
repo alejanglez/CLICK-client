@@ -20,7 +20,7 @@ export const signup = (profileInformation, role) => {
     .post(`/${role}/signup`, { ...profileInformation })
     .then((response) => response.data)
     .catch((err) => {
-      console.log(err);
+      console.log(err.response);
       return err;
     });
 };

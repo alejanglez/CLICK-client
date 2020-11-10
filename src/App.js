@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Link, Switch } from "react-router-dom";
+import { BrowserRouter, Switch } from "react-router-dom";
 import "./fonts/Britanica_WOFF/WOFF/BritanicaVariable-Regular.woff";
 import "./App.css";
 import AnonRoute from "./components/auth/AnonRoute";
@@ -10,7 +10,6 @@ import Profile from "./views/User/Profile";
 import ProviderList from "./views/User/ProviderList";
 import SingleProvider from "./views/User/SingleProvider";
 import SingleUser from "./views/User/SingleUser";
-// import ProfilesFeed from "./views/User/ProfilesList";
 import Signup from "./views/Public/Signup";
 import RequestedServices from "./views/User/RequestedServices";
 import EditProfile from "./views/User/EditProfile";

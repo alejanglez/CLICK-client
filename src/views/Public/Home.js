@@ -7,12 +7,11 @@ import "./styles.scss";
 class Home extends React.Component {
   state = {
     authenticated: this.props.authenticated,
-    role: this.props.role,
   };
 
   render() {
     console.log("props home", this.props);
-    const { authenticated, role } = this.state;
+    const { authenticated } = this.state;
     return (
       <div className="view text-center p-3 p-md-5 m-md-3">
         {!authenticated && (
@@ -29,13 +28,6 @@ class Home extends React.Component {
                   />
                 </span>
               </div>
-              {/* <img
-                  class="logo"
-                  src="./logohome.png"
-                  width="100"
-                  height="100"
-                  alt="Logo"
-                /> */}
             </div>
             <h2>Welcome to Click App</h2>
             <p>

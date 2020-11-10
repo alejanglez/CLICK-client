@@ -4,7 +4,7 @@ import {
   getAllUserRequests,
 } from "../../services/servicesService";
 import MakeAcceptedRequest from "../../components/LayoutElements/MakeAcceptedRequest";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./RequestedServices.css";
 
 class RequestedServices extends Component {
@@ -15,9 +15,9 @@ class RequestedServices extends Component {
   };
 
   componentDidMount = () => {
-    if (this.state.role == "user") {
+    if (this.state.role === "user") {
       this.fetchDataUser();
-    } else if (this.state.role == "provider") {
+    } else if (this.state.role === "provider") {
       this.fetchDataProvider();
     }
   };
@@ -101,7 +101,7 @@ class RequestedServices extends Component {
                     name="providerId"
                     value={service.providerId._id}
                   />
-                  {this.state.role == "user" ? (
+                  {this.state.role === "user" ? (
                     <>
                       <p>
                         Name: {service.providerId.firstName}{" "}
@@ -109,6 +109,7 @@ class RequestedServices extends Component {
                       </p>
                       {service.providerId.imageUrl ? (
                         <img
+                          alt="requested service"
                           className="rounded img-thumbnail img-fluid"
                           src={service.providerId.imageUrl}
                         />
@@ -116,6 +117,7 @@ class RequestedServices extends Component {
                         <img
                           className="rounded img-thumbnail img-fluid profile-image"
                           src="./providerAvatar.png"
+                          alt="requested service"
                         />
                       )}
 
@@ -134,11 +136,13 @@ class RequestedServices extends Component {
                         <img
                           className="rounded img-thumbnail img-fluid"
                           src={service.userId.imageUrl}
+                          alt="requested service"
                         />
                       ) : (
                         <img
                           className="rounded img-thumbnail img-fluid profile-image"
                           src="./userAvatar.png"
+                          alt="requested service"
                         />
                       )}
                       <p>Category: {service.providerId.serviceCat}</p>
@@ -168,14 +172,11 @@ class RequestedServices extends Component {
                     >
                       Decline
                     </Link>
-                  )}{" "}
+                  )}
                 </>
               )}
             </div>
           );
-          {
-            /* return ends here */
-          }
         })}
       </div>
     );

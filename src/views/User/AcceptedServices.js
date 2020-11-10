@@ -4,7 +4,6 @@ import {
   getAllProviderAcceptedService,
   getAllUserAcceptedService,
 } from "../../services/servicesService";
-import MakeReview from "./MakeReview";
 import "./RequestedServices.css";
 
 class AcceptedServices extends Component {
@@ -70,7 +69,7 @@ class AcceptedServices extends Component {
                 name="providerId"
                 value={service.providerId}
               />
-              {this.state.role == "user" ? (
+              {this.state.role === "user" ? (
                 <>
                   {
                     <Link to={`/profile/list/` + service.providerId}>
@@ -84,6 +83,7 @@ class AcceptedServices extends Component {
                   <img
                     className="rounded img-thumbnail img-fluid profile-image"
                     src={service.providerImageUrl}
+                    alt="accepted"
                   />
                   <p>Category: {service.serviceCat}</p>
                   <p>Lesson Type: {service.lessonType}</p>
@@ -101,6 +101,7 @@ class AcceptedServices extends Component {
                   <img
                     className="rounded img-thumbnail img-fluid"
                     src={service.userImageUrl}
+                    alt="accepted"
                   />
                   <p>Category: {service.serviceCat}</p>
                   <p>Lesson Type: {service.lessonType}</p>

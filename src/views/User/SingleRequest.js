@@ -64,7 +64,7 @@ class SingleRequest extends Component {
               </button>
             </>
           )}
-          {this.state.role == "user" ? (
+          {this.state.role === "user" ? (
             <>
               <p>
                 Name: {service.providerId.firstName}{" "}
@@ -72,11 +72,13 @@ class SingleRequest extends Component {
               </p>
               {service.providerId.imageUrl ? (
                 <img
+                  alt="single request"
                   className="rounded img-thumbnail img-fluid"
                   src={service.providerId.imageUrl}
                 />
               ) : (
                 <img
+                  alt="single request"
                   className="rounded img-thumbnail img-fluid profile-image"
                   src="./providerAvatar.png"
                 />
@@ -94,11 +96,13 @@ class SingleRequest extends Component {
 
               {service.userId.imageUrl ? (
                 <img
+                  alt="single request"
                   className="rounded img-thumbnail img-fluid"
                   src={service.userId.imageUrl}
                 />
               ) : (
                 <img
+                  alt="single request"
                   className="rounded img-thumbnail img-fluid profile-image"
                   src="./userAvatar.png"
                 />

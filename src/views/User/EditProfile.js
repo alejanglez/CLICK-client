@@ -83,12 +83,10 @@ class EditProfile extends React.Component {
       email,
       address,
       about,
-      imageUrl,
       lessonType,
       serviceCat,
       rate,
       facebookUrl,
-      errorMessage,
       id,
     } = this.state;
     console.log("props edit", this.props);
@@ -148,7 +146,7 @@ class EditProfile extends React.Component {
             required={true}
             type="text"
           />
-          {this.props.role == "provider" && (
+          {this.props.role === "provider" && (
             <>
               <label>Facebook Url: </label>
               <input

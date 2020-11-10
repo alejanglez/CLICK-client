@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 class About extends React.Component {
   state = {
@@ -26,18 +25,13 @@ class About extends React.Component {
           ea voluptate velit esse quam nihil molestiae consequatur, vel illum
           qui dolor
         </p>
-        {/* <p>
+        <br />
+        <p>
           Typography "Britanica" by SANTIREYDESIGN
           <a href="http://santireydesign.com/">
-            <img
-              class="logosanti"
-              src="/logosanti.png"
-              width="30"
-              height="30"
-              alt="logosanti"
-            />
+            <img src="/logosanti.png" width="30" height="30" alt="logosanti" />
           </a>
-        </p> */}
+        </p>
       </div>
     );
   }

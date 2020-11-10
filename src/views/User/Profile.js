@@ -56,12 +56,14 @@ const Profile = (props) => {
           <div className="image-profile">
             {!imageUrl && role === "user" && (
               <img
+                alt="profile"
                 className="rounded img-fluid profile-image"
                 src="../userAvatar.png"
               />
             )}
             {!imageUrl && role === "provider" && (
               <img
+                alt="profile"
                 className="rounded img-fluid profile-image"
                 src="../providerAvatar.png"
               />
@@ -92,7 +94,7 @@ const Profile = (props) => {
       <div className="profile-bottom  view text-center p-3 p-md-5 m-md-3">
         <h3>About</h3>
         <p>{about && about}</p>
-        {role == "provider" && (
+        {role === "provider" && (
           <>
             {" "}
             <a href={facebookUrl && facebookUrl}>Facebook</a>
@@ -102,12 +104,12 @@ const Profile = (props) => {
           </>
         )}
 
-        {sessionProviderId && _id == sessionProviderId._id && (
+        {sessionProviderId && _id === sessionProviderId._id && (
           <>
             <Link to={`/profile/editProfile`}>Edit Profile</Link>
           </>
         )}
-        {sessionUserId && _id == sessionUserId._id && (
+        {sessionUserId && _id === sessionUserId._id && (
           <>
             <Link to={`/profile/editProfile`}>Edit Profile</Link>
           </>

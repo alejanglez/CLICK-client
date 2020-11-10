@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import AddImage from "../../components/LayoutElements/AddImage";
-import { profile, signup } from "../../services/profileInformationService";
+import { signup } from "../../services/profileInformationService";
 
 class Signup extends React.Component {
   state = {
@@ -73,7 +73,6 @@ class Signup extends React.Component {
       password,
       address,
       about,
-      imageUrl,
       lessonType,
       serviceCat,
       rate,
@@ -133,7 +132,7 @@ class Signup extends React.Component {
             type="text"
             placeholder="I'm Elena and I work in Informatics for 3 years."
           />
-          {this.props.role == "provider" && (
+          {this.props.role === "provider" && (
             <>
               <p className="login-signup-p">Your Facebook Url</p>
               <input

@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import {
-  getAllProviderprofile,
-  searchProviderprofile,
-} from "../../services/profilesService";
+import { getAllProviderprofile } from "../../services/profilesService";
 import "./ProviderList.css";
 
 class ProviderList extends Component {
@@ -20,16 +17,6 @@ class ProviderList extends Component {
     console.log("this state", this.state);
   };
 
-  // componentDidUpdate = () => {
-  //   searchProviderprofile(this.state.query)
-  //     .then((response) => {
-  //       console.log("response on update", response);
-  //     })
-  //     .catch((err) =>
-  //       console.log("Error retrieving filtered providers: ", err)
-  //     );
-  // };
-
   fetchData = () => {
     getAllProviderprofile()
       .then((response) => {
@@ -41,12 +28,6 @@ class ProviderList extends Component {
       .catch((err) => console.log("Error retrieving all providers: ", err));
   };
 
-  // handleInputChange = (e) => {
-  //   this.setState({
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
-
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
@@ -57,9 +38,9 @@ class ProviderList extends Component {
   render() {
     return (
       <div className="view text-center p-3 p-md-5 m-md-3">
-        <h2>Provider's list 💙</h2>
+        <h2>Provider's list</h2>
         <div>
-          <p>Filter by category 🔥</p>
+          <p>Filter by category</p>
           <select
             className="input is-primary"
             name="searchParams"
@@ -94,6 +75,7 @@ class ProviderList extends Component {
                   <img
                     className="rounded img-thumbnail img-fluid profile-image"
                     src="/public/providerAvatar.png"
+                    alt="provider"
                   />
                 )}
                 <img

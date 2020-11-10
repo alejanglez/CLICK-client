@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import {
   getAllProviderReview,
   getAllUserReview,
-  getSingleReview,
 } from "../../services/ReviewService";
 
 class Review extends Component {
@@ -13,9 +12,9 @@ class Review extends Component {
   };
 
   componentDidMount = () => {
-    if (this.state.role == "user") {
+    if (this.state.role === "user") {
       this.fetchDataUser();
-    } else if (this.state.role == "provider") {
+    } else if (this.state.role === "provider") {
       this.fetchDataProvider();
     }
   };
@@ -66,17 +65,17 @@ class Review extends Component {
           return (
             <div key={review._id}>
               {review.author === "provider" && role === "user" && (
-                <div class="card border-info mb-3">
-                  <div class="card-header">Comment:</div>
-                  <p class="card-body text-info">{review.comment}</p>
-                  <p class="card-body text-info"> {review.rating}</p>
+                <div className="card border-info mb-3">
+                  <div className="card-header">Comment:</div>
+                  <p className="card-body text-info">{review.comment}</p>
+                  <p className="card-body text-info"> {review.rating}</p>
                 </div>
               )}
               {review.author === "user" && role === "provider" && (
-                <div class="card border-warning mb-3">
-                  <div class="card-header">Comment:</div>
-                  <p class="card-body text-warning">{review.comment}</p>
-                  <p class="card-body text-warning"> {review.rating}</p>
+                <div className="card border-warning mb-3">
+                  <div className="card-header">Comment:</div>
+                  <p className="card-body text-warning">{review.comment}</p>
+                  <p className="card-body text-warning"> {review.rating}</p>
                 </div>
               )}
             </div>

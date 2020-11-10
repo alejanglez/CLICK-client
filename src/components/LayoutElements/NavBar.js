@@ -29,7 +29,7 @@ class NavBar extends React.Component {
           sticky="bottom"
           expand="lg"
           fixed="bottom"
-          className="navbar fixed-bottom navbar-light bg align-middle"
+          className="nav-bar fixed-bottom navbar-light bg align-middle"
         >
           {authenticated && (
             <>

@@ -26,7 +26,7 @@ class About extends React.Component {
           ea voluptate velit esse quam nihil molestiae consequatur, vel illum
           qui dolor
         </p>
-        <p>
+        {/* <p>
           Typography "Britanica" by SANTIREYDESIGN
           <a href="http://santireydesign.com/">
             <img
@@ -37,7 +37,7 @@ class About extends React.Component {
               alt="logosanti"
             />
           </a>
-        </p>
+        </p> */}
       </div>
     );
   }

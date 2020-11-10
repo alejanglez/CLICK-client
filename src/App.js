@@ -110,7 +110,7 @@ class App extends React.Component {
     } = this.state;
 
     return (
-      <div className="view text-center p-3 p-md-5 m-md-3 app">
+      <div className="text-center ">
         <BrowserRouter>
           {authenticated && (
             <NavBar

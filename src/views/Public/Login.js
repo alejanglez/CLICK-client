@@ -66,22 +66,25 @@ class Login extends React.Component {
     return (
       <div className="view text-center p-3 p-md-5 m-md-3">
         {errorMessage !== "" && errorMessage}
+        <h6 className="login-signup-p">We're glad to have you back</h6>
         <form onSubmit={this.handleSubmit}>
-          <label>Email: </label>
+          <p className="login-signup-p">Email</p>
           <input
             name="email"
             value={email}
             onChange={this.handleChange}
             required={true}
             type="email"
+            placeholder="elena@email.com"
           />
-          <label>Password: </label>
+          <p className="login-signup-p">Password</p>
           <input
             name="password"
             type="password"
             value={password}
             onChange={this.handleChange}
             required={true}
+            placeholder="******"
           />
           <button className="general-btn" type="submit">
             {" "}

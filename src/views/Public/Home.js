@@ -21,7 +21,7 @@ class Home extends React.Component {
               <div id="emojis">
                 <span id="heart">
                   <img
-                    class="logo"
+                    className="logo"
                     src="./logohome.png"
                     width="100"
                     height="100"

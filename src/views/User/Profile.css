@@ -5,11 +5,33 @@
   width: 50%;
 }
 
-.profile-top {
+.nav-top-user {
+  display: flex;
+  justify-content: center;
+  background-color: #fffede;
+  margin-bottom: 0%;
+  font-weight: bold;
+}
+
+.nav-top-provider {
+  display: flex;
+  justify-content: center;
+  background-color: #dfffec;
+  margin-bottom: 0%;
+  font-weight: bold;
+}
+.profile-top-user {
   display: flex;
   justify-content: space-between;
-  padding: 10%;
-  background-color: wheat;
+  padding: 5%;
+  background-color: #fffede;
+}
+
+.profile-top-provider {
+  display: flex;
+  justify-content: space-between;
+  padding: 5%;
+  background-color: #dfffec;
 }
 
 .profilePic {

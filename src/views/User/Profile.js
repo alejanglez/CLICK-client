@@ -25,7 +25,33 @@ const Profile = (props) => {
   return (
     <div>
       <p hidden>{_id && _id}</p>
-      <div className="profile-top" id="top-profile">
+      {role === "user" && (
+        <h5 className={`nav-top-${role}`}>
+          {" "}
+          {role.charAt(0).toUpperCase() + role.slice(1)} Profile{"    "}
+          <img
+            className="logo"
+            src="./logouser.png"
+            width="30"
+            height="30"
+            alt="Logo"
+          />
+        </h5>
+      )}
+      {role === "provider" && (
+        <h5 className={`nav-top-${role}`}>
+          {" "}
+          {role.charAt(0).toUpperCase() + role.slice(1)} Profile {"    "}
+          <img
+            className="logo"
+            src="./logoprovider.png"
+            width="30"
+            height="30"
+            alt="Logo"
+          />
+        </h5>
+      )}
+      <div className={`profile-top-${role}`} id="top-profile">
         <div className="image-profile">
           {!imageUrl && role === "user" && (
             <img
@@ -39,14 +65,10 @@ const Profile = (props) => {
               src="../providerAvatar.png"
             />
           )}
-          {imageUrl && (
-            <div
-              className="profilePic"
-              style={{
-                backgroundImage: `url(${imageUrl})`,
-              }}
-            ></div>
-          )}
+          <img
+            className="rounded img-thumbnail img-fluid profile-image"
+            src={imageUrl && imageUrl}
+          />
         </div>
         <div>
           <h2>

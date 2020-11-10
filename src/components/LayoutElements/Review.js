@@ -61,15 +61,23 @@ class Review extends Component {
     console.log("props review ", this.props);
     return (
       <div className="container">
-        <h2>My reviews</h2>
+        <h2>Reviews</h2>
         {this.state.reviews.map((review) => {
           return (
             <div key={review._id}>
               {review.author === "provider" && role === "user" && (
-                <p>comment: {review.comment}</p>
+                <div class="card border-info mb-3">
+                  <div class="card-header">Comment:</div>
+                  <p class="card-body text-info">{review.comment}</p>
+                  <p class="card-body text-info"> {review.rating}</p>
+                </div>
               )}
               {review.author === "user" && role === "provider" && (
-                <p>comment: {review.comment}</p>
+                <div class="card border-warning mb-3">
+                  <div class="card-header">Comment:</div>
+                  <p class="card-body text-warning">{review.comment}</p>
+                  <p class="card-body text-warning"> {review.rating}</p>
+                </div>
               )}
             </div>
           );

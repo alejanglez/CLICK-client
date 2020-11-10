@@ -45,7 +45,9 @@ class SingleRequest extends Component {
     let quant = Number(service.quantity);
     return (
       <div className="view text-center p-3 p-md-5 m-md-3">
-        <p>Request Details 🏵</p>
+        <p>
+          <strong>Request Details</strong>
+        </p>
 
         <div className="card requestedCard" key={service._id}>
           <input type="hidden" name="userId" value={service.userId._id} />
@@ -57,7 +59,7 @@ class SingleRequest extends Component {
           {this.state.role === "provider" && (
             <>
               <p>Are you sure you want to decline?</p>
-              <button onClick={this.handleDecline}>
+              <button className="general-btn" onClick={this.handleDecline}>
                 Yes, I want to decline
               </button>
             </>

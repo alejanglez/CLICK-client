@@ -80,13 +80,13 @@ class NavBar extends React.Component {
               )}
 
               <Nav.Link
-                className="nav-item"
+                className=" align-middle nav-item"
                 as={Link}
                 to={`/requested-services`}
               >
                 <svg
-                  width="1em"
-                  height="1em"
+                  width="2em"
+                  height="2em"
                   viewBox="0 0 16 16"
                   className="bi bi-calendar-check-fill"
                   fill="white"

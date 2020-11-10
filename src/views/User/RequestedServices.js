@@ -76,7 +76,18 @@ class RequestedServices extends Component {
           let quant = Number(service.quantity);
           return (
             <div className="card requestedCard" key={service._id}>
-              {service.decline && role === "user" && <p>service declined</p>}
+              {service.decline && role === "user" && (
+                <p className="declined">
+                  Your requested service with {service.providerId.firstName} was
+                  declined
+                </p>
+              )}
+              {service.decline && role === "provider" && (
+                <p className="declined">
+                  You declined a service from{" "}
+                  <strong>{service.userId.firstName}</strong>
+                </p>
+              )}
               {!service.decline && (
                 <>
                   {" "}
@@ -146,6 +157,7 @@ class RequestedServices extends Component {
                   {role === "user" && <p>Waiting...</p>}
                   {role === "provider" && (
                     <Link
+                      className="link-react"
                       to={{
                         pathname: `/requests/details`,
                         state: {

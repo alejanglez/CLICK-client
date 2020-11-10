@@ -21,15 +21,11 @@
   font-weight: bold;
 }
 .profile-top-user {
-  display: flex;
-  justify-content: space-between;
   padding: 5%;
   background-color: #fffede;
 }
 
 .profile-top-provider {
-  display: flex;
-  justify-content: space-between;
   padding: 5%;
   background-color: #dfffec;
 }
@@ -41,4 +37,20 @@
   background-size: cover;
   background-position: center;
   border-radius: 5px;
+}
+
+.profile-top-elements {
+  display: flex;
+  justify-content: end;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  padding: 0 8%;
+}
+
+.profile-top-elements {
+  text-align: left;
+}
+
+.name-profile {
+  margin-left: 10%;
 }

@@ -25,65 +25,70 @@ const Profile = (props) => {
   return (
     <div>
       <p hidden>{_id && _id}</p>
-      {role === "user" && (
-        <h5 className={`nav-top-${role}`}>
-          {" "}
-          {role.charAt(0).toUpperCase() + role.slice(1)} Profile{"    "}
-          <img
-            className="logo"
-            src="./logouser.png"
-            width="30"
-            height="30"
-            alt="Logo"
-          />
-        </h5>
-      )}
-      {role === "provider" && (
-        <h5 className={`nav-top-${role}`}>
-          {" "}
-          {role.charAt(0).toUpperCase() + role.slice(1)} Profile {"    "}
-          <img
-            className="logo"
-            src="./logoprovider.png"
-            width="30"
-            height="30"
-            alt="Logo"
-          />
-        </h5>
-      )}
       <div className={`profile-top-${role}`} id="top-profile">
-        <div className="image-profile">
-          {!imageUrl && role === "user" && (
+        {role === "user" && (
+          <h5 className={`nav-top-${role}`}>
+            {" "}
+            {role.charAt(0).toUpperCase() + role.slice(1)} Profile{"    "}
             <img
-              className="rounded img-fluid profile-image"
-              src="../userAvatar.png"
+              className="logo"
+              src="./logouser.png"
+              width="30"
+              height="30"
+              alt="Logo"
             />
-          )}
-          {!imageUrl && role === "provider" && (
+          </h5>
+        )}
+        {role === "provider" && (
+          <h5 className={`nav-top-${role}`}>
+            {" "}
+            {role.charAt(0).toUpperCase() + role.slice(1)} Profile {"    "}
             <img
-              className="rounded img-fluid profile-image"
-              src="../providerAvatar.png"
+              className="logo"
+              src="./logoprovider.png"
+              width="30"
+              height="30"
+              alt="Logo"
             />
-          )}
-          <img
-            className="rounded img-thumbnail img-fluid profile-image"
-            src={imageUrl && imageUrl}
-          />
-        </div>
-        <div>
-          <h2>
-            {firstName && firstName} {lastName && lastName}
-          </h2>
-          <p>Your address: {address && address}</p>
-          {role === "provider" && (
-            <>
-              {" "}
-              <p>Rate: {rate && rate}</p>{" "}
-            </>
-          )}
+          </h5>
+        )}
+        <div className="profile-top-elements">
+          <div className="image-profile">
+            {!imageUrl && role === "user" && (
+              <img
+                className="rounded img-fluid profile-image"
+                src="../userAvatar.png"
+              />
+            )}
+            {!imageUrl && role === "provider" && (
+              <img
+                className="rounded img-fluid profile-image"
+                src="../providerAvatar.png"
+              />
+            )}
+            {imageUrl && (
+              <>
+                <div
+                  className="profilePic"
+                  style={{ backgroundImage: "url(" + imageUrl + ")" }}
+                ></div>
+              </>
+            )}
+          </div>
+          <div className="name-profile">
+            <h2>
+              {firstName && firstName} {lastName && lastName}
+            </h2>
+            <p>Your address: {address && address}</p>
+            {role === "provider" && (
+              <>
+                {" "}
+                <p>Rate: {rate && rate}</p>{" "}
+              </>
+            )}
+          </div>
         </div>
       </div>
-      <hr />
       <div className="profile-bottom  view text-center p-3 p-md-5 m-md-3">
         <h3>About</h3>
         <p>{about && about}</p>

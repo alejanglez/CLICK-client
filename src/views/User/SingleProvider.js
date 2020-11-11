@@ -31,7 +31,7 @@ class SingleProvider extends Component {
   };
 
   render() {
-    const { provider, userId } = this.state;
+    const { provider, userId, role } = this.state;
     return (
       <div className="view text-center p-3 p-md-5 m-md-3">
         <Profile

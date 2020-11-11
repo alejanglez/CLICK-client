@@ -91,7 +91,7 @@ class AcceptedServices extends Component {
                 </>
               ) : (
                 <>
-                  <Link to={`/profile/list/` + service.userId}>
+                  <Link to={`/profile/` + service.userId}>
                     {" "}
                     <p>
                       Name: {service.userFirstName} {service.userLastName}

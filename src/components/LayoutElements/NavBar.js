@@ -99,7 +99,7 @@ class NavBar extends React.Component {
                 </svg>
               </Nav.Link>
               <Navbar.Toggle />
-              <Navbar.Collapse id="responsive-navbar-nav">
+              <Navbar.Collapse>
                 <Nav.Link
                   as={Link}
                   to={"/"}

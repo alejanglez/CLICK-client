@@ -12,6 +12,7 @@ class SingleUser extends Component {
     // console.log("user id", this.props);
 
     getSingleUserprofile(id).then((response) => {
+      console.log("single user", response);
       this.setState({
         user: response.data,
       });
@@ -20,10 +21,11 @@ class SingleUser extends Component {
 
   render() {
     const { user } = this.state;
+    console.log("user on single?", user);
     return (
       <div className="view text-center p-3 p-md-5 m-md-3">
         <Profile
-          path={`/profile/list/:userId`}
+          path={`/profile/:userId`}
           exact
           component={Profile}
           profileInformation={user}

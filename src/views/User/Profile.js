@@ -25,7 +25,7 @@ const Profile = (props) => {
   return (
     <div>
       <p hidden>{_id && _id}</p>
-      <div className={`profile-top-${role}`} id="top-profile">
+      <div className={`profile-top-${role}`}>
         {role === "user" && (
           <h5 className={`nav-top-${role}`}>
             {" "}

@@ -44,7 +44,6 @@ class App extends React.Component {
       },
       () => {
         if (accessToken) {
-          // console.log("role local storage ", role);
           validateSession(accessToken, this.state.role)
             .then((response) => {
               console.log(response, "RESPONSE");
@@ -165,7 +164,7 @@ class App extends React.Component {
             />
             <PrivateRoute
               exact
-              path={`/profile/list/:userId`}
+              path={`/profile/:userId`}
               profileInformation={this.state.profileInformation}
               authenticated={authenticated}
               role={role}

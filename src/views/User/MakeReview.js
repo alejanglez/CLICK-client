@@ -39,21 +39,6 @@ class MakeReview extends Component {
     });
   };
 
-  // handleStars = (stars, rating) => {
-  //   const { stars } = this.state;
-  //   const rate = Math.round(this.state.rating);
-  //   for (let i = 0; i < 5; i++) {
-  //     if (i < rate) {
-  //       stars += "★";
-  //     } else {
-  //       stars += "☆";
-  //     }
-  //   }
-  //   this.setState({
-  //     stars: stars,
-  //   });
-  // };
-
   render() {
     const { comment, rating } = this.state;
     console.log("state make review", this.state);

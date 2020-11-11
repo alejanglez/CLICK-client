@@ -50,8 +50,9 @@ class Review extends Component {
   };
 
   handleTotalStars = (reviews) => {
-    const sum = reviews.rating.reduce((a, b) => a + b, 0);
-    const avg = sum / reviews.rating.length || 0;
+    console.log(this.state.reviews);
+    const sum = reviews.reduce((a, b) => a + b.rating, 0);
+    const avg = sum / reviews.length || 0;
     return avg;
   };
 
@@ -69,19 +70,20 @@ class Review extends Component {
   };
 
   render() {
-    const { role } = this.state;
+    const { role, reviews } = this.state;
     console.log("stateeee review ", this.state);
     console.log("props review ", this.props);
     return (
       <div className="container">
         <h2>Reviews</h2>
+        <p className="text-info">{this.handleTotalStars(reviews)} / 5 ★</p>
         {this.state.reviews.map((review) => {
           return (
             <div key={review._id}>
               {review.author === "provider" && role === "user" && (
                 <div className="card border-info mb-3">
                   <div className="card-header">Comment:</div>
-                  <p className="text-info">{review.comment}</p>
+                  <p>{review.comment}</p>
                   {/* <p className="card-body text-info"> {review.rating}</p> */}
                   <p className="text-info">{this.handleStars(review)}</p>
                 </div>
@@ -89,7 +91,7 @@ class Review extends Component {
               {review.author === "user" && role === "provider" && (
                 <div className="card border-warning mb-3">
                   <div className="card-header">Comment:</div>
-                  <p className="text-warning">{review.comment}</p>
+                  <p>{review.comment}</p>
                   <p className="text-warning">{this.handleStars(review)}</p>
                 </div>
               )}

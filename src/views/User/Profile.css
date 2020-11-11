@@ -20,6 +20,19 @@
   margin-bottom: 0%;
   font-weight: bold;
 }
+
+.nav-top-spectator {
+  display: flex;
+  justify-content: center;
+  background-color: #ffdfeb;
+  margin-bottom: 0%;
+  font-weight: bold;
+}
+.profile-top-spectator {
+  padding: 5%;
+  background-color: #ffdfeb;
+}
+
 .profile-top-user {
   padding: 5%;
   background-color: #fffede;

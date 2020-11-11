@@ -21,11 +21,11 @@ const Profile = (props) => {
   // console.log("test", test);
   const { role, sessionUserId, sessionProviderId } = props;
   console.log("user id session", sessionUserId);
-  console.log("user id ", _id);
+  console.log("roleeee ", role);
   return (
     <div>
       <p hidden>{_id && _id}</p>
-      <div className={`profile-top-${role}`}>
+      <div className={role ? `profile-top-${role}` : "profile-top-spectator"}>
         {role === "user" && (
           <h5 className={`nav-top-${role}`}>
             {" "}
@@ -52,6 +52,18 @@ const Profile = (props) => {
             />
           </h5>
         )}
+        {/* {role && (
+          <h5 className={`nav-top-spectator`}>
+            <p>Profile</p>
+            <img
+              className="logo"
+              src="./logoprovider.png"
+              width="30"
+              height="30"
+              alt="Logo"
+            />
+          </h5>
+        )} */}
         <div className="profile-top-elements">
           <div className="image-profile">
             {!imageUrl && role === "user" && (

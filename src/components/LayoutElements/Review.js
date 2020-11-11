@@ -49,10 +49,24 @@ class Review extends Component {
     });
   };
 
-  // handleTotalRate = (rate, quantity) => {
-  //   const total = Number(rate) * Number(quantity);
-  //   return total;
-  // };
+  handleTotalStars = (reviews) => {
+    const sum = reviews.rating.reduce((a, b) => a + b, 0);
+    const avg = sum / reviews.rating.length || 0;
+    return avg;
+  };
+
+  handleStars = (review) => {
+    const rate = Math.round(review.rating);
+    let stars = "";
+    for (let i = 0; i < 5; i++) {
+      if (i < rate) {
+        stars += "★";
+      } else {
+        stars += "☆";
+      }
+    }
+    return stars;
+  };
 
   render() {
     const { role } = this.state;
@@ -67,15 +81,16 @@ class Review extends Component {
               {review.author === "provider" && role === "user" && (
                 <div className="card border-info mb-3">
                   <div className="card-header">Comment:</div>
-                  <p className="card-body text-info">{review.comment}</p>
-                  <p className="card-body text-info"> {review.rating}</p>
+                  <p className="text-info">{review.comment}</p>
+                  {/* <p className="card-body text-info"> {review.rating}</p> */}
+                  <p className="text-info">{this.handleStars(review)}</p>
                 </div>
               )}
               {review.author === "user" && role === "provider" && (
                 <div className="card border-warning mb-3">
                   <div className="card-header">Comment:</div>
-                  <p className="card-body text-warning">{review.comment}</p>
-                  <p className="card-body text-warning"> {review.rating}</p>
+                  <p className="text-warning">{review.comment}</p>
+                  <p className="text-warning">{this.handleStars(review)}</p>
                 </div>
               )}
             </div>

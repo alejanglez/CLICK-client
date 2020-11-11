@@ -18,6 +18,7 @@ class MakeAcceptedRequest extends Component {
     userId: this.props.requestedService.userId._id,
     providerId: this.props.requestedService.providerId._id,
     totalPrice: this.props.totalPrice,
+    date: this.props.date,
     redirect: false,
   };
   componentDidMount = () => {
@@ -41,6 +42,7 @@ class MakeAcceptedRequest extends Component {
       providerLastName,
       userImageUrl,
       providerImageUrl,
+      date,
     } = this.state;
     // const userId = this.props.userId;
     // const providerId = this.props.profileInformation._id;
@@ -58,7 +60,8 @@ class MakeAcceptedRequest extends Component {
       providerFirstName,
       providerLastName,
       userImageUrl,
-      providerImageUrl
+      providerImageUrl,
+      date
     )
       .then((response) => {
         console.log("awwwwwwwaaaa", response);
@@ -77,6 +80,7 @@ class MakeAcceptedRequest extends Component {
           totalPrice: totalPrice,
           userId: userId,
           providerId: providerId,
+          date: date,
         });
         this.setRedirect();
       })

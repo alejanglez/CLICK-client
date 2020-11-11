@@ -71,6 +71,8 @@ class RequestedServices extends Component {
             Accepted
           </Link>
         </div>
+        <p>date: {this.handleDate}</p>
+
         {this.state.requestedServices.map((service) => {
           let rate = Number(service.providerId.rate);
           let quant = Number(service.quantity);
@@ -152,6 +154,7 @@ class RequestedServices extends Component {
                   )}
                   <p className="quantity">Quantity: {service.quantity}</p>
                   <p>Total price: {this.handleTotalPrice(rate, quant)}</p>
+                  <p>date:{service.date}</p>
                   {role === "provider" && (
                     <MakeAcceptedRequest
                       requestedService={service}

@@ -8,6 +8,7 @@ class MakeRequest extends Component {
     userId: "",
     providerId: "",
     redirect: false,
+    date: Date.now(),
   };
   componentDidMount = () => {
     console.log("proooooops req ", this.props);
@@ -17,16 +18,17 @@ class MakeRequest extends Component {
 
   handleMakeRequest = (event) => {
     event.preventDefault();
-    const { quantity } = this.state;
+    const { quantity, date } = this.state;
     const userId = this.props.userId;
     const providerId = this.props.profileInformation._id;
-    createNewRequest(quantity, userId, providerId)
+    createNewRequest(quantity, userId, providerId, date)
       .then((response) => {
         console.log(response);
         this.setState({
           quantity: quantity,
           userId: userId,
           providerId: providerId,
+          date: String(date),
         });
         this.setRedirect();
       })
@@ -53,7 +55,7 @@ class MakeRequest extends Component {
   };
 
   render() {
-    const { quantity } = this.state;
+    const { quantity, date } = this.state;
     return (
       <>
         <div className="card">
@@ -66,6 +68,14 @@ class MakeRequest extends Component {
               onChange={this.handleChange}
               required={true}
               type="number"
+            />{" "}
+            <label>date?</label>
+            <input
+              name="date"
+              value={date}
+              onChange={this.handleChange}
+              required={true}
+              type="date"
             />
             <button type="submit">Submit</button>
           </form>

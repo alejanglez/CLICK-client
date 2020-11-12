@@ -58,7 +58,7 @@ const Profile = (props) => {
             <img
               className="logo"
               src="./logoprovider.png"
-              width="30"
+              width="30"s
               height="30"
               alt="Logo"
             />

@@ -20,6 +20,7 @@ class MakeAcceptedRequest extends Component {
     totalPrice: this.props.totalPrice,
     date: this.props.requestedService.date,
     startingTime: this.props.requestedService.startingTime,
+    isAccepted: this.props.isAccepted,
     redirect: false,
   };
   componentDidMount = () => {
@@ -46,8 +47,7 @@ class MakeAcceptedRequest extends Component {
       date,
       startingTime,
     } = this.state;
-    // const userId = this.props.userId;
-    // const providerId = this.props.profileInformation._id;
+
     createNewRequestAcceptedService(
       userId,
       providerId,
@@ -85,6 +85,7 @@ class MakeAcceptedRequest extends Component {
           providerId: providerId,
           date: date,
           startingTime: startingTime,
+          isAccepted: true,
         });
         this.setRedirect();
       })

@@ -68,9 +68,10 @@ class ProviderList extends Component {
           )
           .map((provider) => {
             return (
-              <div className="card" key={provider._id}>
-                {<Link to={`/profile/list/` + provider._id}>Details</Link>}
-
+              <div className="card requestedCard" key={provider._id}>
+                <p>
+                  {provider.firstName} {provider.lastName}
+                </p>
                 {!provider.imageUrl && (
                   <img
                     className="rounded img-thumbnail img-fluid profile-image"
@@ -79,15 +80,19 @@ class ProviderList extends Component {
                   />
                 )}
                 <img
-                  className="card-img-top cardPicture"
+                  className="rounded img-thumbnail img-fluid profile-image"
                   src={provider.imageUrl}
                   alt={provider._id}
                 />
-                <div className="card-body">
-                  <h2>{provider.firstName}</h2>
-                  <h3>{provider.lastName}</h3>
-                  <h3>category 🗣: {provider.serviceCat}</h3>
-                </div>
+                <p>category: {provider.serviceCat}</p>
+                {
+                  <Link
+                    className="link-react"
+                    to={`/profile/list/` + provider._id}
+                  >
+                    See detailed profile
+                  </Link>
+                }
               </div>
             );
           })}

@@ -110,6 +110,8 @@ class AcceptedServices extends Component {
               )}
               <p>Quantity: {service.quantity}</p>
               <p>Total price:{service.totalPrice}</p>
+              <p>date: {service.date}</p>
+              <p>time: {service.startingTime}</p>
               <Link
                 to={{
                   pathname: `/make-review`,

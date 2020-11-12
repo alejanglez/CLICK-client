@@ -4,12 +4,19 @@ const service = axios.create({
   baseURL: process.env.REACT_APP_API_BASE_URL,
 });
 
-export const createNewRequest = async (quantity, userId, providerId, date) => {
+export const createNewRequest = async (
+  quantity,
+  userId,
+  providerId,
+  date,
+  startingTime
+) => {
   const newRequest = {
     quantity,
     userId,
     providerId,
     date,
+    startingTime,
   };
   const response = await service.post("/requested/", newRequest);
   return response;
@@ -45,7 +52,8 @@ export const createNewRequestAcceptedService = async (
   providerLastName,
   userImageUrl,
   providerImageUrl,
-  date
+  date,
+  startingTime
 ) => {
   const newAcceptedRequest = {
     userId,
@@ -63,6 +71,7 @@ export const createNewRequestAcceptedService = async (
     userImageUrl,
     providerImageUrl,
     date,
+    startingTime,
   };
   const response = await service.post("/accepted/", newAcceptedRequest);
   return response;

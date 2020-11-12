@@ -155,6 +155,7 @@ class RequestedServices extends Component {
                   <p className="quantity">Quantity: {service.quantity}</p>
                   <p>Total price: {this.handleTotalPrice(rate, quant)}</p>
                   <p>date:{service.date}</p>
+                  <p>time:{service.startingTime}</p>
                   {role === "provider" && (
                     <MakeAcceptedRequest
                       requestedService={service}

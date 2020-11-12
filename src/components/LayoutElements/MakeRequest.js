@@ -9,6 +9,7 @@ class MakeRequest extends Component {
     providerId: "",
     redirect: false,
     date: Date.now(),
+    startingTime: "18:00",
   };
   componentDidMount = () => {
     console.log("proooooops req ", this.props);
@@ -18,10 +19,10 @@ class MakeRequest extends Component {
 
   handleMakeRequest = (event) => {
     event.preventDefault();
-    const { quantity, date } = this.state;
+    const { quantity, date, startingTime } = this.state;
     const userId = this.props.userId;
     const providerId = this.props.profileInformation._id;
-    createNewRequest(quantity, userId, providerId, date)
+    createNewRequest(quantity, userId, providerId, date, startingTime)
       .then((response) => {
         console.log(response);
         this.setState({
@@ -29,6 +30,7 @@ class MakeRequest extends Component {
           userId: userId,
           providerId: providerId,
           date: String(date),
+          startingTime: String(startingTime),
         });
         this.setRedirect();
       })
@@ -55,7 +57,7 @@ class MakeRequest extends Component {
   };
 
   render() {
-    const { quantity, date } = this.state;
+    const { quantity, date, startingTime } = this.state;
     return (
       <>
         <div className="card">
@@ -76,6 +78,14 @@ class MakeRequest extends Component {
               onChange={this.handleChange}
               required={true}
               type="date"
+            />
+            <label>start time?</label>
+            <input
+              name="startingTime"
+              value={startingTime}
+              onChange={this.handleChange}
+              required={true}
+              type="time"
             />
             <button type="submit">Submit</button>
           </form>

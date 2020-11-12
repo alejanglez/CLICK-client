@@ -9,6 +9,7 @@ class SingleProvider extends Component {
     provider: {},
     userId: "",
     showComponent: false,
+    spectator: "spectator",
   };
 
   componentDidMount = () => {
@@ -31,7 +32,7 @@ class SingleProvider extends Component {
   };
 
   render() {
-    const { provider, userId } = this.state;
+    const { provider, userId, spectator } = this.state;
     return (
       <div className="view text-center p-3 p-md-5 m-md-3">
         <Profile
@@ -39,6 +40,7 @@ class SingleProvider extends Component {
           exact
           component={Profile}
           profileInformation={provider}
+          spectator={spectator}
         />
 
         <button onClick={this.handleMakeRequestComponent}>

@@ -92,8 +92,6 @@ class EditProfile extends React.Component {
     console.log("props edit", this.props);
     return (
       <div className="view text-center p-3 p-md-5 m-md-3 paddingComp">
-        {/* <Link to={`/login/${this.props.role}`}>Login instead</Link> */}
-        {/* {errorMessage !== "" && errorMessage} */}
         <div className="align-left changePw">
           <h6>
             <strong>Do you want to change your password?</strong>

@@ -137,7 +137,7 @@ class App extends React.Component {
             />
             <PrivateRoute
               exact
-              path={`/profile/`}
+              path={`/profile`}
               profileInformation={this.state.profileInformation}
               authenticated={authenticated}
               role={role}
@@ -161,14 +161,6 @@ class App extends React.Component {
               authenticated={authenticated}
               role={role}
               component={SingleProvider}
-            />
-            <PrivateRoute
-              exact
-              path={`/profile/:userId`}
-              profileInformation={this.state.profileInformation}
-              authenticated={authenticated}
-              role={role}
-              component={SingleUser}
             />
             <PrivateRoute
               exact
@@ -239,6 +231,14 @@ class App extends React.Component {
               profileInformation={this.state.profileInformation}
               role={role}
               component={EditProfile}
+            />
+            <PrivateRoute
+              exact
+              path={`/profile/:userId`}
+              profileInformation={this.state.profileInformation}
+              authenticated={authenticated}
+              role={role}
+              component={SingleUser}
             />
             <PrivateRoute
               exact

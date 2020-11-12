@@ -9,7 +9,6 @@ class SingleUser extends Component {
 
   componentDidMount = () => {
     const id = this.props.match.params.userId;
-    // console.log("user id", this.props);
 
     getSingleUserprofile(id).then((response) => {
       console.log("single user", response);

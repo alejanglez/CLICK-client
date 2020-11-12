@@ -47,13 +47,6 @@ export const editPassword = async (oldPassword, password, role, id) => {
   return response;
 };
 
-// export const editUserProfile = (profileInformation, userId) => {
-//   return service
-//     .put(userId + "/editProfile", { ...profileInformation })
-//     .then((response) => response.data)
-//     .catch((err) => err);
-// };
-
 export const login = ({ email, password }, role) => {
   return service
     .post(`/${role}/login`, { email, password })

@@ -24,6 +24,7 @@
 
 .video {
   margin-top: 10%;
+  margin-bottom: 62px;
   display: flex;
   flex-direction: column;
   align-items: center;

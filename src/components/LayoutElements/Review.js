@@ -81,7 +81,9 @@ class Review extends Component {
             <div key={review._id}>
               {review.author === "provider" && role === "user" && (
                 <div className="card border-info mb-3">
-                  <div className="card-header">Comment:</div>
+                  <div className="card-header">
+                    {review.providerId.firstName}'s opinion
+                  </div>
                   <p>{review.comment}</p>
                   {/* <p className="card-body text-info"> {review.rating}</p> */}
                   <p className="text-info">{this.handleStars(review)}</p>
@@ -89,7 +91,9 @@ class Review extends Component {
               )}
               {review.author === "user" && role === "provider" && (
                 <div className="card border-warning mb-3">
-                  <div className="card-header">Comment:</div>
+                  <div className="card-header">
+                    {review.userId.firstName}'s opinion
+                  </div>
                   <p>{review.comment}</p>
                   <p className="text-warning">{this.handleStars(review)}</p>
                 </div>

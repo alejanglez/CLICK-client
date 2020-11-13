@@ -60,18 +60,10 @@ class MakeRequest extends Component {
     const { quantity, date, startingTime } = this.state;
     return (
       <>
-        <div className="card">
+        <div className="view text-center p-3 app">
           {this.renderRedirect()}
           <form onSubmit={this.handleMakeRequest}>
-            <label>How many hours?</label>
-            <input
-              name="quantity"
-              value={quantity}
-              onChange={this.handleChange}
-              required={true}
-              type="number"
-            />{" "}
-            <label>date?</label>
+            <p className="login-signup-p">Choose a date</p>
             <input
               name="date"
               value={date}
@@ -79,7 +71,7 @@ class MakeRequest extends Component {
               required={true}
               type="date"
             />
-            <label>start time?</label>
+            <p className="login-signup-p">Starting time</p>
             <input
               name="startingTime"
               value={startingTime}
@@ -87,7 +79,17 @@ class MakeRequest extends Component {
               required={true}
               type="time"
             />
-            <button type="submit">Submit</button>
+            <p className="login-signup-p">Amount of hours needed (up to 5)</p>
+            <input
+              name="quantity"
+              value={quantity}
+              onChange={this.handleChange}
+              required={true}
+              type="number"
+            />{" "}
+            <button className="general-btn" type="submit">
+              Submit
+            </button>
           </form>
         </div>
       </>

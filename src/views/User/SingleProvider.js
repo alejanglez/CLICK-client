@@ -42,8 +42,10 @@ class SingleProvider extends Component {
           profileInformation={provider}
           spectator={spectator}
         />
-
-        <button onClick={this.handleMakeRequestComponent}>
+        <button
+          className="general-btn"
+          onClick={this.handleMakeRequestComponent}
+        >
           Make a request
         </button>
         {this.state.showComponent ? (

@@ -8,6 +8,11 @@ class MakeReview extends Component {
     rating: this.props.location.state.service.rate,
     userId: this.props.location.state.service.userId,
     providerId: this.props.location.state.service.providerId,
+    providerFirstName: this.props.location.state.service.providerFirstName,
+    providerLastName: this.props.location.state.service.providerLastName,
+    userFirstName: this.props.location.state.service.userFirstName,
+    userLastName: this.props.location.state.service.userLastName,
+    role: this.props.role,
   };
   componentDidMount = () => {
     console.log("proooooops make review ", this.props);
@@ -40,28 +45,62 @@ class MakeReview extends Component {
   };
 
   render() {
-    const { comment, rating } = this.state;
+    const {
+      comment,
+      rating,
+      providerFirstName,
+      providerLastName,
+      userFirstName,
+      userLastName,
+      role,
+    } = this.state;
     console.log("state make review", this.state);
     return (
       <>
-        <div className="card">
+        <div className="view text-center p-3 app">
+          {role === "user" ? (
+            <p className="login-signup-p">
+              <strong>
+                Leave your review and rating to {providerFirstName}{" "}
+                {providerLastName}
+              </strong>
+            </p>
+          ) : (
+            <p className="login-signup-p">
+              <strong>
+                Leave your review and rating to {userFirstName} {userLastName}
+              </strong>
+            </p>
+          )}
           <form onSubmit={this.handleMakeReview}>
-            <label>What is your opinion sinner??</label>
-            <input
+            <p className="login-signup-p">Write a review</p>
+            <textarea
               name="comment"
               value={comment}
               onChange={this.handleChange}
               required={true}
-              type="string"
+              type="text"
             />
-            <input
+            <p className="login-signup-p">
+              How would you rate the service, from 1 to 5
+            </p>
+            <select
               name="rating"
               value={rating}
               onChange={this.handleChange}
               required={true}
               type="number"
-            />
-            <button type="submit">Submit</button>
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+
+            <button className="general-btn" type="submit">
+              Submit
+            </button>
           </form>
         </div>
       </>

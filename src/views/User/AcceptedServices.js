@@ -121,7 +121,7 @@ class AcceptedServices extends Component {
                   },
                 }}
               >
-                Make review
+                <button className="general-btn">Make review</button>
               </Link>
             </div>
           );

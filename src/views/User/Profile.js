@@ -211,7 +211,7 @@ const Profile = (props) => {
       </div>
 
       <Review
-        path={`/review/list/:providerId`}
+        path={`/review/list/${_id}`}
         exact
         component={Review}
         id={props.profileInformation._id}

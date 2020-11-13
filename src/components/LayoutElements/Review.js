@@ -77,7 +77,7 @@ class Review extends Component {
     return (
       <div className="container marginBottom">
         <p>hello</p>
-        {/* <p className="text-info">{this.handleTotalStars(reviews)} / 5 ★</p>
+        <p className="text-info">{this.handleTotalStars(reviews)} / 5 ★</p>
         {this.state.reviews.map((review) => {
           return (
             <div key={review._id}>
@@ -101,7 +101,7 @@ class Review extends Component {
               )}
             </div>
           );
-        })} */}
+        })}
       </div>
     );
   }

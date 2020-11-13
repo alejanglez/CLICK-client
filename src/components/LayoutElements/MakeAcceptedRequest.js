@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import { createNewRequestAcceptedService } from "../../services/servicesService";
+import {
+  changeStateSingleRequestedService,
+  createNewRequestAcceptedService,
+} from "../../services/servicesService";
 
 class MakeAcceptedRequest extends Component {
   state = {
@@ -20,7 +23,7 @@ class MakeAcceptedRequest extends Component {
     totalPrice: this.props.totalPrice,
     date: this.props.requestedService.date,
     startingTime: this.props.requestedService.startingTime,
-    isAccepted: this.props.isAccepted,
+    isAccepted: this.props.requestedService.isAccepted,
     redirect: false,
   };
   componentDidMount = () => {
@@ -100,6 +103,16 @@ class MakeAcceptedRequest extends Component {
     });
   };
 
+  handleAcceptBtn = (event) => {
+    event.preventDefault();
+    const { requestedServiceId } = this.state;
+    changeStateSingleRequestedService(requestedServiceId)
+      .then((response) => {
+        console.log("change to isAccepted response", response);
+      })
+      .catch((err) => console.log("error on handle make request", err));
+  };
+
   setRedirect = () => {
     this.setState({
       redirect: true,
@@ -118,7 +131,11 @@ class MakeAcceptedRequest extends Component {
           {this.renderRedirect()}
 
           <form onSubmit={this.handleAcceptedRequest}>
-            <button className="general-btn" type="submit">
+            <button
+              onClick={this.handleAcceptBtn}
+              className="general-btn"
+              type="submit"
+            >
               Accept
             </button>
           </form>

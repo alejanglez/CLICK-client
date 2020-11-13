@@ -108,7 +108,7 @@ class App extends React.Component {
     } = this.state;
 
     return (
-      <div className="text-center ">
+      <div className="text-center marginBottom">
         <BrowserRouter>
           {authenticated && (
             <NavBar

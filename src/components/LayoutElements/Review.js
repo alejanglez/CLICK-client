@@ -75,7 +75,6 @@ class Review extends Component {
     console.log("props review ", this.props);
     return (
       <div className="container">
-        <h2>Reviews</h2>
         <p className="text-info">{this.handleTotalStars(reviews)} / 5 ★</p>
         {this.state.reviews.map((review) => {
           return (

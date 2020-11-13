@@ -88,15 +88,19 @@ class EditProfile extends React.Component {
       rate,
       facebookUrl,
       id,
+      role,
     } = this.state;
     console.log("props edit", this.props);
     return (
-      <div className="view text-center p-3 p-md-5 m-md-3 paddingComp">
+      <div className="view p-3">
         <div className="align-left changePw">
           <h6>
             <strong>Do you want to change your password?</strong>
           </h6>
-          <button className="btn btn-light" onClick={this.handleChangePassword}>
+          <button
+            className={role === "user" ? "edit-btn-user" : "edit-btn-provider"}
+            onClick={this.handleChangePassword}
+          >
             Changing password only
           </button>
         </div>
@@ -104,15 +108,16 @@ class EditProfile extends React.Component {
         {this.state.showComponent ? (
           <ChangePassword role={this.props.role} id={id} />
         ) : null}
-        <h6 className="changePw">
+        <h6 className="login-signup-p">
           <strong>Edit your profile details below</strong>
         </h6>
+        <br />
         <AddImage
           role={this.props.role}
           addImage={(imageUrl) => this.setState({ imageUrl })}
         />
         <form onSubmit={this.handleSubmit}>
-          <label>first name: </label>
+          <p className="login-signup-p">First name</p>
           <input
             name="firstName"
             value={firstName}
@@ -120,7 +125,7 @@ class EditProfile extends React.Component {
             required={true}
             type="text"
           />
-          <label>last name: </label>
+          <p className="login-signup-p">Last name</p>
           <input
             name="lastName"
             value={lastName}
@@ -128,7 +133,7 @@ class EditProfile extends React.Component {
             required={true}
             type="text"
           />
-          <label>address: </label>
+          <p className="login-signup-p">Your address</p>
           <input
             name="address"
             value={address}
@@ -136,7 +141,7 @@ class EditProfile extends React.Component {
             required={true}
             type="text"
           />
-          <label>about: </label>
+          <p className="login-signup-p">Profile bio</p>
           <input
             name="about"
             value={about}
@@ -146,7 +151,7 @@ class EditProfile extends React.Component {
           />
           {this.props.role === "provider" && (
             <>
-              <label>Facebook Url: </label>
+              <p className="login-signup-p">Your Facebook Url</p>
               <input
                 name="facebookUrl"
                 value={facebookUrl}
@@ -154,7 +159,9 @@ class EditProfile extends React.Component {
                 required={true}
                 type="text"
               />
-              <label>Online or in-person? </label>
+              <p className="login-signup-p">
+                Choose if you'd like to provide services online or in-person
+              </p>
               <select
                 value={lessonType}
                 onChange={this.handleChange}
@@ -164,7 +171,7 @@ class EditProfile extends React.Component {
                 <option value="Online">Online</option>
                 <option value="In-person">In-Person</option>
               </select>
-              <label>Choose one category </label>
+              <p className="login-signup-p">Choose your service category</p>
               <select
                 value={serviceCat}
                 onChange={this.handleChange}
@@ -179,7 +186,7 @@ class EditProfile extends React.Component {
                 <option value="Math Lessons">Math Lessons</option>
                 <option value="Baby Sitting">Baby Sitting</option>
               </select>
-              <label>Rate </label>
+              <p className="login-signup-p">Rating per hour</p>
               <input
                 name="rate"
                 value={rate}
@@ -189,7 +196,7 @@ class EditProfile extends React.Component {
               />
             </>
           )}
-          <label>Email: </label>
+          <p className="login-signup-p">Email</p>
           <input
             name="email"
             value={email}
@@ -197,8 +204,14 @@ class EditProfile extends React.Component {
             required={true}
             type="email"
           />
-
-          <button type="submit"> Confirm </button>
+          {}
+          <button
+            className={role === "user" ? "edit-btn-user" : "edit-btn-provider"}
+            type="submit"
+          >
+            {" "}
+            Confirm{" "}
+          </button>
         </form>
       </div>
     );

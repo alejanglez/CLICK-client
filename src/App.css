@@ -20,15 +20,14 @@ body,
 html {
   height: 100%;
   width: 100%;
-  margin: 0 0 70% 0;
+  margin-bottom: 62px;
   padding: 0;
   box-sizing: border-box;
   font-family: "Britanica-Regular" !important;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
+.marginBottom {
+  margin-bottom: 62px;
 }
 
 p,
@@ -36,7 +35,8 @@ h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+h6 {
   color: #727272;
 }
 
@@ -55,6 +55,11 @@ h5 {
   margin: 10px 0;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+}
+
 .changePw {
   margin-bottom: 2%;
   text-align: left;
@@ -71,6 +76,44 @@ h5 {
   text-decoration: inherit;
   font-weight: bold;
   color: rgba(252, 3, 244);
+}
+
+.cleanLink,
+.cleanLink:hover,
+.cleanLink:focus,
+.cleanLink:active {
+  color: white;
+  text-decoration: none;
+}
+
+.edit-btn-provider,
+.edit-btn-provider:hover,
+.edit-btn-provider:focus,
+.edit-btn-provider:active {
+  display: inline-block;
+  border: none;
+  padding: 8px 18px;
+  margin: 0;
+  text-decoration: none;
+  background-color: rgb(138, 237, 201);
+  color: white;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.edit-btn-user,
+.edit-btn-user:hover,
+.edit-btn-user:focus,
+.edit-btn-user:active {
+  display: inline-block;
+  border: none;
+  padding: 8px 18px;
+  margin: 0;
+  text-decoration: none;
+  background-color: #fffb82;
+  color: #727272;
+  font-weight: bold;
+  margin: 15px 0;
 }
 
 /* test */

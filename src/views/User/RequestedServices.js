@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {
+  changeStateSingleRequestedService,
   getAllProviderRequests,
   getAllUserRequests,
 } from "../../services/servicesService";
@@ -12,7 +13,6 @@ class RequestedServices extends Component {
     requestedServices: [],
     role: this.props.role,
     id: this.props.profileInformation._id,
-    isAccepted: false,
   };
 
   componentDidMount = () => {
@@ -60,7 +60,7 @@ class RequestedServices extends Component {
 
   render() {
     console.log("stateeee ", this.state);
-    const { role, isAccepted } = this.state;
+    const { role } = this.state;
     return (
       <div className="view text-center p-3 p-md-5 m-md-3">
         <div className="pending-accepted">
@@ -73,117 +73,128 @@ class RequestedServices extends Component {
           </Link>
         </div>
 
-        {!isAccepted &&
-          this.state.requestedServices.map((service) => {
-            let rate = Number(service.providerId.rate);
-            let quant = Number(service.quantity);
-            return (
-              <div className="card requestedCard" key={service._id}>
-                {service.decline && role === "user" && (
-                  <p className="declined">
-                    Your requested service with {service.providerId.firstName}{" "}
-                    was declined
-                  </p>
-                )}
-                {service.decline && role === "provider" && (
-                  <p className="declined">
-                    You declined a service from{" "}
-                    <strong>{service.userId.firstName}</strong>
-                  </p>
-                )}
-                {!service.decline && (
-                  <>
-                    {" "}
-                    <input
-                      type="hidden"
-                      name="userId"
-                      value={service.userId._id}
-                    />
-                    <input
-                      type="hidden"
-                      name="providerId"
-                      value={service.providerId._id}
-                    />
-                    {this.state.role === "user" ? (
-                      <>
-                        <p>
-                          Name: {service.providerId.firstName}{" "}
-                          {service.providerId.lastName}
-                        </p>
-                        {service.providerId.imageUrl ? (
-                          <img
-                            alt="requested service"
-                            className="rounded img-thumbnail img-fluid"
-                            src={service.providerId.imageUrl}
-                          />
-                        ) : (
-                          <img
-                            className="rounded img-thumbnail img-fluid profile-image"
-                            src="./providerAvatar.png"
-                            alt="requested service"
-                          />
-                        )}
+        {this.state.requestedServices.map((service) => {
+          let rate = Number(service.providerId.rate);
+          let quant = Number(service.quantity);
+          return (
+            <div className="card requestedCard" key={service._id}>
+              {service.decline && role === "user" && (
+                <p className="declined">
+                  Your requested service with {service.providerId.firstName} was
+                  declined
+                </p>
+              )}
+              {service.decline && role === "provider" && (
+                <p className="declined">
+                  You declined a service from{" "}
+                  <strong>{service.userId.firstName}</strong>
+                </p>
+              )}
+              {service.isAccepted && role === "provider" && (
+                <p className="declined">
+                  You accepted a service from{" "}
+                  <strong>{service.userId.firstName}!</strong>
+                </p>
+              )}
+              {service.isAccepted && role === "user" && (
+                <p className="declined">
+                  Your request from{" "}
+                  <strong>{service.providerId.firstName}!</strong> has been
+                  accepted!{" "}
+                </p>
+              )}
+              {!service.isAccepted && !service.decline && (
+                <>
+                  {" "}
+                  <input
+                    type="hidden"
+                    name="userId"
+                    value={service.userId._id}
+                  />
+                  <input
+                    type="hidden"
+                    name="providerId"
+                    value={service.providerId._id}
+                  />
+                  {this.state.role === "user" ? (
+                    <>
+                      <p>
+                        Name: {service.providerId.firstName}{" "}
+                        {service.providerId.lastName}
+                      </p>
+                      {service.providerId.imageUrl ? (
+                        <img
+                          alt="requested service"
+                          className="rounded img-thumbnail img-fluid"
+                          src={service.providerId.imageUrl}
+                        />
+                      ) : (
+                        <img
+                          className="rounded img-thumbnail img-fluid profile-image"
+                          src="./providerAvatar.png"
+                          alt="requested service"
+                        />
+                      )}
 
-                        <p>Category: {service.providerId.serviceCat}</p>
-                        <p>Lesson Type: {service.providerId.lessonType}</p>
-                        <p className="rate">Rate: {service.providerId.rate}</p>
-                      </>
-                    ) : (
-                      <>
-                        <p>
-                          Name: {service.userId.firstName}{" "}
-                          {service.userId.lastName}
-                        </p>
+                      <p>Category: {service.providerId.serviceCat}</p>
+                      <p>Lesson Type: {service.providerId.lessonType}</p>
+                      <p className="rate">Rate: {service.providerId.rate}</p>
+                    </>
+                  ) : (
+                    <>
+                      <p>
+                        Name: {service.userId.firstName}{" "}
+                        {service.userId.lastName}
+                      </p>
 
-                        {service.userId.imageUrl ? (
-                          <img
-                            className="rounded img-thumbnail img-fluid"
-                            src={service.userId.imageUrl}
-                            alt="requested service"
-                          />
-                        ) : (
-                          <img
-                            className="rounded img-thumbnail img-fluid profile-image"
-                            src="./userAvatar.png"
-                            alt="requested service"
-                          />
-                        )}
-                        <p>Category: {service.providerId.serviceCat}</p>
-                        <p>Lesson Type: {service.providerId.lessonType}</p>
-                        <p>Rate: {service.providerId.rate}</p>
-                      </>
-                    )}
-                    <p className="quantity">Quantity: {service.quantity}</p>
-                    <p>Total price: {this.handleTotalPrice(rate, quant)}</p>
-                    <p>date:{service.date}</p>
-                    <p>time:{service.startingTime}</p>
-                    {role === "provider" && (
-                      <MakeAcceptedRequest
-                        requestedService={service}
-                        totalPrice={this.handleTotalPrice(rate, quant)}
-                        isAccepted={isAccepted}
-                      />
-                    )}
-                    {role === "user" && <p>Waiting...</p>}
-                    {role === "provider" && (
-                      <Link
-                        className="link-react"
-                        to={{
-                          pathname: `/requests/details`,
-                          state: {
-                            requestDetails: service,
-                            role: role,
-                          },
-                        }}
-                      >
-                        Decline
-                      </Link>
-                    )}
-                  </>
-                )}
-              </div>
-            );
-          })}
+                      {service.userId.imageUrl ? (
+                        <img
+                          className="rounded img-thumbnail img-fluid"
+                          src={service.userId.imageUrl}
+                          alt="requested service"
+                        />
+                      ) : (
+                        <img
+                          className="rounded img-thumbnail img-fluid profile-image"
+                          src="./userAvatar.png"
+                          alt="requested service"
+                        />
+                      )}
+                      <p>Category: {service.providerId.serviceCat}</p>
+                      <p>Lesson Type: {service.providerId.lessonType}</p>
+                      <p>Rate: {service.providerId.rate}</p>
+                    </>
+                  )}
+                  <p className="quantity">Quantity: {service.quantity}</p>
+                  <p>Total price: {this.handleTotalPrice(rate, quant)}</p>
+                  <p>date:{service.date}</p>
+                  <p>time:{service.startingTime}</p>
+                  {role === "provider" && (
+                    <MakeAcceptedRequest
+                      requestedService={service}
+                      totalPrice={this.handleTotalPrice(rate, quant)}
+                    />
+                  )}
+                  {role === "user" && <p>Waiting...</p>}
+                  {role === "provider" && (
+                    <Link
+                      className="link-react"
+                      to={{
+                        pathname: `/requests/details`,
+                        state: {
+                          requestDetails: service,
+                          role: role,
+                        },
+                      }}
+                    >
+                      Decline
+                    </Link>
+                  )}
+                </>
+              )}
+            </div>
+          );
+        })}
       </div>
     );
   }

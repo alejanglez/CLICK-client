@@ -42,14 +42,14 @@ class ChangePassword extends React.Component {
   };
 
   render() {
-    const { oldPassword, newPassword } = this.state;
+    const { oldPassword, newPassword, role } = this.state;
     console.log("props password", this.props);
     return (
       <div className="view text-center p-3 p-md-5 m-md-3">
         {this.renderRedirect()}
 
         <form onSubmit={this.handleChangePassword}>
-          <label>confirm old password: </label>
+          <p className="login-signup-p">Confirm old password</p>
           <input
             name="oldPassword"
             value={oldPassword}
@@ -57,7 +57,7 @@ class ChangePassword extends React.Component {
             required={true}
             type="password"
           />
-          <label>enter new password: </label>
+          <p className="login-signup-p">Enter new password</p>
           <input
             name="newPassword"
             value={newPassword}
@@ -66,7 +66,13 @@ class ChangePassword extends React.Component {
             type="password"
           />
 
-          <button type="submit"> Confirm </button>
+          <button
+            className={role === "user" ? "edit-btn-user" : "edit-btn-provider"}
+            type="submit"
+          >
+            {" "}
+            Confirm{" "}
+          </button>
         </form>
       </div>
     );

@@ -8,39 +8,34 @@
 .nav-top-user {
   display: flex;
   justify-content: center;
-  background-color: #fffede;
-  margin-bottom: 0%;
   font-weight: bold;
 }
 
 .nav-top-provider {
   display: flex;
   justify-content: center;
-  background-color: #dfffec;
-  margin-bottom: 0%;
+  padding-bottom: 10px;
   font-weight: bold;
 }
 
 .nav-top-spectator {
   display: flex;
   justify-content: center;
-  background-color: #ffdfeb;
-  margin-bottom: 0%;
   font-weight: bold;
 }
 .profile-top-spectator {
-  padding: 5%;
+  padding: 3%;
   background-color: #ffdfeb;
 }
 
 .profile-top-user {
-  padding: 5%;
+  padding: 3%;
   background-color: #fffede;
 }
 
 .profile-top-provider {
-  padding: 5%;
-  background-color: #dfffec;
+  padding: 3%;
+  background-color: rgb(138, 237, 201, 0.6);
 }
 
 .profilePic {
@@ -57,12 +52,35 @@
   margin-top: 3%;
   margin-bottom: 3%;
   padding: 0 8%;
-}
-
-.profile-top-elements {
   text-align: left;
 }
 
 .name-profile {
   margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.bottom-profile {
+  text-align: left;
+}
+
+.category {
+  font-size: smaller;
+  background-color: #8aedc9;
+  color: white;
+  padding: 2px 15px;
+  border-radius: 15px;
+  text-align: center;
+  width: fit-content;
+  font-weight: bold;
+}
+
+.facebook {
+  padding-top: 10px;
+}
+
+.review-title {
+  text-align: left;
 }

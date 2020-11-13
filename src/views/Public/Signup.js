@@ -168,7 +168,7 @@ class Signup extends React.Component {
                   <option value="Informatics">Informatics</option>
                   <option value="Guitar Lessons">Guitar Lessons</option>
                   <option value="Piano Lessons">Piano Lessons</option>
-                  <option value="English Lessonss">English Lessons</option>
+                  <option value="English Lessons">English Lessons</option>
                   <option value="Math Lessons">Math Lessons</option>
                   <option value="Baby Sitting">Baby Sitting</option>
                 </select>

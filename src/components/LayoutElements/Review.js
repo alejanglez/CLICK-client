@@ -27,6 +27,7 @@ class Review extends Component {
         this.setState({
           reviews: response.data.dbReviewsList2,
         });
+        return console.log("set state review", this.state);
       })
       .catch((err) => console.log("Error retrieving all reviews: ", err));
   };

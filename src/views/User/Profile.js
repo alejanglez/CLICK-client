@@ -59,7 +59,7 @@ const Profile = (props) => {
             />
           </h5>
         )}
-        <div className="profile-top-elements">
+        <div className="profile-top-elements ">
           <div className="image-profile">
             {!imageUrl && role === "user" && (
               <img

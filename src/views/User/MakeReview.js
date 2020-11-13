@@ -57,7 +57,7 @@ class MakeReview extends Component {
     console.log("state make review", this.state);
     return (
       <>
-        <div className="view text-center p-3 app">
+        <div className="view text-center justify-content-center p-3">
           {role === "user" ? (
             <p className="login-signup-p">
               <strong>

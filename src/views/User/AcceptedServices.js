@@ -71,47 +71,91 @@ class AcceptedServices extends Component {
               />
               {this.state.role === "user" ? (
                 <>
-                  {
-                    <Link to={`/profile/list/` + service.providerId}>
-                      <p>
-                        Name: {service.providerFirstName}{" "}
-                        {service.providerLastName}
-                      </p>
-                    </Link>
-                  }
-
-                  <img
-                    className="rounded img-thumbnail img-fluid profile-image"
-                    src={service.providerImageUrl}
-                    alt="accepted"
-                  />
-                  <p>Category: {service.serviceCat}</p>
-                  <p>Lesson Type: {service.lessonType}</p>
-                  <p>Rate: {service.rate}</p>
+                  <div className="flexCard">
+                    <div>
+                      {service.providerImageUrl ? (
+                        <div
+                          className="profilePic"
+                          style={{
+                            backgroundImage:
+                              "url(" + service.providerImageUrl + ")",
+                          }}
+                        ></div>
+                      ) : (
+                        <img
+                          className="rounded img-thumbnail img-fluid profile-image"
+                          src="./providerAvatar.png"
+                          alt="requested service"
+                        />
+                      )}
+                    </div>
+                    <div className="cardDetails">
+                      <Link to={`/profile/list/` + service.providerId}>
+                        {" "}
+                        <h4>
+                          <strong>
+                            {service.providerFirstName}{" "}
+                            {service.providerLastName}
+                          </strong>
+                        </h4>
+                      </Link>
+                      <p className="categoryPublic">{service.serviceCat}</p>
+                      <p>Lesson {service.lessonType}</p>
+                    </div>
+                  </div>
                 </>
               ) : (
                 <>
-                  <Link to={`/profile/` + service.userId}>
-                    {" "}
-                    <p>
-                      Name: {service.userFirstName} {service.userLastName}
-                    </p>
-                  </Link>
-
-                  <img
-                    className="rounded img-thumbnail img-fluid"
-                    src={service.userImageUrl}
-                    alt="accepted"
-                  />
-                  <p>Category: {service.serviceCat}</p>
-                  <p>Lesson Type: {service.lessonType}</p>
-                  <p>Rate: {service.rate}</p>
+                  <div className="flexCard">
+                    <div>
+                      {service.userImageUrl ? (
+                        <div
+                          className="profilePic"
+                          style={{
+                            backgroundImage:
+                              "url(" + service.userImageUrl + ")",
+                          }}
+                        ></div>
+                      ) : (
+                        <img
+                          className="rounded img-thumbnail img-fluid profile-image"
+                          src="./providerAvatar.png"
+                          alt="requested service"
+                        />
+                      )}
+                    </div>
+                    <div className="cardDetails">
+                      <Link to={`/profile/` + service.userId}>
+                        <h4>
+                          <strong>
+                            {service.userFirstName} {service.userLastName}
+                          </strong>
+                        </h4>
+                      </Link>
+                      <p className="categoryPublic">{service.serviceCat}</p>
+                      <p>Lesson {service.lessonType}</p>
+                    </div>
+                  </div>
                 </>
               )}
-              <p>Quantity: {service.quantity}</p>
-              <p>Total price:{service.totalPrice}</p>
-              <p>date: {service.date}</p>
-              <p>time: {service.startingTime}</p>
+              <p>Total price:{service.totalPrice} €</p>
+              <p>
+                {" "}
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 16 16"
+                  className="bi bi-calendar-check-fill"
+                  fill="rgba(252, 3, 244, 0.5)"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-5.146-5.146a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"
+                  />
+                </svg>{" "}
+                date: {service.date}
+              </p>
               <Link
                 to={{
                   pathname: `/make-review`,

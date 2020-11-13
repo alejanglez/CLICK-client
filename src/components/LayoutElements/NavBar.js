@@ -34,7 +34,7 @@ class NavBar extends React.Component {
           {authenticated && (
             <>
               <Nav.Link
-                className=" align-middle nav-item"
+                className="link-react-nav align-middle nav-item"
                 as={Link}
                 to={`/profile`}
               >
@@ -58,7 +58,11 @@ class NavBar extends React.Component {
                 </svg>
               </Nav.Link>
               {role === "user" && (
-                <Nav.Link className="nav-item" as={Link} to={`/profile/list/`}>
+                <Nav.Link
+                  className=" link-react-nav nav-item"
+                  as={Link}
+                  to={`/profile/list/`}
+                >
                   <svg
                     width="2em"
                     height="2em"
@@ -80,7 +84,7 @@ class NavBar extends React.Component {
               )}
 
               <Nav.Link
-                className=" align-middle nav-item"
+                className="link-react-nav align-middle nav-item"
                 as={Link}
                 to={`/requested-services`}
               >
@@ -101,6 +105,7 @@ class NavBar extends React.Component {
               <Navbar.Toggle />
               <Navbar.Collapse>
                 <Nav.Link
+                  className="link-react-nav"
                   as={Link}
                   to={"/"}
                   onClick={() =>
@@ -109,20 +114,28 @@ class NavBar extends React.Component {
                 >
                   Logout
                 </Nav.Link>
-                <Nav.Link as={Link} to={"/aboutClick"}>
+                <Nav.Link
+                  className="link-react-nav"
+                  as={Link}
+                  to={"/aboutClick"}
+                >
                   About
                 </Nav.Link>
               </Navbar.Collapse>
             </>
           )}
           {!authenticated && (
-            <Nav.Link className="nav-item navAnon" as={Link} to={"/"}>
+            <Nav.Link
+              className="link-react-nav nav-item navAnon"
+              as={Link}
+              to={"/"}
+            >
               Signup
             </Nav.Link>
           )}
           {!authenticated && (
             <Nav.Link
-              className=" align-middle nav-item navAnon"
+              className="link-react-nav align-middle nav-item navAnon"
               as={Link}
               to={"/about"}
             >

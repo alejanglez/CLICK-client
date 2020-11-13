@@ -34,3 +34,12 @@
 .marginTop {
   margin-top: 62px !important;
 }
+
+.link-react-nav,
+.link-react-nav:hover,
+.link-react-nav:focus,
+.link-react-nav:active {
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+}

@@ -26,3 +26,5 @@ yarn-error.log*
 fonts
 src/fonts/
 # videos
+# Local Netlify folder
+.netlify

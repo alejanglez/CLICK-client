@@ -55,6 +55,13 @@ class Home extends React.Component {
               </Link>
             </div>
             <div className="video">
+              {/* <ReactPlayer
+                url="https://www.youtube.com/watch?v=vN09XBGzA54&feature=youtu.be"
+                playing={true}
+                loop={true}
+                playsinline={true}
+                autoPlay={true}
+              /> */}
               <video
                 src="/videos/video.mp4"
                 playsinline="playsinline"

@@ -21,6 +21,7 @@ class Review extends Component {
 
   fetchDataUser = () => {
     const { id } = this.state;
+    return console.log("id review user", id);
     getAllUserReview(id)
       .then((response) => {
         console.log("response list review user", response);
@@ -28,7 +29,7 @@ class Review extends Component {
           reviews: response.data.dbReviewsList2,
         });
       })
-      .catch((err) => console.log("Error retrieving all providers: ", err));
+      .catch((err) => console.log("Error retrieving all reviews: ", err));
   };
 
   fetchDataProvider = () => {

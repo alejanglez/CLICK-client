@@ -35,13 +35,6 @@ class SingleProvider extends Component {
     const { provider, userId, spectator } = this.state;
     return (
       <div className="view text-center p-3 p-md-5 m-md-3">
-        <Profile
-          path={`/profile/list/:providerId`}
-          exact
-          component={Profile}
-          profileInformation={provider}
-          spectator={spectator}
-        />
         <button
           className="general-btn"
           onClick={this.handleMakeRequestComponent}
@@ -51,6 +44,13 @@ class SingleProvider extends Component {
         {this.state.showComponent ? (
           <MakeRequest userId={userId} profileInformation={provider} />
         ) : null}
+        <Profile
+          path={`/profile/list/:providerId`}
+          exact
+          component={Profile}
+          profileInformation={provider}
+          spectator={spectator}
+        />
       </div>
     );
   }

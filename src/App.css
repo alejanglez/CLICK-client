@@ -27,7 +27,7 @@ html {
 }
 
 .marginBottom {
-  margin-bottom: 62px;
+  margin-bottom: 62px !important;
 }
 
 p,
@@ -116,4 +116,37 @@ form {
   margin: 15px 0;
 }
 
+.profilePic {
+  height: 180px;
+  width: 140px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+}
+
+.flexCard {
+  display: flex;
+  padding: 1em;
+  justify-content: space-around;
+}
+
+.cardDetails {
+  margin-left: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.categoryPublic {
+  font-size: smaller;
+  background-color: rgba(252, 3, 244, 0.5);
+  color: white;
+  padding: 2px 15px;
+  border-radius: 15px;
+  text-align: center;
+  width: fit-content;
+  font-weight: bold;
+}
 /* test */

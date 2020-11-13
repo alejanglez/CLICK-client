@@ -7,6 +7,18 @@
 }
 
 .card {
-  margin: 5%;
-  margin-bottom: 80px;
+  margin: 10px 0 62px 0;
+}
+
+.filter {
+  display: flex;
+  text-align: left;
+}
+
+.filter > div {
+  padding: 3px 5px;
+}
+
+.alignleft {
+  text-align: left;
 }

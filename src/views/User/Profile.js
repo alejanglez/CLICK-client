@@ -209,14 +209,15 @@ const Profile = (props) => {
           <strong>Reviews</strong>
         </h4>
       </div>
-
-      <Review
-        path={`/review/list/${_id}`}
-        exact
-        component={Review}
-        id={props.profileInformation._id}
-        role={role}
-      />
+      <div className="marginBottom">
+        <Review
+          path={`/review/list/${_id}`}
+          exact
+          component={Review}
+          id={props.profileInformation._id}
+          role={role}
+        />
+      </div>
     </div>
   );
 };

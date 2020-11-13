@@ -53,7 +53,7 @@ class Review extends Component {
     console.log(this.state.reviews);
     const sum = reviews.reduce((a, b) => a + b.rating, 0);
     const avg = sum / reviews.length || 0;
-    return avg;
+    return Math.round(avg);
   };
 
   handleStars = (review) => {
@@ -74,7 +74,7 @@ class Review extends Component {
     console.log("stateeee review ", this.state);
     console.log("props review ", this.props);
     return (
-      <div className="container">
+      <div className="container marginBottom">
         <p className="text-info">{this.handleTotalStars(reviews)} / 5 ★</p>
         {this.state.reviews.map((review) => {
           return (
@@ -85,7 +85,6 @@ class Review extends Component {
                     {review.providerId.firstName}'s opinion
                   </div>
                   <p>{review.comment}</p>
-                  {/* <p className="card-body text-info"> {review.rating}</p> */}
                   <p className="text-info">{this.handleStars(review)}</p>
                 </div>
               )}

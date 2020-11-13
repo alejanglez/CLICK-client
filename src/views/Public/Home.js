@@ -53,6 +53,16 @@ class Home extends React.Component {
                 </button>
               </Link>
             </div>
+            <div className="video">
+              <video
+                src="/videos/video.mp4"
+                playsInline="playsinline"
+                autoPlay="autoplay"
+                muted="muted"
+                loop="loop"
+                width="100%"
+              />
+            </div>
           </div>
         )}
       </div>

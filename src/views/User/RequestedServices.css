@@ -27,3 +27,20 @@
 .declined {
   color: rgba(252, 3, 244);
 }
+
+.card-img {
+  max-width: 18rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#card-border {
+  border-color: rgba(252, 3, 244);
+}

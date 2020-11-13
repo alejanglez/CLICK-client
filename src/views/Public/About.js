@@ -32,6 +32,7 @@ class About extends React.Component {
             <img src="/logosanti.png" width="30" height="30" alt="logosanti" />
           </a>
         </p>
+        <p>Vídeo de Pavel Danilyuk en Pexels</p>
       </div>
     );
   }

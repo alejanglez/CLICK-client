@@ -62,7 +62,7 @@ class AcceptedServices extends Component {
         </div>
         {this.state.acceptedServices.map((service) => {
           return (
-            <div className="card" id="card-border" key={service._id}>
+            <div className="card" key={service._id}>
               <input type="hidden" name="userId" value={service.userId} />
               <input
                 type="hidden"

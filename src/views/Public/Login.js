@@ -56,7 +56,7 @@ class Login extends React.Component {
   render() {
     const { email, password, errorMessage } = this.state;
     return (
-      <div className="view text-center p-3 p-md-5 m-md-3">
+      <div className="view text-center p-3 p-3 p-md-5 m-md-3">
         {errorMessage !== "" && errorMessage}
         <h6 className="login-signup-p">We're glad to have you back</h6>
         <form onSubmit={this.handleSubmit}>

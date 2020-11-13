@@ -17,15 +17,22 @@ const Profile = (props) => {
     rate,
     _id,
   } = props.profileInformation;
-  console.log("login props", props);
   // console.log("test", test);
-  const { role, sessionUserId, sessionProviderId } = props;
+  const { role, sessionUserId, sessionProviderId, spectator } = props;
+  console.log("PROPPPSSS", props);
   console.log("user id session", sessionUserId);
-  console.log("roleeee ", role);
+  console.log("user id ", _id);
   return (
     <div>
       <p hidden>{_id && _id}</p>
+      {/* <div className={`profile-top-${role}`} id="top-profile"> */}
       <div className={role ? `profile-top-${role}` : "profile-top-spectator"}>
+        {spectator === "spectator" && (
+          <h5 className={`nav-top-spectator`}>
+            <p>Public Profile </p>
+          </h5>
+        )}
+
         {role === "user" && (
           <h5 className={`nav-top-${role}`}>
             {" "}

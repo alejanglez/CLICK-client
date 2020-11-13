@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import {
-  changeStateSingleRequestedService,
   getAllProviderRequests,
   getAllUserRequests,
 } from "../../services/servicesService";

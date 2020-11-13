@@ -60,7 +60,7 @@ class MakeRequest extends Component {
     const { quantity, date, startingTime } = this.state;
     return (
       <>
-        <div className="view text-center p-3 app">
+        <div className="text-center justify-content-center p-3">
           {this.renderRedirect()}
           <form onSubmit={this.handleMakeRequest}>
             <p className="login-signup-p">Choose a date</p>

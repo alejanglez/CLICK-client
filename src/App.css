@@ -58,6 +58,7 @@ h6 {
 form {
   display: flex;
   flex-direction: column;
+  max-width: 400px;
 }
 
 .changePw {
@@ -66,7 +67,7 @@ form {
 }
 
 .login-signup-p {
-  text-align: left;
+  text-align: left !important;
   margin-top: 5%;
   line-height: 10px;
 }
@@ -149,4 +150,5 @@ form {
   width: fit-content;
   font-weight: bold;
 }
+
 /* test */

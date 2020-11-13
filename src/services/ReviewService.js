@@ -29,6 +29,7 @@ export const getAllProviderReview = async (providerId) => {
 
 export const getAllUserReview = async (userId) => {
   const response = await service.get("/review/user/list/" + userId);
+  console.log("user id on services review", userId);
   return response;
 };
 

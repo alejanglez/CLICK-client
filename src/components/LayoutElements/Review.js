@@ -27,8 +27,9 @@ class Review extends Component {
         this.setState({
           reviews: response.data.dbReviewsList2,
         });
+        return console.log("set state review", this.state);
       })
-      .catch((err) => console.log("Error retrieving all providers: ", err));
+      .catch((err) => console.log("Error retrieving all reviews: ", err));
   };
 
   fetchDataProvider = () => {
@@ -75,6 +76,7 @@ class Review extends Component {
     console.log("props review ", this.props);
     return (
       <div className="container marginBottom">
+        <p>hello</p>
         <p className="text-info">{this.handleTotalStars(reviews)} / 5 ★</p>
         {this.state.reviews.map((review) => {
           return (

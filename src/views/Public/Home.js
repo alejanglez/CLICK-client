@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./Home.css";
 import "./styles.css";
 import "./styles.scss";
-import ReactPlayer from "react-player";
 
 class Home extends React.Component {
   state = {
@@ -55,17 +54,10 @@ class Home extends React.Component {
               </Link>
             </div>
             <div className="video">
-              {/* <ReactPlayer
-                url="https://www.youtube.com/watch?v=vN09XBGzA54&feature=youtu.be"
-                playing={true}
-                loop={true}
-                playsinline={true}
-                autoPlay={true}
-              /> */}
               <video
                 src="/videos/video.mp4"
-                playsinline="playsinline"
-                autoplay="autoplay"
+                playsInline="playsinline"
+                autoPlay="autoplay"
                 muted="muted"
                 loop="loop"
                 width="100%"

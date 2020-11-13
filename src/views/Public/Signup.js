@@ -87,9 +87,8 @@ class Signup extends React.Component {
           <Link className="link-react" to={`/login/${this.props.role}`}>
             Login instead
           </Link>
-          <hr />
         </p>
-
+        <hr />
         <div>
           {errorMessage !== "" && errorMessage}
           <p className="login-signup-p">Choose your profile picture*</p>

@@ -26,6 +26,43 @@ class About extends React.Component {
           qui dolor
         </p>
         <br />
+        <div className="col-lg-6 col-md-6 mb-lg-0 mb-5">
+          <div className="avatar mx-auto">
+            <img
+              src="./profile1.jpg"
+              className="rounded-circle z-depth-1"
+              width="200"
+              height="200"
+              className="rounded-circle z-depth-1"
+              alt="Sample avatar"
+            />
+          </div>
+          <h5 className="font-weight-bold mt-4 mb-3">Raquel Nascimento</h5>
+          <p className="text-uppercase blue-text">
+            <strong>CTO</strong>
+          </p>
+          <p className="grey-text">
+            Fullstack Dev. 💻 & Jiu-jitsu passionate🥋
+          </p>
+        </div>
+        <div className="col-lg-6 col-md-6 mb-lg-0 mb-5">
+          <div className="avatar mx-auto">
+            <img
+              src="./profile2.jpg"
+              className="rounded-circle z-depth-1"
+              width="200"
+              height="200"
+              className="rounded-circle z-depth-1"
+              alt="Sample avatar"
+            />
+          </div>
+          <h5 className="font-weight-bold mt-4 mb-3">Alejandro González</h5>
+          <p className="text-uppercase blue-text">
+            <strong>CTO</strong>
+          </p>
+          <p className="grey-text">Fullstack Dev. 💻 & Swimming lover 🏊</p>
+        </div>
+
         <p>
           Typography "Britanica" by SANTIREYDESIGN
           <a href="http://santireydesign.com/">

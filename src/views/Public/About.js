@@ -1,11 +1,9 @@
 import React from "react";
-
 class About extends React.Component {
   state = {
     authenticated: this.props.authenticated,
     role: this.props.role,
   };
-
   render() {
     return (
       <div className="view text-center p-3 p-md-5 m-md-3">
@@ -30,7 +28,6 @@ class About extends React.Component {
           <div className="avatar mx-auto">
             <img
               src="./profile1.jpg"
-              className="rounded-circle z-depth-1"
               width="200"
               height="200"
               className="rounded-circle z-depth-1"
@@ -52,7 +49,6 @@ class About extends React.Component {
               className="rounded-circle z-depth-1"
               width="200"
               height="200"
-              className="rounded-circle z-depth-1"
               alt="Sample avatar"
             />
           </div>
@@ -62,7 +58,6 @@ class About extends React.Component {
           </p>
           <p className="grey-text">Fullstack Dev. 💻 & Swimming lover 🏊</p>
         </div>
-
         <p>
           Typography "Britanica" by SANTIREYDESIGN
           <a href="http://santireydesign.com/">
@@ -74,5 +69,4 @@ class About extends React.Component {
     );
   }
 }
-
 export default About;

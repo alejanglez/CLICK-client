@@ -58,7 +58,7 @@ class RequestedServices extends Component {
   };
 
   render() {
-    console.log("stateeee ", this.state);
+    console.log("stateeee ", this.state, "", this.props);
     const { role } = this.state;
     return (
       <div className="requested-services">
@@ -77,7 +77,7 @@ class RequestedServices extends Component {
             let rate = Number(service.providerId.rate);
             let quant = Number(service.quantity);
             return (
-              <div className="card" id="card-border" key={service._id}>
+              <div className="card" key={service._id}>
                 {service.decline && role === "user" && (
                   <p className="declined">
                     Your requested service with {service.providerId.firstName}{" "}
@@ -230,6 +230,7 @@ class RequestedServices extends Component {
                       <MakeAcceptedRequest
                         requestedService={service}
                         totalPrice={this.handleTotalPrice(rate, quant)}
+                        {...this.props}
                       />
                     )}
                     {role === "user" && <p>Waiting...</p>}

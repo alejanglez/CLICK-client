@@ -31,6 +31,7 @@ class MakeAcceptedRequest extends Component {
   };
 
   handleAcceptedRequest = (event) => {
+    console.log("I AM IN THE METHOD");
     event.preventDefault();
     const {
       userId,
@@ -71,26 +72,30 @@ class MakeAcceptedRequest extends Component {
     )
       .then((response) => {
         console.log("awwwwwwwaaaa", response);
-        this.setState({
-          quantity: quantity,
-          requestedServiceId: requestedServiceId,
-          serviceCat: serviceCat,
-          lessonType: lessonType,
-          rate: rate,
-          providerFirstName: providerFirstName,
-          providerLastName: providerLastName,
-          providerImageUrl: providerImageUrl,
-          userFirstName: userFirstName,
-          userLastName: userLastName,
-          userImageUrl: userImageUrl,
-          totalPrice: totalPrice,
-          userId: userId,
-          providerId: providerId,
-          date: date,
-          startingTime: startingTime,
-          isAccepted: true,
-        });
-        this.setRedirect();
+        this.setState(
+          {
+            quantity: quantity,
+            requestedServiceId: requestedServiceId,
+            serviceCat: serviceCat,
+            lessonType: lessonType,
+            rate: rate,
+            providerFirstName: providerFirstName,
+            providerLastName: providerLastName,
+            providerImageUrl: providerImageUrl,
+            userFirstName: userFirstName,
+            userLastName: userLastName,
+            userImageUrl: userImageUrl,
+            totalPrice: totalPrice,
+            userId: userId,
+            providerId: providerId,
+            date: date,
+            startingTime: startingTime,
+            isAccepted: true,
+          },
+          () => {
+            this.handleAcceptBtn();
+          }
+        );
       })
       .catch((err) => console.log("error on handle make request", err));
   };
@@ -103,11 +108,11 @@ class MakeAcceptedRequest extends Component {
     });
   };
 
-  handleAcceptBtn = (event) => {
-    event.preventDefault();
+  handleAcceptBtn = () => {
     const { requestedServiceId } = this.state;
     changeStateSingleRequestedService(requestedServiceId)
       .then((response) => {
+        this.props.history.push("/accepted-services");
         console.log("change to isAccepted response", response);
       })
       .catch((err) => console.log("error on handle make request", err));
@@ -131,11 +136,7 @@ class MakeAcceptedRequest extends Component {
           {this.renderRedirect()}
 
           <form onSubmit={this.handleAcceptedRequest}>
-            <button
-              onClick={this.handleAcceptBtn}
-              className="general-btn"
-              type="submit"
-            >
+            <button className="general-btn" type="submit">
               Accept
             </button>
           </form>

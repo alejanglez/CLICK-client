@@ -77,30 +77,38 @@ class Review extends Component {
     return (
       <div className="container marginBottom">
         <p className="text-info">{this.handleTotalStars(reviews)} / 5 ★</p>
-        {this.state.reviews.map((review) => {
-          return (
-            <div key={review._id}>
-              {review.author === "provider" && role === "user" && (
-                <div className="card border-info mb-3">
-                  <div className="card-header">
-                    {review.providerId.firstName}'s opinion
-                  </div>
-                  <p>{review.comment}</p>
-                  <p className="text-info">{this.handleStars(review)}</p>
+        {this.state.reviews.length === 0 ? (
+          <p className="login-signup-p">No reviews yet</p>
+        ) : (
+          <>
+            {this.state.reviews.map((review) => {
+              return (
+                <div key={review._id}>
+                  {review.author === "provider" && role === "user" && (
+                    <div className="card border-info mb-3">
+                      <div className="card-header">
+                        {review.providerId.firstName}'s opinion
+                      </div>
+                      <p>{review.comment}</p>
+                      <p className="text-info">{this.handleStars(review)}</p>
+                    </div>
+                  )}
+                  {review.author === "user" && role === "provider" && (
+                    <div className="card border-warning mb-3">
+                      <div className="card-header">
+                        {review.userId.firstName}'s opinion
+                      </div>
+                      <p>{review.comment}</p>
+                      <p className="text-warning">{this.handleStars(review)}</p>
+                    </div>
+                  )}
                 </div>
-              )}
-              {review.author === "user" && role === "provider" && (
-                <div className="card border-warning mb-3">
-                  <div className="card-header">
-                    {review.userId.firstName}'s opinion
-                  </div>
-                  <p>{review.comment}</p>
-                  <p className="text-warning">{this.handleStars(review)}</p>
-                </div>
-              )}
-            </div>
-          );
-        })}
+              );
+            })}
+          </>
+        )}
+
+        {/* ends above */}
       </div>
     );
   }
